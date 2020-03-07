@@ -1,0 +1,81 @@
+
+.select{
+    width: 1200px;
+    margin: 0px auto;
+}
+.tu{
+    flex-direction:row;
+    display: flex
+}
+.count_left{ 
+    flex: 1
+}
+.count_right{
+    flex: 4;
+    overflow: hidden;
+}
+.count_right li{
+    list-style: none
+}
+.iphone_top li{
+    float: left;
+    margin-left: 12px;
+    margin-bottom: 10px;
+}
+.iphone_bottom li{
+    float: left;
+    margin-left: 12px;
+    margin-bottom: 15px
+}
+.count_right img{
+    width: 225px;
+    height: 280px;
+    
+}
+.count_left img{
+    width: 235px;
+    height: 570px;
+    transition: all 0.5s linear 0s
+}
+.iphone_name{
+    overflow: hidden;
+}
+.iphone_name_right{
+    float: right;
+    font-size:20px;
+    color: #5F5750;
+    padding: 0px;
+    margin-top: -45px
+}
+
+.count_left img:hover{
+    transform: translateY(8px);
+    box-shadow: 1px 2px 15px 1px #CCC8C8,
+    1px -2px 15px 1px #CCC8C8,
+    -1px 2px 15px 1px #CCC8C8,
+    -1px -2px 15px 1px #CCC8C8
+}
+.count_right li:hover{
+    transform: translateY(5px);
+    box-shadow: 1px 2px 15px 1px #CCC8C8,
+    1px -2px 15px 1px #CCC8C8,
+    -1px 2px 15px 1px #CCC8C8,
+    -1px -2px 15px 1px #CCC8C8
+}
+.iphone_top{
+    margin-top: 5px;
+}
+.jian{
+    color: white;
+    background: #ccc;
+}
+.tou{
+    padding: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ccc;
+}
+.count_right li{
+    transition: all 0.5s linear 0s
+}

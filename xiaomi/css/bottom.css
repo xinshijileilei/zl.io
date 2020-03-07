@@ -1,0 +1,132 @@
+#bottom{
+    background: white
+}
+.bottom_top{
+    width: 1200px;
+    margin: 30px auto;
+    overflow: hidden;
+    padding-top:10px;
+    padding-bottom:10px;
+    display: flex;
+    flex-direction: row;
+    border-bottom:2px solid #E0E0E0;
+}
+.bottom_top div{
+    flex: 1;
+    font-size: 19px;
+    font-weight: 500;
+    color: #707270;
+    margin-left: 40px;
+    border-right: 1px solid #E0E0E0
+}
+.bottom_bot{
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 25px;
+}
+.bottom_top div:hover{
+    color: #ff7400
+}
+.bot_left{
+    flex: 5;
+    border-right: 2px solid #E0E0E0
+}
+.bot_right{
+    flex: 1
+}
+.bot_left_top{
+    display: flex;
+    flex-direction: row;
+    color:#424242
+}
+.bot_left_top div{
+    flex: 1;
+    margin-bottom: 10px;
+    font-size: 16px
+}
+.bot_left_bottom{
+    display: flex;
+    flex-direction: row;
+    color: #757575
+}
+.bot_left_bottom ul{
+    flex: 1;
+    list-style: none;
+}
+.bot_left_bottom ul li{
+   padding-bottom: 12px
+}
+.bot_left_bottom ul li:hover{
+    color: #ff7400
+}
+.a1{
+    color: #ff7400;
+    padding: 10px;
+    text-align: center;
+    font-size: 18px
+}
+.a2{
+    color: #707270;
+    padding: 10px;
+    text-align: center
+}
+.a3{
+    color: #ff7400;
+    padding: 10px;
+    text-align: center;
+    width: 50px;
+    height: 20px;
+    border-radius: 10%;
+    border: 1px solid #ff7400;
+    margin-left: 55px
+}
+.techno{
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row
+}
+.techno_left{
+    flex: 1
+}
+.techno_right{
+    flex: 8;
+    margin-bottom: 100px
+}
+.techno_right span{
+    background: white;
+}
+.techno_right span a{
+    background: white;
+    border-right: 1px solid white;
+    margin-left: 5px;
+    color: #757575
+}
+.techno_right span a:hover{
+    color: #ff7400
+}
+.a4,.a5,.a6,.a7{
+    color: #B7CBE7
+}
+.a4:hover{
+    color: #ff7400
+}
+.a5:hover{
+    color: #ff7400
+}
+.a6:hover{
+    color: #ff7400
+}
+.a7:hover{
+    color: #ff7400
+}
+.hekeji{
+    width: 1200px;
+    margin: 0 auto;
+    color: #C7C7C7;
+    font-size: 30px;
+    text-align: center;
+   margin-top:-75px 
+}

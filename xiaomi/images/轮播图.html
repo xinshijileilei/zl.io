@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none
+        }
+        .banner_back{
+            width: 1200px;
+            margin: 10px auto;
+            position: relative;
+        }
+        .banner img{
+            width: 1200px
+        }
+        .meau{
+            width: 220px;
+            height: 450px;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            color: white;
+            background:rgba(149,158,163,0.5);
+            font-weight:500
+       }
+       .meau ul{
+            padding-top: 10px;
+            padding-bottom: 10px;
+       }
+       .meau ul>li{
+           padding: 11px;
+           padding-left: 15px
+       }
+      .meau ul>li:hover{
+          background: #ff7400
+      }
+      .card{
+          margin-left: 100px
+      }
+      .sim{
+          margin-left: 105px
+      }
+      .call{
+          margin-left: 85px
+      }
+      .sim1{
+          margin-left: 85px
+      }
+      .card1{
+          margin-left: 90px
+      }
+      #pic li{
+          float: left;
+          margin-left: 10px;
+          border: 1px solid #ccc;
+          border-radius: 40%;
+          cursor: pointer;
+      }
+      #pic{
+          position: absolute;
+          bottom: 10px;
+          right: 20px
+      }
+    </style>
+</head>
+<body>
+    <div class="banner_back">
+        <div class="banner">
+            <img src="images/a.jpg" alt="" id="ping">
+        </div>
+        <div class="meau">
+            <ul>
+				<li>手机电话卡<span class="card1">></span></li>
+				<li>电视盒子<span class="sim">></span></li>
+				<li>笔记本 平板<span class="call">></span></li>
+				<li>家电 插线板<span class="call">></span></li>
+				<li>出行 穿戴<span class="card">></span></li>
+				<li>智能 路由器<span class="sim1">></span></li>
+				<li>电源 配件<span class="card">></span></li>
+				<li>健康 儿童<span class="card">></span></li>
+				<li>耳机 音响<span class="card">></span></li>
+				<li>生活 箱包<span class="card">></span></li>
+			</ul>
+        </div>
+        <div id="pic">
+		    <ul class="picll">
+		        <li onclick="fork(0)">1</li>
+		        <li onclick="fork(1)">2</li >
+		        <li onclick="fork(2)">3</li>
+                <li onclick="fork(3)">4</li>
+                <li onclick="fork(4)">5</li>
+		    </ul>
+   		</div>
+    </div>
+</body>
+<script>
+    var scroll_img = new Array();
+    scroll_img[0] = "images/a.jpg";
+    scroll_img[1] = "images/b.webp";
+    scroll_img[2] = "images/c.webp";
+    scroll_img[3] = "images/d.webp";
+    scroll_img[4] = "images/e.webp";
+    var now = 1;
+    var time = setInterval("fork()",2000);
+    function fork(a){
+        if(Number(a)){
+            now = a;
+        }
+        var img = document.getElementById("ping");
+        var lis = document.getElementById("pic").getElementsByTagName("li");
+        for (var i = 1; i <= scroll_img.length; i++) {
+            if(i == now){
+                img.src = scroll_img[i-1];
+                lis[i-1].style.background="#ff7400";
+            }else{
+                lis[i-1].style.background="white";
+            }
+        }
+        if(now == scroll_img.length){
+            now = 1;
+        }else{
+            now++;
+        }
+    }
+</script>
+</html>

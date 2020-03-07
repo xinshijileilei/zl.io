@@ -1,0 +1,77 @@
+.count{
+	background: #F5F5F5;
+	height: 1900px;
+}
+.count_back{
+	width: 1200px;
+	margin: 0 auto;
+}
+.shangou{
+	font-size:24px;
+	color: #333333;
+	padding-top: 20px;
+	padding-bottom:20px;
+}
+.count1{
+	width: 1200px;
+	overflow: hidden;
+}
+.count_time{
+	width: 240px;
+	height: 350px;
+	background: #F1EDED;
+	float: left;
+	position: relative;
+}
+.box{
+	width: 960px;
+	height: 353px;
+	overflow: hidden;
+	float: right
+}
+.outer img{
+	width: 240px;
+	height: 350px;
+}
+.outer{
+	width: 2400px;
+	height: 350px;
+	overflow:hidden
+}
+.outer li{
+	float: left;
+	list-style-type: none;
+	border: 1px solid #ccc
+}
+.xiaomipro{
+	margin: 0 auto;
+	margin-top: 20px;
+	margin-bottom: 20px
+}
+.xiaomipro img{
+	width: 1200px;
+}
+p{
+	padding: 20px;
+	font-size: 64px;
+	text-align: center;
+  }
+  p span.time {
+	color: black
+  }#a{
+	  font-size: 26px
+  }
+  .guoqing{
+	  font-size: 32px;
+	  font-weight: bold;
+	  color: red;
+	  text-align: center;
+	  margin-top: 5px
+  }
+  .dark{
+	  font-size: 24px;
+	  color: #333333;
+	 text-align: center;
+	  padding-top:10px 
+
+  }
