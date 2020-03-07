@@ -1,0 +1,147 @@
+{include file="public/header" /}
+
+<body>
+    <div class="layui-fluid">
+        <div class="layui-row">
+            <div class="layui-card">
+                <div class="layui-card-header">基本信息</div>
+                <div class="layui-card-body">
+                    <table class="layui-table">
+
+                        <thead>
+                            <tr>
+                                <th>微信名称</th>
+                                <th>姓名</th>
+                                <th>手机号</th>
+                                <th>身份证号</th>
+                                <th>工作地址</th>
+                                <th>工作年限</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{$userinfo.user_nickname}</td>
+                                <td>{$userinfo.user_name}</td>
+                                <td>{$userinfo.user_phone}</td>
+                                <td>{$userinfo.user_cardid}</td>
+                                <td>{$userinfo.user_address}</td>
+                                <td>{$userinfo.user_years}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="layui-card">
+                <div class="layui-card-header">资质信息</div>
+                <div class="layui-card-body">
+                    <table class="layui-table">
+
+                        <tbody>
+                            <tr>
+                                <td>个人形象照</td>
+                                <td><img width="200" height="150" src="{$Think.config.TITLE}{$userinfo.user_pic}"></td>
+                            </tr>
+                            <tr>
+                                <td>身份证正面图片</td>
+                                <td><img width="200" height="150" src="{$Think.config.TITLE}{$userinfo.user_cardpica}"></td>
+                            </tr>
+                            <tr>
+                                <td>身份证反面图片</td>
+                                <td><img width="200" height="150" src="{$Think.config.TITLE}{$userinfo.user_cardpicb}"></td>
+                            </tr>
+                            <tr>
+                                <td>资质图片</td>
+                                <td>
+                                	{eq name="$userinfo.usertype_id" value="6"}
+                                		<video width="320" height="240" controls>
+										    <source src="{$userinfo.user_certificate}" type="video/mp4">
+										</video>
+                                	{else}
+                                		<img width="200" height="150" src="{$Think.config.TITLE}{$userinfo.user_certificate}">
+                                	{/eq}            	
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+            <div class="layui-card">
+                <div class="layui-card-header">审核</div>
+                <div class="layui-card-body">
+                    <form class="layui-form">
+
+                        <div class="layui-form-item">
+                            <label for="usertype_id" class="layui-form-label">
+				                            用户类型</label>
+                            <div class="layui-input-inline">
+                                <select disabled id="shipping" name="usertype_id" class="valid">
+				                            	{volist name="usertype" id="vo"}
+				                            	{eq name="$userinfo.usertype_id" value="$vo.usertype_id"}
+				                                <option value="{$vo.usertype_id}" selected>{$vo.usertype_name}</option>
+				                                {else}
+				                                <option value="{$vo.usertype_id}">{$vo.usertype_name}</option>
+				                                {/eq}
+				                                {/volist}
+				                    		</select>
+                            </div>
+
+                        </div>
+                        <div class="layui-form-item">
+                            <label for="L_repass" class="layui-form-label">审核</label>
+                            <input type="radio" name="user_audit" value="3" title="通过审核" checked>
+                            <input type="radio" name="user_audit" value="4" title="不通过审核">
+                        </div>
+                        <div class="layui-form-item">
+                            <label for="L_repass" class="layui-form-label"></label>
+                            <button id="btn" class="layui-btn" lay-filter="update" lay-submit="">确认审核结果</button>
+                        </div>
+                        <input type="hidden" name="user_id" value="{$userinfo.user_id}">
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script>
+        layui.use(['form', 'upload', 'layer'],
+            function() {
+                $ = layui.jquery;
+                var upload = layui.upload;
+                var form = layui.form,
+                    layer = layui.layer;
+                //监听提交
+                form.on("submit(update)", function(obj) {
+                    console.log(obj);
+                    $.ajax({
+                        type: 'POST',
+                        url: "{:url('User/userCheck')}",
+                        data: obj.field,
+                        dataType: "json",
+                        success: function(data) {
+                            if (data.code == 1) {
+                                layer.msg(data.msg, {
+                                    icon: 1,
+                                    time: 1300
+                                }, function() {
+                                    //关闭当前frame
+                                    xadmin.close();
+                                    xadmin.father_reload();
+
+                                });
+                            } else {
+                                layer.msg(data.msg, {
+                                    icon: 2,
+                                    time: 1300
+                                });
+                            }
+                        }
+                    })
+                    return false;
+                })
+            });
+    </script>
+</body>
+
+</html>

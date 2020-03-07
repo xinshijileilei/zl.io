@@ -1,0 +1,275 @@
+{include file="public/header" /}
+
+<body>
+    <div class="layui-fluid">
+        <div class="layui-row">
+            <form class="layui-form">
+                <div class="layui-form-item">
+                    <label for="user_nickname" class="layui-form-label">
+                            <span class="x-red">*</span>微信昵称</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="user_nickname" name="user_nickname" required="" lay-verify="required" autocomplete="off" class="layui-input"></div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="user_name" class="layui-form-label">
+                            <span class="x-red">*</span>用户姓名</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="user_name" name="user_name" required="" lay-verify="required" autocomplete="off" class="layui-input"></div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="user_phone" class="layui-form-label">
+                            <span class="x-red">*</span>用户手机</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="user_phone" name="user_phone" required="" lay-verify="user_phone" autocomplete="off" class="layui-input"></div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="usertype_id" class="layui-form-label">
+                            <span class="x-red">*</span>用户类型</label>
+                    <div class="layui-input-inline">
+                        <select id="shipping" name="usertype_id" class="valid" lay-filter="user">
+                        		<option value=""></option>
+                            	{volist name="usertype" id="vo"}
+                                <option value="{$vo.usertype_id}">{$vo.usertype_name}</option>
+                                {/volist}
+                    		</select>
+                    </div>
+                </div>
+                <div class="layui-form-item" id="cdtype" style="display:none;">
+                    <label for="usertype_id" class="layui-form-label">
+                            <span class="x-red">*</span>运动类型</label>
+                    <div class="layui-input-inline" >
+                        <select id="shipping" name="cdtype_id" class="valid">
+                        		<option value=""></option>
+                            	{volist name="cdtype" id="vo"}
+                                <option value="{$vo.cdtype_id}">{$vo.cdtype_name}</option>
+                                {/volist}
+                    		</select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="user_cardid" class="layui-form-label">
+                            <span class="x-red">*</span>用户身份证号</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="user_cardid" name="user_cardid" required="" lay-verify="user_cardid" autocomplete="off" class="layui-input"></div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="user_address" class="layui-form-label">
+                            <span class="x-red">*</span>工作地址</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="user_address" name="user_address" required="" lay-verify="user_address" autocomplete="off" class="layui-input"></div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="user_years" class="layui-form-label">
+                            <span class="x-red">*</span>工作年限</label>
+                    <div class="layui-input-inline">
+                        <input type="number" id="user_years" name="user_years" required="" lay-verify="user_address" autocomplete="off" class="layui-input"></div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="upload1" class="layui-form-label">
+                            身份证正面图</label>
+                    <div class="layui-input-inline">
+                        <button type="button" class="layui-btn" id="upload1">
+							  	<i class="layui-icon">&#xe67c;</i>上传图片
+							</button>
+                    </div>
+                    <div class="layui-input-inline">
+                        <img id="img1" src="__STATIC__{$Think.config.BGPIC}" width="320" height="240">
+                    </div>
+                    <!-- 隐藏域，图片路径 -->
+                    <input type="hidden" name="user_cardpica" id="user_cardpica" lay-verify="required">
+                </div>
+                <div class="layui-form-item">
+                    <label for="upload2" class="layui-form-label">
+                            身份证反面图</label>
+                    <div class="layui-input-inline">
+                        <button type="button" class="layui-btn" id="upload2">
+							  	<i class="layui-icon">&#xe67c;</i>上传图片
+						</button>
+                    </div>
+                    <div class="layui-input-inline">
+                        <img id="img2" src="__STATIC__{$Think.config.BGPIC}" width="320" height="240">
+                    </div>
+                    <!-- 隐藏域，图片路径 -->
+                    <input type="hidden" name="user_cardpicb" id="user_cardpicb" lay-verify="required">
+                </div>
+                <div class="layui-form-item">
+                    <label for="upload3" class="layui-form-label">
+                            资质证书</label>
+                    <div class="layui-input-inline">
+                        <button type="button" class="layui-btn" id="upload3">
+							  	<i class="layui-icon">&#xe67c;</i>上传图片
+							</button>
+                    </div>
+                    <div class="layui-input-inline">
+                        <img id="img3" src="__STATIC__{$Think.config.BGPIC}" width="320" height="240">
+                    </div>
+                    <!-- 隐藏域，图片路径 -->
+                    <input type="hidden" name="user_certificate" id="user_certificate" lay-verify="required">
+                </div>
+                <div class="layui-form-item">
+                    <label for="upload4" class="layui-form-label">
+                            个人形象照</label>
+                    <div class="layui-input-inline">
+                        <button type="button" class="layui-btn" id="upload4">
+							  	<i class="layui-icon">&#xe67c;</i>上传图片
+							</button>
+                    </div>
+                    <div class="layui-input-inline">
+                        <img id="img4" src="__STATIC__{$Think.config.BGPIC}" width="320" height="240">
+                    </div>
+                    <!-- 隐藏域，图片路径 -->
+                    <input type="hidden" name="user_pic" id="user_pic" lay-verify="required">
+                </div>
+
+
+
+                <div class="layui-form-item">
+                    <label for="L_repass" class="layui-form-label"></label>
+                    <button class="layui-btn" lay-filter="add" lay-submit="">增加</button></div>
+            </form>
+        </div>
+    </div>
+    <script>
+        layui.use(['form', 'upload', 'layer'],
+            function() {
+                $ = layui.jquery;
+                var upload = layui.upload;
+                var form = layui.form,
+                    layer = layui.layer;
+
+                var upload1 = upload.render({
+                    elem: '#upload1' //绑定元素
+                        ,
+                    url: "{:url('Upload/img_upload')}" //上传接口
+                        ,
+                    done: function(res) {
+                        if (res.code == 0) {
+                            layer.msg('图片选择成功', {
+                                icon: 1,
+                                time: 1300
+                            });
+                            $("#user_cardpica").val(res.img_url);
+                            $("#img1").attr("src", "{$Think.config.TITLE}" + res.thumb_url);
+                        } else {
+                            layer.msg('上传失败,请重试', {
+                                icon: 2,
+                                time: 1300
+                            });
+                        }
+                    }
+                });
+                var upload2 = upload.render({
+                    elem: '#upload2' //绑定元素
+                        ,
+                    url: "{:url('Upload/img_upload')}" //上传接口
+                        ,
+                    done: function(res) {
+                        if (res.code == 0) {
+                            layer.msg('图片选择成功', {
+                                icon: 1,
+                                time: 1300
+                            });
+                            $("#user_cardpicb").val(res.img_url);
+                            $("#img2").attr("src", "{$Think.config.TITLE}" + res.thumb_url);
+                        } else {
+                            layer.msg('上传失败,请重试', {
+                                icon: 2,
+                                time: 1300
+                            });
+                        }
+                    }
+                });
+                var upload3 = upload.render({
+                    elem: '#upload3' //绑定元素
+                        ,
+                    url: "{:url('Upload/img_upload')}" //上传接口
+                        ,
+                    done: function(res) {
+                        if (res.code == 0) {
+                            layer.msg('图片选择成功', {
+                                icon: 1,
+                                time: 1300
+                            });
+                            $("#user_certificate").val(res.img_url);
+                            $("#img3").attr("src", "{$Think.config.TITLE}" + res.thumb_url);
+                        } else {
+                            layer.msg('上传失败,请重试', {
+                                icon: 2,
+                                time: 1300
+                            });
+                        }
+                    }
+                });
+                var upload4 = upload.render({
+                    elem: '#upload4' //绑定元素
+                        ,
+                    url: "{:url('Upload/img_upload')}" //上传接口
+                        ,
+                    done: function(res) {
+                        if (res.code == 0) {
+                            layer.msg('图片选择成功', {
+                                icon: 1,
+                                time: 1300
+                            });
+                            $("#user_pic").val(res.img_url);
+                            $("#img4").attr("src", "{$Think.config.TITLE}" + res.thumb_url);
+                        } else {
+                            layer.msg('上传失败,请重试', {
+                                icon: 2,
+                                time: 1300
+                            });
+                        }
+                    }
+                });
+                //自定义验证规则
+                form.verify({
+                    user_phone: [/(.+){6,12}$/, '密码必须6到12位'],
+                });
+                
+                form.on('select(user)', function(data){
+                	$("#cdtype").hide();
+                	  if(data.value == 2){
+                		  //选中运动员
+                		  $("#cdtype").show();
+                	  }
+                	  
+                	  console.log(data.value); //得到被选中的值
+                	  console.log(data.othis); //得到美化后的DOM对象
+                });
+
+                //监听提交
+                form.on('submit(add)',
+                    function(data) {
+                        console.log(data);
+                        //发异步，把数据提交给php
+                        $.ajax({
+                            type: "post",
+                            url: "userAdd",
+                            data: data.field,
+                            success: function(d) {
+                                if (d.code == 1) {
+                                    layer.msg("新增成功", {
+                                        icon: 1,
+                                        time: 1300
+                                    }, function() {
+                                        //关闭当前frame
+                                        xadmin.close();
+                                        xadmin.father_reload();
+
+                                    });
+                                } else {
+                                    layer.msg(d.msg, {
+                                        icon: 2,
+                                        time: 1300
+                                    });
+                                }
+                            }
+                        });
+                        return false;
+                    });
+
+            });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>美食杰</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="swiper-5.0.4/package/css/swiper.min.css">
+    <link rel="stylesheet" href="css/bottom.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2 logo"></div>
+                <div class="col-md-6">
+                        <div class="input-group" id="ser">
+                            <input type="text" class="form-control" id="input" placeholder="请输入菜谱/食材/菜单/作者">
+                            <span class="input-group-btn">
+                                <button id="btn" class="btn btn-default" type="button">搜索</button>
+                            </span>
+                        </div>
+                </div>
+                <div class="col-md-4">
+                   <ul class="dl">
+                       <li ><a href=""class="qq">QQ登陆</a></li>
+                       <li ><a href=""class="weibo">微博登陆</a></li>
+                       <li class="ar"><a href="">注册</a></li>
+                       <li class="ar"><a href="">登陆</a></li>
+                   </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="max_nav">
+        <div class="container">
+            <ul class="nav" id="nav1">
+                <li  class="col-md-1.5"><a href="#" class="active">首页</a></li>
+                <li class="col-md-1.5 cpdq"><a href="#">菜谱大全<span id="span">V</span></a>
+                    <div class="caipu">
+                            <div style="color: #FD6266;margin-left: 40px;margin-top: 10px;font-size: 18px">家常菜谱</div>
+                            <ul class="caipu_1">
+                                <li>家常菜</li>
+                                <li>凉菜</li>
+                                <li>素菜</li>
+                                <li>晚餐</li>
+                                <li>私家菜</li>
+                                <li>热菜</li>
+                                <li>海鲜</li>
+                                <li>孕妇</li>
+                                <li>甜品点心</li>
+                                <li>汤粥</li>
+                                <li>宝宝食谱</li>
+                                <li>婴儿食谱</li>
+
+                            </ul>
+                            <br>
+                            <div style="color: #FD6266;margin-left: 40px;margin-top: 10px;font-size: 18px"">
+                                    中华菜系
+                                </div>
+                                <ul ul class="caipu_1">
+                                    <li>川菜</li>
+                                    <li>粤菜</li>
+                                    <li>东北菜</li>
+                                    <li>湘菜</li>
+                                    <li>鲁菜</li>
+                                    <li>湖北菜</li>
+                                </ul><br>
+                        <div style="color: #FD6266;margin-left: 40px;margin-top: 10px;font-size: 18px"">
+                            各地小吃
+                        </div>
+                        <ul class="caipu_1">
+                            <li>四川小吃</li>
+                            <li>广东小吃</li>
+                            <li>北京小吃</li>
+                            <li>陕西小吃</li>
+                        </ul> <br>
+                    <div style="color: #FD6266;margin-left: 40px;margin-top: 10px;font-size: 18px"">
+                            外国菜谱
+                        </div>
+                        <ul class="caipu_1">
+                            <li>韩国料理</li>
+                            <li>日本料理</li>
+                            <li>法国菜</li>
+                            <li>意大利餐</li>
+                        </ul><br>
+                    <div style="color: #FD6266;margin-left: 40px;margin-top: 10px;font-size: 18px"">
+                            厨房百事
+                        </div>
+                        <ul class="caipu_1">
+                            <li>摆盘围边</li>
+                            <li>烹饪技巧</li>
+                            <li>生活妙招</li>
+                            <li>美食专题</li>
+                        </ul><br>
+                        <div id="img_1"><img src="images/xie1.png" alt="" ></div>                          
+                    </div>
+                </li>
+                <li class="jkys col-md-1.5 jkdq"><a href="#">饮食健康<span id="span">V</span></a>
+                    <div class="caipu1">
+                            <div style="color: #FD6266;margin-left: 40px;margin-top: 10px;font-size: 18px">饮食健康</div>
+                            <ul class="caipu_1">
+                                    <li>饮食小常识</li>
+                                    <li>美容瘦身</li>
+                                    <li>食品安全</li>
+                                    <li>养生妙方</li>
+                                    <li>饮食禁忌</li>
+                                    <li>中医保健</li>
+                                    <li>母婴健康饮食</li>
+                                    <li>饮食健康</li>
+                            </ul>
+                            <br>
+                            <div style="color: #FD6266;margin-left: 40px;margin-top: 10px;font-size: 18px"">
+                                    外国菜谱
+                                </div>
+                                <ul class="caipu_1">
+                                    <li>韩国料理</li>
+                                    <li>日本料理</li>
+                                    <li>法国菜</li>
+                                    <li>意大利餐</li>
+                                </ul><br>
+                                <div style="color: #FD6266;margin-left: 40px;margin-top: 10px;font-size: 18px"">
+                                        功能性调理
+                                    </div>
+                                    <ul class="caipu_1">
+                                        <li>清热失火</li>
+                                        <li>减肥</li>
+                                        <li>祛痰</li>
+                                        <li>乌发</li>
+                                        <li>滋阴补肾</li>
+                                        <li>健脾开胃</li>
+                                    </ul><br>
+                                    <div style="color: #FD6266;margin-left: 40px;margin-top: 10px;font-size: 18px"">
+                                            各地小吃
+                                        </div>
+                                        <ul class="caipu_1">
+                                            <li>四川小吃</li>
+                                            <li>广东小吃</li>
+                                            <li>北京小吃</li>
+                                            <li>陕西小吃</li>
+                                        </ul> <br>
+                                        <div style="color: #FD6266;margin-left: 40px;margin-top: 10px;font-size: 18px"">
+                                                外国菜谱
+                                            </div>
+                                            <ul class="caipu_1">
+                                                <li>韩国料理</li>
+                                                <li>日本料理</li>
+                                                <li>法国菜</li>
+                                                <li>意大利餐</li>
+                                            </ul><br>
+                                <div id="img_1"><img src="images/xie2.png" alt="" ></div> 
+                            </div>
+                            </li>                
+                <li class="col-md-1.5"><a href="#">美食菜单</a></li>
+                <li class="col-md-1.5"><a href="#">家居馆</a></li>
+                <li class="col-md-1.5"><a href="#" class="guan">美食达人</a></li>
+                <li class="col-md-1.5"><a href="#">菜谱视频</a></li>
+                <li class="col-md-1.5"><a href="#">产品下载</a></li>
+            </ul>
+        </div>                              
+    </div>
+    <div class="banner">
+        <div class="swiper-container swiper1">
+            <div class="swiper-button-next" id="next4" ></div>
+                    <div class="swiper-button-prev" id="next3"></div>
+            <div class="swiper-wrapper wrapper1"></div>
+            <!-- Add Scrollbar -->
+            <div class="swiper-scrollbar"></div>
+            <div class="zaocan"></div>
+            <div class="wancan"></div>          
+            <div class="pic_back">
+                <img src="images/kedulong.gif" alt="" class="pic_1">
+                <img src="images/kedulong.gif" alt="" class="pic_2">
+                <img src="images/kedulong.gif" alt="" class="pic_3">
+                <img src="images/kedulong.gif" alt="" class="pic_4">
+                <img src="images/kedulong.gif" alt="" class="pic_5">
+                <img src="images/kedulong.gif" alt="" class="pic_6">
+                <img src="images/kedulong.gif" alt="" class="pic_7">
+            </div>
+            <div class="whitet"></div>
+            <div class="kill">
+                
+            </div>
+        </div>
+        <div class="kc">
+            <span>4:00</span>
+            <span>10:00</span>
+            <span>14:00</span>
+            <span>16:00</span>
+            <span>21:00</span>
+            <span>4:00</span>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8 tab_title">十月，润肺益胃，养阴防燥</div>
+                <div class="col-md-2 tab_title_2"><a class="tab_title_3">更多食材 ></a></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10 tab_back">
+                    <ul class="tab">
+                    </ul>
+                    <div class="content">
+                        
+                    </div>
+                    <div class="tab_backk"></div>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="swiper-container container2">
+                    <div class="swiper-wrapper wrapper2">
+                      
+                    </div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next" id="next2" ></div>
+                    <div class="swiper-button-prev" id="next1"></div>
+                  </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-6 jkxw">健康新闻</div>
+                <div class="col-md-2 gdjkxw">更多健康资讯 ></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="col-md-11">
+            </div>
+        </div>
+    </div>
+    <div class="bottom_back">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 bottom_msj">
+                    <img src="images/bottom.png" alt="">
+                </div>
+                <div class="col-md-6 bottom_ewm">
+                    <span>
+                        <img src="images/bottom1.jpg" alt="">
+                        <p class="p1">点击进入</p>
+                        <p class="p2">美食杰官方微博</p>
+                    </span>
+                    <span>
+                        <img src="images/bottom2.jpg" alt="">
+                        <p class="p3">点击进入</p>
+                        <p class="p4">美食杰QQ空间</p>
+                    </span>
+                    <span>
+                        <img src="images/bottom3.PNG" alt="">
+                        <p class="p5">扫描二维码添加</p>
+                        <p class="p6">美食杰为微信好友</p>
+                    </span>
+                    <span>
+                        <img src="images/bottom4.PNG" alt="">
+                        <p class="p7">扫描二维码下载</p>
+                        <p class="p8">美食杰手机客户端</p>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="bottom_font">
+                友情链接
+            </div>
+            <div class="line_top"></div>
+            <ul class="yqlj1">
+                <li><a href="">美食</a></li>
+                <li><a href="">体质测试</a></li>
+                <li><a href="">伊特</a></li>
+                <li><a href="">9酷音乐网</a></li>
+                <li><a href="">365音乐网</a></li>
+                <li><a href="">图吧</a></li>
+                <li><a href="">汽车论坛</a></li>
+                <li><a href="">39健康饮食</a></li>
+                <li><a href="">QQ下载</a></li>
+                <li><a href="">QQ下载</a></li>
+            </ul><br>
+            <ul class="yqlj2">
+                <li><a href="">搜狐美食</a></li>
+                <li><a href="">美食天下</a></li>
+                <li><a href="">中华美食网</a></li>
+                <li><a href="">合肥公交网</a></li>
+                <li><a href="">红餐微杂志</a></li>
+                <li><a href="">北京搜房网</a></li>
+                <li><a href="">更多友情链接</a></li>
+            </ul>
+        </div>
+        <div class="line_bottom"></div>
+        <div class="container">
+            <ul class="bottom_nav">
+                <li>公司简介</li>
+                <li>关于我们</li>
+                <li>产品下载</li>
+                <li>加入我们</li>
+                <li>联系我们</li>
+                <li>商务合作</li>
+                <li>用户协议</li>
+                <li>隐私政策</li>
+                <li>网站地图</li>
+                <li>友情链接</li>
+            </ul>
+        </div>
+        <div class="ipd">
+            京ICP备14030359号/<img src="images/guo.png" class="guo">京公网安备11010802026928 Copyright © 2003-2019 MEISHIJ CO.,LTD.
+        </div>
+        
+    </div>
+    <div class="flow">
+        <div class="container">
+            <div class="col-md-3 shousuo">
+            </div>
+            <div class="col-md-6">
+                <div class="input-group" id="ser1">
+                    <input type="text" class="form-control" id="input1" placeholder="请输入菜谱/食材/菜单/作者">
+                    <span class="input-group-btn">
+                        <button id="btn1" class="btn btn-default" type="button">搜索</button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+    <div class="back"></div>
+</body>
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="swiper-5.0.4/package/js/swiper.min.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/news.js"></script>
+</html>

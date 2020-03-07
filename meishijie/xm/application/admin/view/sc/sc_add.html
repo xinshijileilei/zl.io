@@ -1,0 +1,302 @@
+{include file="public/header" /}</head>
+
+<body>
+    <div class="layui-fluid">
+        <div class="layui-row">
+            <form class="layui-form" enctype="multipart/form-data">
+
+                <div class="layui-form-item">
+                    <label for="L_email" class="layui-form-label">
+                            食材名称</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="ingredients_name" value="" lay-verify="required" required="" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="one" class="layui-form-label">
+                            食材类别</label>
+                    <div class="layui-input-inline">
+                        <select id="one" class="valid" lay-filter="one">
+                            	<option value=""></option>
+                            	{volist name="sctype" id="vo"}
+                                <option value="{$vo.sctype_id}">{$vo.sctype_name}</option>
+                                {/volist}
+                    		</select>
+                    </div>
+                    <div class="layui-input-inline layui-form" lay-filter="twotop">
+                        <select id="two" lay-filter="two">
+                            	
+                                <option value=""></option>
+                                
+                    		</select>
+                    </div>
+                    <div class="layui-input-inline layui-form" lay-filter="threetop">
+                        <select id="three" lay-filter="three">
+                            	
+                                <option value=""></option>
+                                
+                    		</select>
+                    </div>
+                    <div class="layui-input-inline layui-form" lay-filter="fourtop">
+                        <select id="four" name="sctype_id" lay-filter="four">
+                            	
+                                <option value=""></option>
+                                
+                    		</select>
+                    </div>
+                </div>
+                
+                <div class="layui-form-item">
+                    <label for="upload" class="layui-form-label">
+                           食材图片</label>
+                    <div class="layui-input-inline">
+                        <button style="width:189px;" type="button" class="layui-btn" id="upload">
+							  	<i class="layui-icon">&#xe67c;</i>上传图片
+							</button>
+                        
+                    </div>
+                    <div class="layui-input-inline">
+                        
+                        <img id="img" src="__STATIC__{$Think.config.BGPIC}" width="189" height="150">
+                    </div>
+                    
+                </div>
+                <!-- 隐藏域，图片图片路径和缩略图路径 -->
+                <input type="hidden" name="ingredients_img" id="ingredients_img" lay-verify="required">
+                <input type="hidden" name="ingredients_thumbimg" id="ingredients_thumbimg" lay-verify="required">
+                <div class="layui-form-item">
+                    <label for="L_email" class="layui-form-label">
+                            食材产地</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="ingredients_place" value="" lay-verify="required" required="" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="L_email" class="layui-form-label">
+                            时令季节</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="ingredients_season" value="" lay-verify="required" required="" class="layui-input">
+                    </div>
+                </div>
+				<div class="layui-form-item">
+                    <label for="L_email" class="layui-form-label">
+                            生产厂家</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="ingredients_chang" value="" lay-verify="required" required="" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="is_active" class="layui-form-label">
+                            食材标识</label>
+                    <div class="layui-input-inline">
+                        <input type="checkbox" name="ingredients_flag[]" value="1" title="绿色" lay-verify="required">
+                    </div>
+                    <div class="layui-input-inline">
+                        <input type="checkbox" name="ingredients_flag[]"  value="2" title="有机" lay-verify="required">
+                    </div>
+                    <div class="layui-input-inline">
+                        <input type="checkbox" name="ingredients_flag[]" value="3" title="无公害" lay-verify="required"> 
+                    </div>
+                    <div class="layui-input-inline">
+                        <input type="checkbox" name="ingredients_flag[]" value="4" title="国家地理标识" lay-verify="required">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+			食材简介</label>
+                    <div class="layui-input-block" style="width: 550px;">
+                        <textarea style="width:500px;height:200px;padding:5px;" name="ingredients_content" id="demo" lay-verify="content" class="field-content"></textarea>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label for="L_repass" class="layui-form-label"></label>
+                    <button id="btn" class="layui-btn" lay-filter="add" lay-submit="">添加</button></div>
+            </form>
+        </div>
+    </div>
+    <script>
+        layui.use(['layer', 'layedit', 'upload', 'form', 'jquery'], function() {
+            var form = layui.form,
+                layer = layui.layer;
+            var upload = layui.upload;
+            var $ = layui.$;
+
+            //富文本编辑器
+            var layedit = layui.layedit;
+            layedit.set({
+                uploadImage: {
+                    url: "{:url('Upload/img_upload')}",
+                    type: 'post'
+                }
+            });
+            var index = layedit.build('demo'); //建立编辑器
+
+            form.verify({
+                content: function(value) {
+                    layedit.sync(index);
+                }
+            });
+
+            //上传图片
+            var uploadInst = upload.render({
+                elem: '#upload' //绑定元素
+                    ,
+                url: "{:url('Upload/img_upload')}" //上传接口
+                    ,
+                done: function(res) {
+                    if (res.code == 0) {
+                        layer.msg('图片选择成功', {
+                            icon: 1,
+                            time: 1300
+                        });
+                        $("#ingredients_img").val(res.img_url);
+                        $("#ingredients_thumbimg").val(res.thumb_url);
+                        $("#img").attr("src", "{$Think.config.TITLE}" + res.thumb_url);
+                    } else {
+                        layer.msg('上传失败,请重试', {
+                            icon: 2,
+                            time: 1300
+                        });
+                    }
+                }
+            });
+
+            //监听下拉列表
+            form.on('select(one)', function(data) {
+                if (data.value) {
+                    $.ajax({
+                        type: "post",
+                        url: 'sctype',
+                        data: {
+                            sctype_id: data.value
+                        },
+                        success: function(d) {
+                            if (d.code == 1) {
+                                // 渲染二级下拉菜单
+                                $("#two option:not(:eq(0))").empty(); // 清除第一个之外的所有option
+                                $.each(d.sctype, function(index, item) {
+                                    $('#two').append("<option value='" + item.sctype_id + "'>" + item.sctype_name + "</option>"); // 下拉菜单里添加元素
+                                });
+                                layui.form.render("select", "twotop");
+                            } else {
+                                // 重新渲染select
+                                layui.form.render("select");
+                                layer.msg(d.msg, {
+                                    icon: 2,
+                                    time: 1300
+                                })
+                            }
+                        }
+                    })
+                } else {
+                    // 重新渲染所有select
+                    layui.form.render("select");
+                }
+
+            });
+            //监听下拉列表
+            form.on('select(two)', function(data) {
+                if (data.value) {
+                    $.ajax({
+                        type: "post",
+                        url: 'sctype',
+                        data: {
+                            sctype_id: data.value
+                        },
+                        success: function(d) {
+                            if (d.code == 1) {
+                                // 渲染二级下拉菜单
+                                $("#three option:not(:eq(0))").empty(); // 清除第一个之外的所有option
+                                $.each(d.sctype, function(index, item) {
+                                    console.log(444444);
+                                    $('#three').append("<option value='" + item.sctype_id + "'>" + item.sctype_name + "</option>"); // 下拉菜单里添加元素
+                                });
+                                layui.form.render("select", "threetop");
+                            } else {
+                                // 重新渲染select
+                                layui.form.render("select");
+                                layer.msg(d.msg, {
+                                    icon: 2,
+                                    time: 1300
+                                })
+                            }
+                        }
+                    })
+                } else {
+                    // 重新渲染所有select
+                    layui.form.render("select");
+                }
+
+            });
+            //监听下拉列表
+            form.on('select(three)', function(data) {
+                if (data.value) {
+                    $.ajax({
+                        type: "post",
+                        url: 'sctype',
+                        data: {
+                            sctype_id: data.value
+                        },
+                        success: function(d) {
+                            if (d.code == 1) {
+                                // 渲染二级下拉菜单
+                                $("#four option:not(:eq(0))").empty(); // 清除第一个之外的所有option
+                                $.each(d.sctype, function(index, item) {
+                                    console.log(444444);
+                                    $('#four').append("<option value='" + item.sctype_id + "'>" + item.sctype_name + "</option>"); // 下拉菜单里添加元素
+                                });
+                                layui.form.render("select", "fourtop");
+                            } else {
+                                // 重新渲染select
+                                layui.form.render("select");
+                                layer.msg(d.msg, {
+                                    icon: 2,
+                                    time: 1300
+                                })
+                            }
+                        }
+                    })
+                } else {
+                    // 重新渲染所有select
+                    layui.form.render("select");
+                }
+
+            });
+
+            //监听提交
+            form.on("submit(add)", function(obj) {
+                console.log(obj);
+                $.ajax({
+                    type: 'POST',
+                    url: "{:url('Sc/scAdd')}",
+                    data: obj.field,
+                    dataType: "json",
+                    success: function(data) {
+                        if (data.code == 1) {
+                            layer.msg(data.msg, {
+                                icon: 1,
+                                time: 1300
+                            }, function() {
+                                //关闭当前frame
+                                xadmin.close();
+                                xadmin.father_reload();
+
+                            });
+                        } else {
+                            layer.msg(data.msg, {
+                                icon: 2,
+                                time: 1300
+                            });
+                        }
+                    }
+                })
+                return false;
+            })
+
+        });
+    </script>
+
+</body>
+
+</html>

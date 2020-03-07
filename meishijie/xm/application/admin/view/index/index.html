@@ -1,0 +1,244 @@
+{include file="public/header" /}
+<script>
+    // 是否开启刷新记忆tab功能
+    var is_remember = false;
+</script>
+
+<body class="index">
+    <!-- 顶部开始 -->
+    <div class="container">
+        <div class="logo">
+            <a href="./index.html">食品健康后台管理系统</a></div>
+        <div class="left_open">
+            <a><i title="展开左侧栏" class="iconfont">&#xe699;</i></a>
+        </div>
+        <ul class="layui-nav right" lay-filter="">
+            <li class="layui-nav-item">
+                <a href="javascript:;">admin</a>
+                <dl class="layui-nav-child">
+                    <!-- 二级菜单 -->
+                    <dd>
+                        <a onclick="xadmin.open('个人信息','{:url(\'admin/admininfo\')}')">个人信息</a></dd>
+                    <dd>
+                        <a onclick="xadmin.open('切换帐号','{:url(\'login/login\')}')">切换帐号</a></dd>
+                    <dd>
+                        <a href="{:url('login/logout')}">退出</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+    <!-- 顶部结束 -->
+    <!-- 中部开始 -->
+    <!-- 左侧菜单开始 -->
+    <div class="left-nav">
+        <div id="side-nav">
+            <ul id="nav">
+                <li>
+                    <a href="javascript:;">
+                        <i class="iconfont left-nav-li" lay-tips="管理员管理">&#xe726;</i>
+                        <cite>管理员管理</cite>
+                        <i class="iconfont nav_right">&#xe697;</i></a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a onclick="xadmin.add_tab('管理员列表','{:url(\'Admin/admin\')}')">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>管理员列表</cite></a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <i class="iconfont left-nav-li" lay-tips="轮播图管理">&#xe6a8;</i>
+                        <cite>轮播图管理</cite>
+                        <i class="iconfont nav_right">&#xe697;</i></a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a onclick="xadmin.add_tab('轮播图列表','{:url(\'Scroll/scroll\')}')">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>轮播图列表</cite></a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <i class="iconfont left-nav-li" lay-tips="订单管理">&#xe6b4;</i>
+                        <cite>订单管理</cite>
+                        <i class="iconfont nav_right">&#xe697;</i></a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a onclick="xadmin.add_tab('订单列表','{:url(\'Order/orderList\')}')">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>订单列表</cite></a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <i class="iconfont left-nav-li" lay-tips="用户管理">&#xe6b8;</i>
+                        <cite>用户管理</cite>
+                        <i class="iconfont nav_right">&#xe697;</i></a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a onclick="xadmin.add_tab('用户列表','{:url(\'User/userList\')}',true)">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>用户列表</cite></a>
+                        </li>
+                        <li>
+                            <a onclick="xadmin.add_tab('审核列表','{:url(\'User/usercheckList\')}',true)">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>审核列表</cite></a>
+                        </li>
+                        <li>
+                            <a onclick="xadmin.add_tab('用户分类列表','{:url(\'Usertype/userType\')}',true)">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>用户分类列表</cite></a>
+                        </li>
+                    </ul>
+                </li>
+
+
+                <!-- <li>
+                    <a href="javascript:;">
+                        <i class="iconfont left-nav-li" lay-tips="食材管理">&#xe6ce;</i>
+                        <cite>食材管理</cite>
+                        <i class="iconfont nav_right">&#xe697;</i></a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a onclick="xadmin.add_tab('食材','{:url(\'Sc/scList\')}')">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>食材列表</cite></a>
+                        </li>
+                        <li>
+                            <a onclick="xadmin.add_tab('食材分类','{:url(\'Sctype/scType\')}')">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>食材分类列表</cite></a>
+                        </li>
+                    </ul>
+                </li> -->
+                <li>
+                    <a href="javascript:;">
+                        <i class="iconfont left-nav-li" lay-tips="营养知识管理">&#xe723;</i>
+                        <cite>营养知识管理</cite>
+                        <i class="iconfont nav_right">&#xe697;</i></a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a onclick="xadmin.add_tab('营养知识文章列表','{:url(\'Yy/yyList\')}')">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>营养知识文章列表</cite></a>
+                        </li>
+                        <li>
+                            <a onclick="xadmin.add_tab('营养知识分类列表','{:url(\'Yytype/yyType\')}')">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>营养知识分类列表</cite></a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <i class="iconfont left-nav-li" lay-tips="烹调方法管理">&#xe6b4;</i>
+                        <cite>食材管理</cite>
+                        <i class="iconfont nav_right">&#xe697;</i></a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a onclick="xadmin.add_tab('烹调方法列表','{:url(\'Pt/ptList\')}')">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>食材列表</cite></a>
+                        </li>
+                        <li>
+                            <a onclick="xadmin.add_tab('烹调方法分类列表','{:url(\'Pttype/Pttype\')}')">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>食材分类列表</cite></a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript:;">
+                        <i class="iconfont left-nav-li" lay-tips="妇幼管理">&#xe6a0;</i>
+                        <cite>妇幼营养管理</cite>
+                        <i class="iconfont nav_right">&#xe697;</i></a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a onclick="xadmin.add_tab('妇幼食谱列表','{:url(\'Fy/fyList\')}')">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>妇幼食谱列表</cite></a>
+                        </li>
+                        <li>
+                            <a onclick="xadmin.add_tab('妇幼类别列表','{:url(\'Fytype/Fytype\')}')">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>妇幼类别列表</cite></a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <i class="iconfont left-nav-li" lay-tips="图标字体">&#xe6b4;</i>
+                        <cite>吃动平衡管理</cite>
+                        <i class="iconfont nav_right">&#xe697;</i></a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a onclick="xadmin.add_tab('吃动平衡列表','{:url(\'Cd/cdList\')}')">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>吃动平衡列表</cite></a>
+                        </li>
+                        <li>
+                            <a onclick="xadmin.add_tab('吃动平衡分类列表','{:url(\'Cdtype/cdtype\')}')">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>吃动平衡分类列表</cite></a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <i class="iconfont left-nav-li" lay-tips="其它页面">&#xe6b4;</i>
+                        <cite>名师制作管理</cite>
+                        <i class="iconfont nav_right">&#xe697;</i></a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a onclick="xadmin.add_tab('名师制作列表','{:url(\'Ms/msList\')}')">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>名师制作列表</cite></a>
+                        </li>
+                        <li>
+                            <a onclick="xadmin.add_tab('名师制作分类列表','{:url(\'Mstype/mstype\')}')">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>名师制作分类列表</cite></a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <!-- <div class="x-slide_left"></div> -->
+    <!-- 左侧菜单结束 -->
+    <!-- 右侧主体开始 -->
+    <div class="page-content">
+        <div class="layui-tab tab" lay-filter="xbs_tab" lay-allowclose="false">
+            <ul class="layui-tab-title">
+                <li class="home">
+                    <i class="layui-icon">&#xe68e;</i>我的桌面</li>
+            </ul>
+            <div class="layui-unselect layui-form-select layui-form-selected" id="tab_right">
+                <dl>
+                    <dd data-type="this">关闭当前</dd>
+                    <dd data-type="other">关闭其它</dd>
+                    <dd data-type="all">关闭全部</dd>
+                </dl>
+            </div>
+            <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show">
+                    <iframe src="{:url('welcome')}" frameborder="0" scrolling="yes" class="x-iframe"></iframe>
+                </div>
+            </div>
+            <div id="tab_show"></div>
+        </div>
+    </div>
+    <div class="page-content-bg"></div>
+    <style id="theme_style"></style>
+    <!-- 右侧主体结束 -->
+    <!-- 中部结束 -->
+
+</body>
+
+</html>

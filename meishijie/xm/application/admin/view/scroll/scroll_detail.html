@@ -1,0 +1,111 @@
+{include file='public/header'}
+
+<body>
+    <div class="layui-fluid">
+        <div class="layui-row">
+            <div class="layui-card">
+                <div class="layui-card-header">轮播图</div>
+                <div class="layui-card-body">
+	            <form class="layui-form" enctype="multipart/form-data">
+	            	<input type="hidden" value="{$scroll.scroll_id}" name="scroll_id">
+	                <div class="layui-form-item">
+	                    <label for="L_email" class="layui-form-label">
+	                            名  称</label>
+	                    <div class="layui-input-inline">
+	                        <input type="text" name="scroll_name" value="{$scroll.scroll_name}" lay-verify="required" required="" class="layui-input">
+	                    </div>
+	                </div>
+   
+	                <div class="layui-form-item">
+	                    <label for="upload" class="layui-form-label">
+	                         图   片</label>
+	                    <div class="layui-input-inline">
+	                        <button type="button" class="layui-btn" id="upload">
+								  	<i class="layui-icon">&#xe67c;</i>上传图片
+								</button>
+	                       
+	                    </div>
+	                    <div class="layui-input-inline">
+	                        
+	                        <img id="img" src="{$Think.config.TITLE}{$scroll.scroll_img}" width="320" height="240">
+	                    </div>
+	                </div>
+	                <!-- 隐藏域，图片图片路径和缩略图路径 -->
+	                <input type="hidden" value="{$scroll.scroll_img}" name="scroll_img" id="scroll_img" lay-verify="required">
+	                <input type="hidden" value="{$scroll.scroll_thumbimg}" name="scroll_thumbimg" id="scroll_thumbimg" lay-verify="required">
+					   
+	                <div class="layui-form-item hid">
+	                    <label for="L_repass" class="layui-form-label"></label>
+	                    <button id="btn" type="button" class="layui-btn" lay-filter="update" lay-submit="">修改</button></div>
+	            </form>
+	            </div>
+	        </div>
+        </div>
+    </div>
+    <script>
+        layui.use(['form', 'layer','upload'],
+            function() {
+                $ = layui.jquery;
+                var form = layui.form,
+                    layer = layui.layer;
+                var upload = layui.upload;
+
+                var uploadInst = upload.render({
+                    elem: '#upload' //绑定元素
+                        ,
+                    url: "{:url('Upload/img_upload')}" //上传接口
+                        ,
+                    done: function(res) {
+                        if (res.code == 0) {
+                            layer.msg('图片选择成功', {
+                                icon: 1,
+                                time: 1300
+                            });
+                            $("#scroll_img").val(res.img_url);
+                            $("#scroll_thumbimg").val(res.thumb_url);
+                            $("#img").attr("src", "{$Think.config.TITLE}" + res.thumb_url);
+                        } else {
+                            layer.msg('上传失败,请重试', {
+                                icon: 2,
+                                time: 1300
+                            });
+                        }
+                    }
+                });
+                //监听提交
+                form.on('submit(update)',
+                    function(data) {
+                        console.log(data);
+                        //发异步，把数据提交给php
+                        $.ajax({
+                            type: "post",
+                            url: "scrolldetail",
+                            data: data.field,
+                            success: function(d) {
+                                if (d.code == 1) {
+                                    layer.msg(d.msg, {
+                                        icon: 1,
+                                        time: 1300
+                                    }, function() {
+                                        //关闭当前frame
+                                        xadmin.close();
+                                        xadmin.father_reload();
+
+                                    });
+                                } else {
+                                    layer.msg(d.msg, {
+                                        icon: 2,
+                                        time: 1300
+                                    });
+                                }
+                            }
+                        });
+
+                        return false;
+                    });
+
+            });
+    </script>
+</body>
+
+</html>

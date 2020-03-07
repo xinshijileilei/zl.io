@@ -1,0 +1,302 @@
+{include file="public/header" /}
+
+<body>
+    <div class="x-nav">
+        <span class="layui-breadcrumb">
+                <a href="">首页</a>
+                <a href="">食材管理</a>
+                <a>
+                    <cite>食材列表</cite></a>
+            </span>
+        <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.reload()" title="刷新">
+            <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i>
+        </a>
+    </div>
+    <div class="layui-fluid">
+
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md12">
+                <div class="layui-card">
+                    <div class="layui-card-body">
+                        <form class="layui-form layui-form-pane layui-col-space5">
+                            <div class="layui-form-item">
+                                <label for="one" class="layui-form-label">
+                            食材类别</label>
+                                <div class="layui-input-inline">
+                                    <select id="one" class="valid" lay-filter="one">
+                            	<option value=""></option>
+                            	{volist name="sctype" id="vo"}
+                                <option value="{$vo.sctype_id}">{$vo.sctype_name}</option>
+                                {/volist}
+                    		</select>
+                                </div>
+                                <div class="layui-input-inline layui-form" lay-filter="twotop">
+                                    <select id="two" lay-filter="two">
+                            	
+                                <option value=""></option>
+                                
+                    		</select>
+                                </div>
+                                <div class="layui-input-inline layui-form" lay-filter="threetop">
+                                    <select id="three" lay-filter="three">
+                            	
+                                <option value=""></option>
+                                
+                    		</select>
+                                </div>
+                                <div class="layui-input-inline layui-form" lay-filter="fourtop">
+                                    <select id="four" name="sctype_id" lay-filter="four">
+                            	
+                                <option value=""></option>
+                                
+                    		</select>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label for="is_active" class="layui-form-label">
+                            食材名称</label>
+                                <div class="layui-inline">
+                                    <input type="text" id="ingredients_name" name="ingredients_name" placeholder="请输入菜品名称" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-inline">
+                                    <button class="layui-btn" lay-filter="search" lay-submit="">
+                                        <i class="layui-icon">&#xe615;</i></button>
+                                </div>
+                        </form>
+
+
+                        <table class="layui-table" id="test" lay-filter="test">
+
+                        </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+<script type="text/html" id="toolbarDemo">
+    <button type="button" class="layui-btn" lay-event='addingredients'><i class="iconfont">&#xe6b9;</i>添加</button>
+</script>
+<script type="text/html" id="img">
+    <img src="/xm{{ d.ingredients_thumbimg }}">
+</script>
+<script type="text/html" id="fun">
+    <a class="layui-btn layui-btn-xs" lay-event="show">查看/修改</a>
+    <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">删除</a>
+</script>
+<script>
+    layui.use(['table', 'form', 'jquery'],
+        function() {
+            var table = layui.table;
+            var form = layui.form;
+            var $ = layui.jquery;
+
+            // 监听头部工具栏---添加食材
+            table.on('toolbar(test)', function(obj) {
+                    if (obj.event == "addingredients") {
+                        layer.open({
+                                type: 2,
+                                content: "scAdd",
+                                area: ['1000px', '90%'],
+                                end: function() {
+                                    // 重载表格数据
+                                    sTable.reload({
+                                        page: {
+                                            curr: 1
+                                        }
+                                    });
+                                }
+                            }) //open
+                    }
+                })
+                // 监听右侧列工具栏---查看食材
+            table.on('tool(test)', function(obj) {
+                    //console.log(obj);
+                    if (obj.event == "show") {
+                        layer.open({
+                            type: 2,
+                            content: "scDetail?ingredients_id=" + obj.data.ingredients_id,
+                            area: ['1000px', '90%']
+                        })
+                    } else if (obj.event == "del") {
+                        layer.confirm('确定要删除吗?', function(index) {
+                            $.ajax({
+                                type: "post",
+                                url: "scDel",
+                                data: {
+                                    ingredients_id: obj.data.ingredients_id
+                                },
+                                success: function(d) {
+                                    if (d.code == 1) {
+                                        layer.msg(d.msg, {
+                                            icon: 1,
+                                            time: 1300
+                                        });
+                                        obj.del();
+                                    } else {
+                                        layer.msg(d.msg, {
+                                            icon: 2,
+                                            time: 1300
+                                        });
+                                    }
+                                }
+                            });
+                            layer.close(index);
+                        });
+                    }
+                })
+                //监听下拉列表
+            form.on('select(one)', function(data) {
+                if (data.value) {
+                    $.ajax({
+                        type: "post",
+                        url: 'sctype',
+                        data: {
+                            sctype_id: data.value
+                        },
+                        success: function(d) {
+                            if (d.code == 1) {
+                                // 渲染二级下拉菜单
+                                $("#two option:not(:eq(0))").empty(); // 清除第一个之外的所有option
+                                $.each(d.sctype, function(index, item) {
+                                    $('#two').append("<option value='" + item.sctype_id + "'>" + item.sctype_name + "</option>"); // 下拉菜单里添加元素
+                                });
+                                layui.form.render("select", "twotop");
+                            } else {
+                                // 重新渲染select
+                                layui.form.render("select");
+                                layer.msg(d.msg, {
+                                    icon: 2,
+                                    time: 1300
+                                })
+                            }
+                        }
+                    })
+                } else {
+                    // 重新渲染所有select
+                    layui.form.render("select");
+                }
+
+            });
+            //监听下拉列表
+            form.on('select(two)', function(data) {
+                if (data.value) {
+                    $.ajax({
+                        type: "post",
+                        url: 'sctype',
+                        data: {
+                            sctype_id: data.value
+                        },
+                        success: function(d) {
+                            if (d.code == 1) {
+                                // 渲染二级下拉菜单
+                                $("#three option:not(:eq(0))").empty(); // 清除第一个之外的所有option
+                                $.each(d.sctype, function(index, item) {
+                                    console.log(444444);
+                                    $('#three').append("<option value='" + item.sctype_id + "'>" + item.sctype_name + "</option>"); // 下拉菜单里添加元素
+                                });
+                                layui.form.render("select", "threetop");
+                            } else {
+                                // 重新渲染select
+                                layui.form.render("select");
+                                layer.msg(d.msg, {
+                                    icon: 2,
+                                    time: 1300
+                                })
+                            }
+                        }
+                    })
+                } else {
+                    // 重新渲染所有select
+                    layui.form.render("select");
+                }
+
+            });
+            //监听下拉列表
+            form.on('select(three)', function(data) {
+                if (data.value) {
+                    $.ajax({
+                        type: "post",
+                        url: 'sctype',
+                        data: {
+                            sctype_id: data.value
+                        },
+                        success: function(d) {
+                            if (d.code == 1) {
+                                // 渲染二级下拉菜单
+                                $("#four option:not(:eq(0))").empty(); // 清除第一个之外的所有option
+                                $.each(d.sctype, function(index, item) {
+                                    console.log(444444);
+                                    $('#four').append("<option value='" + item.sctype_id + "'>" + item.sctype_name + "</option>"); // 下拉菜单里添加元素
+                                });
+                                layui.form.render("select", "fourtop");
+                            } else {
+                                // 重新渲染select
+                                layui.form.render("select");
+                                layer.msg(d.msg, {
+                                    icon: 2,
+                                    time: 1300
+                                })
+                            }
+                        }
+                    })
+                } else {
+                    // 重新渲染所有select
+                    layui.form.render("select");
+                }
+
+            });
+            //执行渲染
+            var sTable = table.render({
+                elem: '#test' //指定原始表格元素选择器（推荐id选择器）
+                    ,
+                url: "scList",
+                method: "post",
+                page: true,
+                toolbar: '#toolbarDemo',
+                limit: 20,
+                limits: [20],
+                cols: [
+                        [{
+                            field: 'ingredients_id',
+                            title: "ID",
+                            sort: true
+                        }, {
+                            field: 'ingredients_name',
+                            title: "食材名称"
+                        }, {
+                            field: 'sctype_name',
+                            title: "食材类别"
+                        }, {
+                            field: 'ingredients_thumbimg',
+                            width: 160,
+                            title: "食材图片",
+                            toolbar: '#img'
+                        }, {
+                            field: 'ingredients_place',
+                            title: "食材产地"
+                        }, {
+                            field: 'ingredients_season',
+                            title: "时令季节"
+                        }, {
+                            title: "操作",
+                            width: 200,
+                            toolbar: '#fun'
+                        }]
+                    ] //设置表头
+            });
+            //监听下拉列表
+            form.on('submit(search)', function(data) {
+                sTable.reload({
+                    where: data.field,
+                    page: {
+                        curr: 1
+                    }
+                });
+                console.log(data);
+                return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+            });
+        });
+</script>
+
+</html>

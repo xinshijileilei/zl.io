@@ -1,0 +1,142 @@
+.bottom_back{
+    background: #3F3A32;
+    width: 100%;
+    height: 430px;
+}
+.bottom_msj>img{
+    width: 450px;
+    height: 106px;
+    margin-top: 52px;
+    margin-left: 40px
+}
+.bottom_ewm>span>img{
+    width: 105px;
+    height: 105px;
+}
+.bottom_ewm>span{
+    float: left;
+    margin-top: 30px;
+    margin-left: 20px
+}
+.bottom_ewm{
+    overflow: hidden;
+    margin-left: -20px
+}
+.bottom_ewm>span p{
+    color: #999;
+    font-size: 12px;
+    cursor: pointer;
+}
+.bottom_ewm>span>p:hover{
+    color: aliceblue
+}
+.p1{
+    margin-left: 23px;
+    margin-top:8px;
+}
+.p2{
+    margin-left: 6px;
+    margin-top: -9px;
+}
+.p3{
+    margin-left: 23px;
+    margin-top: 8px;
+}
+.p4{
+    margin-left: 6px;
+    margin-top: -9px;
+}
+.p5{
+    margin-left: 5px;
+    margin-top: 8px;
+}
+.p6{
+    margin-left: 0px;
+    margin-top: -9px;
+}
+.p7{
+    margin-left: 10px;
+    margin-top: 8px;
+}
+.p8{
+    margin-left: 5px;
+    margin-top: -9px;
+}
+.bottom_font{
+    font-size: 14px;
+    color: white;
+    margin-left: 54px;
+    margin-top: 30px;
+}
+.yqlj1{
+    margin-top: 10px;
+    width: 990px;
+}
+.yqlj2{
+    margin-top: 10px
+}
+.line_top{
+    width: 960px;
+    border-top: 1px solid #444;
+    margin-left: 52px;
+    margin-top: 9px
+}
+.line_bottom{
+    width: 960px;
+    border-top: 1px solid #444;
+    margin-left: 112px;
+    margin-top: 9px
+}
+.yqlj1>li{
+    float: left;
+    margin-left: 55px;
+    list-style: none
+}
+.yqlj2>li{
+    float: left;
+    margin-left: 55px;
+    color: #999999;
+    font-size: 12px;
+    list-style: none
+}
+.yqlj1>li>a{
+    color: #999999;
+    font-size: 12px
+}
+.yqlj1>li>a:hover{
+    color: red
+}
+.yqlj2>li>a:hover{
+    color: red
+}
+.yqlj2>li>a{
+    color: #999999;
+    font-size: 12px
+}
+.bottom_nav>li{
+    float:left;
+    margin-left: 20px;
+    list-style: none;
+    color: #999999;
+    font-size: 12px;
+    padding: 5px
+}
+.bottom_nav>li:hover{
+    background: red;
+    color: white;
+    cursor: pointer;
+}
+.bottom_nav{
+    margin-left: 115px;
+    margin-top: 17px;
+}
+.ipd{
+    margin-left: 296px;
+    color: #666666;
+    font-size: 12px;
+    margin-top: 9px;
+    cursor: pointer;
+}
+.guo{
+    margin-bottom:8px 
+}

@@ -1,0 +1,235 @@
+{include file="public/header" /}
+
+<body>
+    <div class="x-nav">
+        <span class="layui-breadcrumb">
+                <a href="">首页</a>
+                <a href="">吃动平衡管理</a>
+                <a>
+                    <cite>吃动平衡列表</cite></a>
+            </span>
+        <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.reload()" title="刷新">
+            <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i>
+        </a>
+    </div>
+    <div class="layui-fluid">
+
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md12">
+                <div class="layui-card">
+                    <div class="layui-card-body">
+                        <form class="layui-form layui-form-pane layui-col-space5">
+                        	<div class="layui-inline">
+                                <select name="balance_flag" id="balance_flag">
+                                    	<option value="">文章类别</option>
+									  	<option value="1">菜品文章</option>
+									  	<option value="2">运动文章</option>
+									</select>
+                            </div>
+                            <div class="layui-inline">
+                                <select name="course_isoff" id="course_isoff">
+                                    	<option value="">上架情况</option>
+									  	<option value="1">上架文章</option>
+									  	<option value="2">下架文章</option>
+									</select>
+                            </div>
+                            <div class="layui-inline">
+                                <select name="course_ischarge" id="course_ischarge">
+                                    	<option value="">收费情况</option>
+									  	<option value="1">免费文章</option>
+									  	<option value="2">收费文章</option>
+									</select>
+                            </div>
+                            <div class="layui-inline">
+                                <select name="yytype_id" id="usertype">
+                                    	<option value="">运动类别</option>
+                                    	{volist name="cdtype" id="vo"}
+									  	<option value="{$vo.cdtype_id}">{$vo.cdtype_name}</option>
+									  	{/volist}
+									</select>
+                            </div>
+
+                            <div class="layui-inline">
+                                <input type="text" id="course_name" name="course_name" placeholder="请输入菜品名称" autocomplete="off" class="layui-input"></div>
+                            <div class="layui-inline">
+                                <button class="layui-btn" lay-filter="search" lay-submit="">
+                                        <i class="layui-icon">&#xe615;</i></button>
+                            </div>
+
+
+                        </form>
+
+
+                        <table class="layui-table" id="test" lay-filter="test">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/html" id="toolbarDemo">
+    <button class="layui-btn" lay-event='addcourse'><i class="iconfont">&#xe6b9;</i>添加</button>
+</script>
+<script type="text/html" id="img">
+    <img src="/xm{{ d.course_thumbimg }}">
+</script>
+<script type="text/html" id="check">
+    <input type="checkbox" id="{{ d.course_id }}" name="course_isoff" value="1" lay-skin="switch" lay-text="下架|上架" lay-filter="course_isoff" {{ d.course_isoff==1 ? '': 'checked'}}>
+</script>
+<script type="text/html" id="fun">
+    <a class="layui-btn layui-btn-xs" lay-event="show">查看/修改</a>
+    <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">删除</a>
+</script>
+<script>
+    layui.use(['table', 'form', 'jquery'],
+        function() {
+            var table = layui.table;
+            var form = layui.form;
+            var $ = layui.jquery;
+
+            // 监听头部工具栏---添加吃动平衡
+            table.on('toolbar(test)', function(obj) {
+                if (obj.event == "addcourse") {
+                    layer.open({
+                            type: 2,
+                            content: "cdAdd",
+                            area: ['950px', '90%'],
+                            end: function() {
+                                // 重载表格数据
+                                sTable.reload({
+                                    page: {
+                                        curr: 1
+                                    }
+                                });
+                            }
+                        }) //open
+                }
+            })
+
+            // 监听右侧列工具栏---查看吃动平衡
+            table.on('tool(test)', function(obj) {
+                    //console.log(obj);
+                    if (obj.event == "show") {
+                        layer.open({
+                            type: 2,
+                            content: "cdDetail?course_id=" + obj.data.course_id,
+                            area: ['950px', '90%']
+                        })
+                    } else if (obj.event == "del") {
+                        layer.confirm('确定要删除吗?', function(index) {
+                            $.ajax({
+                                type: "post",
+                                url: "cdDel",
+                                data: {
+                                    course_id: obj.data.course_id
+                                },
+                                success: function(d) {
+                                    if (d.code == 1) {
+                                        layer.msg(d.msg, {
+                                            icon: 1,
+                                            time: 1300
+                                        });
+                                        obj.del();
+                                    } else {
+                                        layer.msg(d.msg, {
+                                            icon: 2,
+                                            time: 1300
+                                        });
+                                    }
+                                }
+                            });
+                            layer.close(index);
+                        });
+                    }
+                })
+                //监听switch
+            form.on('switch(course_isoff)', function(data) {
+                // 数据
+                var obj = {};
+                data.elem.checked ? obj['course_isoff'] = 2 : obj['course_isoff'] = 1;
+                obj['course_id'] = data.elem.id;
+
+                // 异步传输
+                $.ajax({
+                    type: "post",
+                    url: "changeStatus",
+                    data: obj,
+                    success: function(d) {
+                        if (d.code == 1) {
+                            layer.msg(d.msg, {
+                                icon: 1,
+                                time: 1300
+                            });
+                        } else {
+                            data.elem.checked = false;
+                            form.render('checkbox'); //刷新按钮渲染
+                            layer.msg(d.msg, {
+                                icon: 2,
+                                time: 1300
+                            });
+                        }
+                    }
+                })
+            });
+            //执行渲染
+            var sTable = table.render({
+                elem: '#test' //指定原始表格元素选择器（推荐id选择器）
+                    ,
+                url: "cdList",
+                method: "post",
+                page: true,
+                toolbar: '#toolbarDemo',
+                limit: 20,
+                limits: [20],
+                cols: [
+                        [{
+                            field: 'course_id',
+                            title: "ID",
+                            sort: true
+                        }, {
+                            field: 'course_name',
+                            width: 180,
+                            title: "菜品名称"
+                        }, {
+                            field: 'cdtype_name',
+                            title: "菜品类别"
+                        }, {
+                            field: 'course_thumbimg',
+                            width: 160,
+                            title: "菜品缩略图",
+                            toolbar: '#img'
+                        }, {
+                            field: 'user_name',
+                            title: "菜品作者"
+                        }, {
+                            field: 'course_audit',
+                            title: "是否下架",
+                            width: 100,
+                            toolbar: '#check'
+                        }, {
+                            title: "操作",
+                            width: 280,
+                            toolbar: '#fun'
+                        }]
+                    ] //设置表头
+            });
+
+            // 监听提交事件
+            form.on('submit(search)', function(data) {
+
+                sTable.reload({
+                    where: data.field,
+                    page: {
+                        curr: 1
+                    }
+                });
+                console.log(data);
+                return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+            });
+
+        });
+</script>
+
+</html>

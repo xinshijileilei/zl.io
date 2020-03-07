@@ -1,0 +1,588 @@
+{include file="public/header" /}</head>
+
+<body>
+    <div class="layui-fluid">
+        <div class="layui-row">
+        	<div class="layui-card">
+                <div class="layui-card-header">修改菜品的基本信息</div>
+                <div class="layui-card-body">
+	            <form class="layui-form" enctype="multipart/form-data">
+	                <div class="layui-form-item">
+	                    <label for="L_email" class="layui-form-label">
+	                            菜品名称</label>
+	                    <div class="layui-input-inline">
+	                        <input type="text" name="course_name" value="{$msinfo.course_name}" lay-verify="required" required="" class="layui-input">
+	                    </div>
+	                </div>
+	                <div class="layui-form-item">
+	                    <label for="L_email" class="layui-form-label">
+	                             菜品类别</label>
+	                    <div class="layui-input-inline">
+	                        <select name="" class="valid" lay-filter="one">
+	                            	{volist name="mstype" id="vo"}
+	                            	{eq name="$msinfo.pid" value="$vo.mstype_id"}
+	                                <option value="{$vo.mstype_id}" selected>{$vo.mstype_name}</option>
+	                                {else}
+	                                <option value="{$vo.mstype_id}">{$vo.mstype_name}</option>
+	                                {/eq}
+	                                {/volist}
+	                    		</select>
+	                    </div>
+	                    <div class="layui-input-inline layui-form" lay-filter="twotop">
+	                        <select id="two" name="type_id" class="valid" lay-filter="two">
+	                            	<option value="{$msinfo.type_id}">{$msinfo.mstype_name}</option>
+	                    		</select>
+	                    </div>
+	                </div>
+	                <div class="layui-form-item">
+	                    <label for="L_email" class="layui-form-label">
+	                            菜品作者</label>
+	                    <div class="layui-input-inline">
+	                        <select name="usertype_id" class="valid" lay-filter="usertype">
+	                            	<option value=""></option>
+	                            	{volist name="usertype" id="vo"}
+	                            	
+	                                <option value="{$vo.usertype_id}" {eq name="$msinfo.usertype_id" value="$vo.usertype_id"} selected {/eq}>{$vo.usertype_name}</option>
+	                                
+	                                {/volist}
+	                    		</select>
+	                    </div>
+	                    <div class="layui-input-inline layui-form" lay-filter="usertop">
+                    	<select id="top" name="user_id" class="valid" lay-verify="required" lay-filter="top">
+                    		<option selected value="{$msinfo.user_id}">{$msinfo.user_name}</option>
+                    	</select>
+                    </div>
+	                </div>
+					<div class="layui-form-item">
+		                    <label for="course_trait" class="layui-form-label">
+		                            菜品特点</label>
+		                    <div class="layui-input-inline">
+		                        <input type="text" name="course_trait" value="{$msinfo.course_trait}" lay-verify="required" required="" class="layui-input">
+		                    </div>
+		                    <label for="course_color" class="layui-form-label">
+		                            菜品色泽</label>
+		                    <div class="layui-input-inline">
+		                        <input type="text" name="course_color" value="{$msinfo.course_color}" lay-verify="required" required="" class="layui-input">
+		                    </div>
+		                </div>
+		                <div class="layui-form-item">
+		                    <label for="course_aroma" class="layui-form-label">
+		                            菜品香气</label>
+		                    <div class="layui-input-inline">
+		                        <input type="text" name="course_aroma" value="{$msinfo.course_aroma}" lay-verify="required" required="" class="layui-input">
+		                    </div>
+		                    <label for="course_taste" class="layui-form-label">
+		                            菜品味道</label>
+		                    <div class="layui-input-inline">
+		                        <input type="text" name="course_taste" value="{$msinfo.course_taste}" lay-verify="required" required="" class="layui-input">
+		                    </div>
+		                </div>
+		                <div class="layui-form-item">
+		                    <label for="course_shap" class="layui-form-label">
+		                            菜品形状</label>
+		                    <div class="layui-input-inline">
+		                        <input type="text" name="course_shap" value="{$msinfo.course_shap}" lay-verify="required" required="" class="layui-input">
+		                    </div>
+		                    <label for="course_texture" class="layui-form-label">
+		                            菜品质地</label>
+		                    <div class="layui-input-inline">
+		                        <input type="text" name="course_texture" value="{$msinfo.course_texture}" lay-verify="required" required="" class="layui-input">
+		                    </div>
+		                </div>
+		                <div class="layui-form-item">
+		                    <label for="course_people" class="layui-form-label">
+		                            适宜人群</label>
+		                    <div class="layui-input-inline">
+		                        <input type="text" name="course_people" value="{$msinfo.course_people}" lay-verify="required" required="" class="layui-input">
+		                    </div>
+		                    <label for="course_peoplenum" class="layui-form-label">
+		                            适宜人数</label>
+		                    <div class="layui-input-inline">
+		                        <input type="number" name="course_peoplenum" value="{$msinfo.course_peoplenum}" lay-verify="required" required="" class="layui-input">
+		                    </div>
+		                </div>
+	                <div class="layui-form-item">
+	                    <label for="upload" class="layui-form-label">
+	                            菜品图片</label>
+	                    <div class="layui-input-inline">
+	                        <button type="button" class="layui-btn" id="upload">
+								  	<i class="layui-icon">&#xe67c;</i>上传图片
+								</button>
+	                        
+	                    </div>
+	                    <div class="layui-input-inline">
+	                        
+	                        <img id="img" src="{$Think.config.TITLE}{$msinfo.course_img}" width="320" height="240">
+	                    </div>
+	                </div>
+	                <!-- 隐藏域，图片图片路径和缩略图路径 -->
+	                <input value="{$msinfo.course_img}" type="hidden" name="course_img" id="course_img" lay-verify="required">
+	                <input value="{$msinfo.course_thumbimg}" type="hidden" name="course_thumbimg" id="course_thumbimg" lay-verify="required">
+					<div class="layui-form-item">
+	                    <label for="upload" class="layui-form-label">
+	                            文章视频</label>
+	                    <div class="layui-input-inline">
+	                        <button type="button" disabled class="layui-btn" id="video_upload">
+								  	<i class="layui-icon">&#xe67c;</i>上传视频
+							</button>
+	            			<input style="width:290%;margin-top:15px;display:none;" type="text" value="{$msinfo.course_video}" disabled name="course_video" id="upvid" lay-verify="required" class="layui-input">
+	                    </div>
+	                    <div class="layui-input-inline" id="vide">
+	                        <video width="320" height="240" controls>
+							    <source src="{$msinfo.course_video}" type="video/mp4">
+							</video>
+	                    </div>
+	                    
+	                </div>
+	                <div class="layui-form-item">
+	                    <label for="is_active" class="layui-form-label">
+	                            是否收费</label>
+	                    <div class="layui-input-inline">
+	                        {eq name="$msinfo.course_ischarge" value="1"}
+	                        <input type="radio" name="course_ischarge" value="1" title="免费" checked lay-filter="aaa">
+	                        <input type="radio" name="course_ischarge" value="2" title="收费" lay-filter="aaa"> {else}
+	                        <input type="radio" name="course_ischarge" value="1" title="免费" lay-filter="aaa">
+	                        <input type="radio" name="course_ischarge" value="2" title="收费" checked lay-filter="aaa"> {/eq}
+	                    </div>
+	                </div>
+	                <div class="layui-form-item charge" {eq name="$msinfo.course_ischarge" value="1" } style="display:none;" {else} style="display:block;" {/eq}>
+	                    <label for="is_active" class="layui-form-label">
+	                            收费标准</label>
+	                    <div class="layui-input-inline">
+	                        <input class="layui-input" type="text" name="course_standard" value="{$msinfo.course_standard}" lay-verify="" required="" placeholder="">
+	                    </div>
+	                    <div class="layui-form-mid layui-word-aux">元/条</div>
+	                </div>
+	                <div class="layui-form-item" >
+		                    <label for="course_score" class="layui-form-label">
+		                            综合评定</label>
+		                    <div class="layui-input-inline">
+		                        <select name="course_score" class="valid">
+		                            	<option value=""></option>
+		                                <option value="1" {eq name="$msinfo.course_score" value="1"} selected {/eq}>1</option>
+		                                <option value="2" {eq name="$msinfo.course_score" value="2"} selected {/eq}>2</option>
+		                                <option value="3" {eq name="$msinfo.course_score" value="3"} selected {/eq}>3</option>
+		                                <option value="4" {eq name="$msinfo.course_score" value="4"} selected {/eq}>4</option>
+		                                <option value="5" {eq name="$msinfo.course_score" value="5"} selected {/eq}>5</option>
+		                    	</select>
+		                    </div>
+		                    <div class="layui-form-mid layui-word-aux">/ 星</div>
+		            </div>
+		            <div class="layui-form-item">
+		                    <label for="course_effect" class="layui-form-label">
+		                            菜品功效</label>
+		                    <div class="layui-input-inline" style="width: 700px;">
+		                        <textarea name="course_effect" placeholder="请输入功能功效" lay-verify="required" class="layui-textarea">{$msinfo.course_effect}</textarea>
+		                    </div>
+		            </div>
+	                <div class="layui-form-item">
+	                    <label class="layui-form-label">
+				菜品简介</label>
+	                    <div class="layui-input-block" style="width: 700px;">
+	                        <textarea style="width:500px;height:200px;padding:5px;" name="course_content" id="demo" lay-verify="content" class="field-content">{$msinfo.course_content}</textarea>
+	                    </div>
+	                </div>
+	                <input type="hidden" value="{$msinfo.course_id}" name="course_id">
+	                <div class="layui-form-item">
+	                    <label for="L_repass" class="layui-form-label"></label>
+	                    <button id="btn" class="layui-btn" lay-filter="update" lay-submit="">修改基本信息</button></div>
+	            </form>
+	            </div>
+	        </div>
+	        <div class="layui-card show">
+                <div class="layui-card-body">
+                    <form class="layui-form">
+                    	<input type="hidden" value="{$msinfo.course_id}" name="course_id" id="course_id">
+                        <div class="layui-card" style="margin-top:13px;">
+		                    <div class="layui-card-header">
+		                    	修改主料
+		                    	<button style="float:right;margin-top:7px;" onclick="addline(this,'main_name[]','main_num[]')" type="button" class="layui-btn layui-btn-primary layui-btn-sm">
+								    <i class="layui-icon" style="margin-right:0;">&#xe654;</i>
+								</button>
+		                    </div>
+		                    <div class="layui-card-body">
+		                    	{volist name="main" id="vo"}
+		                        <div class="layui-form-item">
+		                            <label for="L_email" class="layui-form-label">
+		                            </label>
+		                            <div class="layui-input-inline">
+		                                <input type="text" onblur="repupdate(this,{$vo.main_id},'main_name')" placeholder="名称" value="{$vo.main_name}" lay-verify="required" required="" class="layui-input">
+		                            </div>
+		                            <div class="layui-input-inline">
+		                                <input type="number" onblur="repupdate(this,{$vo.main_id},'main_num')" placeholder="重量（以克为单位）" value="{$vo.main_num}" lay-verify="required" required="" class="layui-input">
+		                            </div>
+		                            <div class="layui-input-inline" style="margin-bottom:13px;">
+		                                <button onclick="removeline(this,{$vo.main_id},'main')" type="button" class="layui-btn layui-btn-primary layui-btn-sm">
+										    <i class="layui-icon" style="margin-right:0;">&#xe640;</i>
+										</button>
+		                            </div>
+		                        </div>
+		                        {/volist}
+		                    </div>
+		                </div>
+		                <div class="layui-card" style="margin-top:13px;">
+		                    <div class="layui-card-header">
+		                    	添加辅料
+		                    	<button style="float:right;margin-top:7px;" onclick="addline(this,'assist_name[]','assist_num[]')" type="button" class="layui-btn layui-btn-primary layui-btn-sm">
+								    <i class="layui-icon" style="margin-right:0;">&#xe654;</i>
+								</button>
+		                    </div>
+		                    <div class="layui-card-body">
+		                    	{volist name="assist" id="vo"}
+		                        <div class="layui-form-item">
+		                            <label for="L_email" class="layui-form-label">
+		                            </label>
+		                            <div class="layui-input-inline">
+		                                <input type="text" onblur="repupdate(this,{$vo.assist_id},'assist_name')" placeholder="名称" value="{$vo.assist_name}" lay-verify="required" required="" class="layui-input">
+		                            </div>
+		                            <div class="layui-input-inline">
+		                                <input type="number" onblur="repupdate(this,{$vo.assist_id},'assist_num')" placeholder="重量（以克为单位）" value="{$vo.assist_num}" lay-verify="required" required="" class="layui-input">
+		                            </div>
+		                            <div class="layui-input-inline" style="margin-bottom:13px;">
+		                                <button onclick="removeline(this,'{$vo.assist_id}','assist')" type="button" class="layui-btn layui-btn-primary layui-btn-sm">
+										    <i class="layui-icon" style="margin-right:0;">&#xe640;</i>
+										</button>
+		                            </div>  
+		                        </div>
+		                        {/volist}
+		                    </div>
+		                </div>
+		                <div class="layui-card" style="margin-top:13px;">
+		                    <div class="layui-card-header">
+		                    	添加调味品
+		                    	<button style="float:right;margin-top:7px;" onclick="addline(this,'condiment_name[]','condiment_num[]')" type="button" class="layui-btn layui-btn-primary layui-btn-sm">
+								    <i class="layui-icon" style="margin-right:0;">&#xe654;</i>
+								</button>
+		                    </div>
+		                    <div class="layui-card-body">
+		                    	{volist name="condiment" id="vo"}
+		                        <div class="layui-form-item">
+		                            <label for="L_email" class="layui-form-label">
+		                            </label>
+		                            <div class="layui-input-inline">
+		                                <input type="text" onblur="repupdate(this,{$vo.condiment_id},'condiment_name')" placeholder="名称" value="{$vo.condiment_name}" lay-verify="required" required="" class="layui-input">
+		                            </div>
+		                            <div class="layui-input-inline">
+		                                <input type="number" onblur="repupdate(this,{$vo.condiment_id},'condiment_num')" placeholder="重量（以克为单位）" value="{$vo.condiment_num}" lay-verify="required" required="" class="layui-input">
+		                            </div>
+		                            <div class="layui-input-inline" style="margin-bottom:13px;">
+		                                <button onclick="removeline(this,'{$vo.condiment_id}','condiment')" type="button" class="layui-btn layui-btn-primary layui-btn-sm">
+										    <i class="layui-icon" style="margin-right:0;">&#xe640;</i>
+										</button>
+		                            </div>
+		                        </div>
+		                        {/volist}
+		                    </div>
+		                </div>
+		                <div class="layui-form-item">
+		                    <label for="L_repass" class="layui-form-label"></label>
+		                    <button id="btn" class="layui-btn" lay-filter="addrep" lay-submit="">确认添加新用料</button>
+		                </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        layui.use(['layer', 'layedit', 'upload', 'form', 'jquery'], function() {
+            var form = layui.form,
+                layer = layui.layer;
+            var upload = layui.upload;
+            var $ = layui.$;
+            var layedit = layui.layedit;
+            layedit.set({
+                uploadImage: {
+                    url: "{:url('Upload/img_upload')}",
+                    type: 'post'
+                }
+            });
+            var index = layedit.build('demo'); //建立编辑器
+
+            form.verify({
+                content: function(value) {
+                    layedit.sync(index);
+                }
+            });
+            
+          //监听下拉列表
+            form.on('select(user)', function(data) {
+            	$("#top option").empty(); // 清除所有option
+                if (data.value) {
+                    $.ajax({
+                        type: "post",
+                        url: "{:url('Ms/user')}",
+                        data: {
+                            usertype_id: data.value
+                        },
+                        success: function(d) {
+                            if (d.code == 1) {
+                                // 渲染二级下拉菜单
+                                $("#top option:not(:eq(0))").empty(); // 清除第一个之外的所有option
+                                $.each(d.user, function(index, item) {
+                                	console.log(d.user);
+                                    $('#top').append("<option value='" + item.user_id + "'>" + item.user_name + "</option>"); // 下拉菜单里添加元素
+                                });
+                                layui.form.render("select","usertop");
+                            } else {
+                                // 重新渲染select
+                                layui.form.render("select");
+                                layer.msg(d.msg, {
+                                    icon: 2,
+                                    time: 1300
+                                })
+                            }
+                        }
+                    })
+                } else {
+                    // 重新渲染所有select
+                    layui.form.render("select");
+                }
+
+            });
+
+            //监听下拉列表
+            form.on('select(one)', function(data) {
+                $("#two option").empty(); // 清除所有option
+                if (data.value) {
+                    $.ajax({
+                        type: "post",
+                        url: 'mstype',
+                        data: {
+                            mstype_id: data.value
+                        },
+                        success: function(d) {
+                            if (d.code == 1) {
+                                // 渲染二级下拉菜单
+                                $("#two option:not(:eq(0))").empty(); // 清除第一个之外的所有option
+                                $.each(d.mstype, function(index, item) {
+                                    console.log(1);
+                                    $('#two').append("<option value='" + item.mstype_id + "'>" + item.mstype_name + "</option>"); // 下拉菜单里添加元素
+                                });
+                                layui.form.render("select", "twotop");
+                            } else {
+                                // 重新渲染select
+                                layui.form.render("select");
+                                layer.msg(d.msg, {
+                                    icon: 2,
+                                    time: 1300
+                                })
+                            }
+                        }
+                    })
+                } else {
+                    // 重新渲染所有select
+                    layui.form.render("select");
+                }
+
+            });
+          //上传视频
+            var uploadvideo = upload.render({
+                elem: '#video_upload' //绑定元素
+                    ,
+                url: "{:url('Upload/video_upload')}" //上传接口
+                    ,
+                accept: 'video'
+                	,
+                before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
+                	    ind = layer.load(2); //上传loading
+                }
+                	,
+                done: function(res) {
+                    if (res.code == 0) {
+                        layer.msg('视频上传成功', {
+                            icon: 1,
+                            time: 1300
+                        });
+                        layer.close(ind);    //返回数据关闭loading
+                        $("#upvid").val(res.path);
+                        $("#upvid").show();
+                        $("#vide").hide();
+                        
+                    } else {
+                        layer.msg('上传失败,请重试', {
+                            icon: 2,
+                            time: 1300
+                        });
+                    }
+                }
+            });
+           
+            var uploadInst = upload.render({
+                elem: '#upload' //绑定元素
+                    ,
+                url: "{:url('Upload/img_upload')}" //上传接口
+                    ,
+                done: function(res) {
+                    if (res.code == 0) {
+                        layer.msg('图片选择成功', {
+                            icon: 1,
+                            time: 1300
+                        });
+                        $("#course_img").val(res.img_url);
+                        $("#course_thumbimg").val(res.thumb_url);
+                        $("#img").attr("src", "{$Think.config.TITLE}" + res.thumb_url);
+                    } else {
+                        layer.msg('上传失败,请重试', {
+                            icon: 2,
+                            time: 1300
+                        });
+                    }
+                }
+	            	,
+	            error: function(index, upload){
+	                layer.closeAll('loading'); //关闭loading
+	              }
+            });
+
+            //监听radio单选
+            form.on('radio(aaa)', function(data) {
+                console.log(data.elem); //得到radio原始DOM对象
+                console.log(data.value); //被点击的radio的value值
+                if (data.value == 2) {
+                    $(".charge").css("display", "block");
+                } else {
+                    $(".charge").css("display", "none");
+                }
+                form.render();
+            });
+            
+          	//监听提交用料信息
+            form.on('submit(addrep)',function(data) {
+                    console.log(data);
+                    //发异步，把数据提交给php
+                    $.ajax({
+                        type: "post",
+                        url: "{:url('Dosag/DosagAdd')}",
+                        data: data.field,
+                        success: function(d) {
+                            if (d.code == 1) {
+                                layer.msg(d.msg,{
+                                    icon: 1,
+                                    time: 1300
+                                },function() {
+                                	//关闭当前frame
+                                	window.location.reload();
+                                });
+                            } else {
+                                layer.msg(d.msg, {
+                                    icon: 2,
+                                    time: 1300
+                                });
+                            }
+                        }
+                    });
+
+                    return false;
+                });
+
+
+            //监听提交基本信息
+            form.on("submit(update)", function(obj) {
+                console.log(obj);
+                $.ajax({
+                    type: 'POST',
+                    url: "{:url('ms/msDetail')}",
+                    data: obj.field,
+                    dataType: "json",
+                    success: function(data) {
+                        if (data.code == 1) {
+                            layer.msg(data.msg, {
+                                icon: 1,
+                                time: 1300
+                            }, function() {
+                                //关闭当前frame
+                                xadmin.close();
+                                xadmin.father_reload();
+
+                            });
+                        } else {
+                            layer.msg(data.msg, {
+                                icon: 2,
+                                time: 1300
+                            });
+                        }
+                    }
+                })
+                return false;
+            })
+
+        });
+        
+        function addline(obj, name1, name2) {
+            var html = "";
+            html += '<div class="layui-form-item">';
+            html += "<label for='L_email' class='layui-form-label'></label>"
+            html += "<div class='layui-input-inline'>"
+            html += "<input type='text' placeholder='名称'  name='" + name1 + "' value='' lay-verify='required' required='' class='layui-input'>";
+            html += "</div><div class='layui-input-inline'>";
+            html += "<input type='text' placeholder='重量（以克为单位）'  name='" + name2 + "' value='' lay-verify='required' required='' class='layui-input'>";
+            html += "</div><div class='layui-input-inline'>";
+            html += "<button onclick='removel(this)' type='button' class='layui-btn layui-btn-primary layui-btn-sm'>"
+            html += "<i class='layui-icon' style='margin-right:0;'>&#xe640;</i>";
+            html += "</button></div></div>";
+
+            $(obj).parent().next().append(html); 
+        }
+        
+        function repupdate(obj,id,flag){
+        	$.ajax({
+                type: "post",
+                url: "{:url('Dosag/dosagdetail')}",
+                data: {
+                    id: id,
+                    flag:flag,
+                    val:$(obj).val()
+                },
+                success: function(d) {
+                    if (d.code == 1) {
+                        layer.msg(d.msg, {
+                            icon: 1,
+                            time: 1300
+                        });
+                    } else {
+                        layer.msg(d.msg, {
+                            icon: 2,
+                            time: 1300
+                        });
+                    }
+                }
+            });
+        }
+        
+        function removel(obj) {
+        	$(obj).parent().parent().remove();
+        }
+
+        function removeline(obj,course_id,flag) {	
+            layer.confirm('确定要删除吗?', function(index) {
+                $.ajax({
+                    type: "post",
+                    url: "{:url('Dosag/DosagDel')}",
+                    data: {
+                        course_id: course_id,
+                        flag:flag
+                    },
+                    success: function(d) {
+                        if (d.code == 1) {
+                            layer.msg(d.msg, {
+                                icon: 1,
+                                time: 1300
+                            },function(){
+                            	$(obj).parent().parent().remove();
+                            });
+                        } else {
+                            layer.msg(d.msg, {
+                                icon: 2,
+                                time: 1300
+                            });
+                        }
+                    }
+                });
+                layer.close(index);
+            });
+        }
+    </script>
+
+</body>
+
+</html>

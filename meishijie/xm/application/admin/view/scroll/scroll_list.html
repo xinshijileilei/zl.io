@@ -1,0 +1,171 @@
+{include file="public/header" /}
+
+<body>
+    <div class="x-nav">
+        <span class="layui-breadcrumb">
+                <a href="">首页</a>
+                <a href="">轮播图管理</a>
+                <a>
+                    <cite>分类列表</cite></a>
+            </span>
+        <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.reload()" title="刷新">
+            <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i>
+        </a>
+    </div>
+    <div class="layui-fluid">
+
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md12">
+                <div class="layui-card">
+                    <div class="layui-card-body">
+                        <table class="layui-table" id="test" lay-filter="test">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/html" id="toolbarDemo">
+        <button class="layui-btn" lay-event='add'><i class="iconfont">&#xe6b9;</i>添加</button>
+</script>
+<script type="text/html" id="img">
+    <img src="{$Think.config.TITLE}{{ d.scroll_thumbimg }}">
+</script>
+<script type="text/html" id="check">
+    <input type="checkbox" id="{{ d.scroll_id }}" name="scroll_isoff" value="1" lay-skin="switch" lay-text="显示|隐藏" lay-filter="scroll_isoff" {{ d.scroll_isoff==2 ? '': 'checked'}}>
+</script>
+<script type="text/html" id="fun">
+    <a class="layui-btn layui-btn-xs" lay-event="show">查看/修改</a>
+    <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">删除</a>
+</script>
+<script>
+    layui.use(['table', 'form', 'jquery'],
+        function() {
+            var table = layui.table;
+            var form = layui.form;
+            var $ = layui.jquery;
+         // 监听头部工具栏---添加吃动平衡
+            table.on('toolbar(test)', function(obj) {
+                if (obj.event == "add") {
+                    layer.open({
+                            type: 2,
+                            content: "scrollAdd",
+                            area: ['800px', '90%'],
+                            end: function() {
+                                // 重载表格数据
+                                sTable.reload({
+                                    page: {
+                                        curr: 1
+                                    }
+                                });
+                            }
+                        }) //open
+                }
+            })
+            // 监听右侧列工具栏---查看分类
+            table.on('tool(test)', function(obj) {
+                //console.log(obj);
+                if (obj.event == "show") {
+                    layer.open({
+                        type: 2,
+                        content: "scrolldetail?scroll_id=" + obj.data.scroll_id,
+                        area: ['800px', '90%']
+                    })
+                } else if (obj.event == "del") {
+                    layer.confirm('确定要删除吗?', function(index) {
+                        $.ajax({
+                            type: "post",
+                            url: "scrolldel",
+                            data: {
+                                scroll_id: obj.data.scroll_id
+                            },
+                            success: function(d) {
+                                if (d.code == 1) {
+                                    layer.msg(d.msg, {
+                                        icon: 1,
+                                        time: 1300
+                                    });
+                                    obj.del();
+                                } else {
+                                    layer.msg(d.msg, {
+                                        icon: 2,
+                                        time: 1300
+                                    });
+                                }
+                            }
+                        });
+                        layer.close(index);
+                    });
+                }
+            })
+            
+             //监听switch
+            form.on('switch(scroll_isoff)', function(data) {
+                // 数据
+                var obj = {};
+                data.elem.checked ? obj['scroll_isoff'] = 1 : obj['scroll_isoff'] = 2;
+                obj['scroll_id'] = data.elem.id;
+
+                // 异步传输
+                $.ajax({
+                    type: "post",
+                    url: "changeStatus",
+                    data: obj,
+                    success: function(d) {
+                        if (d.code == 1) {
+                            layer.msg(d.msg, {
+                                icon: 1,
+                                time: 1300
+                            });
+                        } else {
+                            data.elem.checked = false;
+                            form.render('checkbox'); //刷新按钮渲染
+                            layer.msg(d.msg, {
+                                icon: 2,
+                                time: 1300
+                            });
+                        }
+                    }
+                })
+            });
+
+            //执行渲染
+            var sTable = table.render({
+                elem: '#test' //指定原始表格元素选择器（推荐id选择器）
+                    ,
+                url: "scroll",
+                method: "post",
+                page: true,
+                toolbar: '#toolbarDemo',
+                limit: 20,
+                limits: [20],
+                cols: [
+                        [{
+                            field: 'scroll_id',
+                            title: "ID",
+                            sort: true
+                        }, {
+                            field: 'scroll_img',
+                            title: "轮播图",
+                            sort: true,
+                            toolbar: '#img'
+                        }, {
+                            field: 'scroll_isoff',
+                            title: "轮播图",
+                            sort: true,
+                            toolbar: '#check'
+                        }, {
+                            title: "操作",
+                            minWidth: 160,
+                            toolbar: '#fun'
+                        }]
+                    ] //设置表头
+            });
+
+
+        });
+</script>
+
+</html>

@@ -1,0 +1,3753 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>接口文档</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+table{
+	border-collapse:collapse;
+}
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+<!-- <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script> -->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="http://yandex.st/highlightjs/6.2/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!--侧栏目录生成代码-->
+<script>
+    //标题序号计数器
+    var hCount = [0, 0, 0, 0, 0, 0];
+    //设置计数器
+    function setHCount(number) {
+        //当前计数器加一
+        hCount[number - 1]++;
+        for (var i = number, length = hCount.length; i < length; i++) {
+            //子目录计数器全部置零
+            hCount[i] = 0;
+        }
+    }
+    //重命名目录名称
+    function setHTagValue(item, number) {
+        //获取标题名
+        var text = $(item).get(0).innerHTML;
+        //初始化空字符串
+        var before = "";
+        //生成序号
+        for (var i = 0, length = hCount.length; i < number; i++) {
+            if (i < number - 1)
+                before += hCount[i] + ".";
+            else
+                before += hCount[i] + " ";
+        }
+        //在标题前面加上序号
+        $(item).get(0).innerHTML = before + text;
+    }
+    function renameHTag(item) {
+        var tag = $(item).get(0).localName;
+        if (tag === "h1") {
+            setHCount(1);
+           //console\.log("捕获到标签:%s", tag);
+            setHTagValue(item, 1);
+        }
+        if (tag === "h2") {
+            setHCount(2);
+            //console.log("捕获到标签:%s", tag);
+            setHTagValue(item, 2);
+        }
+        if (tag === "h3") {
+            setHCount(3);
+            //console.log("捕获到标签:%s", tag);
+            setHTagValue(item, 3);
+        }
+        if (tag === "h4") {
+            setHCount(4);
+            //console.log("捕获到标签:%s", tag);
+            setHTagValue(item, 4);
+        }
+        if (tag === "h5") {
+            setHCount(5);
+            //console.log("捕获到标签:%s", tag);
+            setHTagValue(item, 5);
+        }
+        if (tag === "h6") {
+            setHCount(6);
+            //console.log("捕获到标签:%s", tag);
+            setHTagValue(item, 6)
+        }
+    }
+    $(document).ready(function () {
+        $("h1,h2,h3,h4,h5,h6").each(function (i, item) {
+            //给<H>类标签编号
+            renameHTag(item);
+            //获取标签的名字,h1,还是h2
+            var tag = $(item).get(0).localName;
+            //为该标签设置id属性
+            $(item).attr("id", "wow" + i);
+            //添加一个页内超链接,并设置class选择器
+            //      $("#category").append('<a class="new'+tag+'" href="#wow'+i+'">'+$(this).text()+'</a></br>');
+            $("#category").append('<a class="new' + tag + '" href="#wow' + i + '">' + $(item).text() + '</a></br>');
+            //为每一个标题超链接的class属性设置左边距
+            $(".newh1").css("margin-left", 0);
+            $(".newh2").css("margin-left", 20);
+            $(".newh3").css("margin-left", 40);
+            $(".newh4").css("margin-left", 60);
+            $(".newh5").css("margin-left", 80);
+            $(".newh6").css("margin-left", 100);
+        });
+        //设置class选择器为.book-body的html内容
+        $(".book-body").html($(".book-body").nextAll())
+    });
+</script>
+<style type="text/css">
+    @media (max-width: 1600px) {
+        .book-body {
+            /* padding-left: 200px; */
+            padding-right: 0px;
+        }
+    }
+    @media (max-width: 1400px) {
+        .book-body {
+            /* padding-left: 200px; */
+            padding-right: 0px;
+        }
+    }
+    @media (max-width: 1200px) {
+        .book-body {
+            /* padding-left: 300px; */
+            padding-left: 0px;
+        }
+    }
+    @media (max-width: 700px) {
+        .book-body {
+            padding-left: 0px;
+        }
+    }
+    @media (min-width: 600px) {
+        #category {
+            /* 绝对定位 */
+            position: fixed;
+            /* left: 20px; */
+            /* 目录显示的位置 */
+            right: 0px;
+            top: 0;
+            /* 目录栏的高度,这里设置为60%主要是为了不挡住返回顶部和折叠按钮 */
+            height: 79%;
+            /* 开启垂直滚动条 */
+            overflow-y: scroll;
+            /* 开启水平滚动条 */
+            overflow-x: scroll;
+        }
+    }
+    @media (-webkit-max-device-pixel-ratio: 1) {
+        ::-webkit-scrollbar-track-piece {
+            background-color: #FFF
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #c2c2c2;
+            background-clip: padding-box;
+            min-height: 28px
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #A0A0A0
+        }
+    }
+</style>
+<script>
+    // id="category" οnclick="showOrCloseCategory()"
+    function showOrCloseCategory() {
+        var id = document.getElementById("category");
+        var book_body=document.getElementById("book_body");
+        //如果展开了
+        if (id.style.display == 'block') {
+            //console.log("开始展开");
+            id.style.display='none';
+            id.style.width="0%";
+            book_body.style.width="100%";
+            book_body.style.paddingleft=0;
+        }
+        //如果被折叠了
+        else if (id.style.display =='none') {
+            //console.log("开始折叠");
+            id.style.display = 'block';
+            book_body.style.width="90%";
+            id.style.width="20%"
+        }
+    }
+</script>
+<!--返回顶部-->
+<a href="javascript:scroll(0,0)" style="position:fixed;float:right;right:40px;top:80%">返回顶部</a>
+<button onclick="showOrCloseCategory()" style="position:fixed;float:right;right:40px;top:85%">折叠/展开</button>
+<!--文章主体部分-->
+<div class="book-body" id="book_body" style="width:90%;display:block"> </div>
+<!--目录栏，设置占用宽度为20%可以根据实际情况设置-->
+<div  class="book-summary" id="category" style="width:20%;display:block" ></div>
+
+</head>
+<body>
+<p>目录</p>
+<p>01. 注册接口 <br>
+02. 菜品列表接口 <br>
+03. 菜品详细信息接口 <br>
+04. 营养知识分类接口<br>
+05. 营养知识文章接口 <br>
+06. 营养知识文章详情接口 <br>
+07.  吃动平衡分类接口<br>
+08.  名师制作分类接口<br>
+09.  烹调方法分类接口<br>
+10.  烹调方法文章列表接口<br>
+11.  烹调方法文章详情接口<br>
+12.  食材分类接口<br>
+13.  食材列表接口<br>
+14.  食材详情接口<br>
+15.  妇幼营养分类接口<br>
+16.  妇幼营养列表接口<br>
+17.  妇幼营养详情接口<br>
+18.  用户类别接口<br>
+19.  用户列表接口<br>
+20.  用户认证接口<br>
+21.  上传图片接口<br>
+22.  收藏接口<br>
+23.  取消收藏接口<br>
+24.  我的收藏接口<br>
+25.  订单接口<br>
+26.  我的订单接口<br>
+27.  发布接口<br>
+28.  我的作品接口<br>
+29.  删除我的作品接口<br>
+30.  修改我的作品接口<br>
+31.  搜索接口<br>
+32.  上传视频接口<br>
+33.  轮播图接口<br>
+34.  发布菜品用料（主料辅料调味品）接口<br></p>
+<hr />
+<h2>1、注册接口</h2>
+<h3>接口功能</h3>
+<blockquote>
+<p>微信昵称与手机号注册用户</p>
+</blockquote>
+<h3>URL</h3>
+<blockquote>
+<p>http://localhost/xm/public/index.php/Index/index/register</p>
+</blockquote>
+<h3>支持格式</h3>
+<blockquote>
+<p>JSON</p>
+</blockquote>
+<h3>HTTP请求方式</h3>
+<blockquote>
+<p>POST</p>
+</blockquote>
+<h3>传递参数</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">参数</th>
+	<th align="left">必选</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">user_nickname</td>
+	<td align="left">true</td>
+	<td>用户微信昵称</td>
+</tr>
+<tr>
+	<td align="left">appid</td>
+	<td align="left">true</td>
+	<td>微信开发者账号</td>
+</tr>
+<tr>
+	<td align="left">sessionKey</td>
+	<td align="left">true</td>
+	<td>sessionKey</td>
+</tr>
+<tr>
+	<td align="left">encryptedData</td>
+	<td align="left">true</td>
+	<td>encryptedData</td>
+</tr>
+<tr>
+	<td align="left">iv</td>
+	<td align="left">true</td>
+	<td>iv</td>
+</tr>
+</tbody>
+</table>
+<h3>返回字段</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">返回字段</th>
+	<th align="left">字段类型</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">code</td>
+	<td align="left">int</td>
+	<td>返回结果状态。1：注册成功；2：注册失败；3：未接收到用户信息；4：接收用户信息错误</td>
+</tr>
+<tr>
+	<td align="left">msg</td>
+	<td align="left">string</td>
+	<td>返回信息。1：注册成功；2：注册失败；3：未接收到用户信息</td>
+</tr>
+</tbody>
+</table>
+<h3>返回值</h3>
+<pre style="background:#222;color:#35b558">
+{
+code:"1",
+msg: "注册成功"
+}
+</pre>
+<p><br></p>
+<h2>2、菜品列表接口</h2>
+<h3>接口功能</h3>
+<blockquote>
+<p>获取首页热门推荐菜品列表
+获取吃动平衡，每个分类下的菜品列表
+获取名师制作，每个分类下的菜品列表</p>
+</blockquote>
+<h3>URL</h3>
+<blockquote>
+<p>http://localhost/xm/public/index.php/Index/course/index</p>
+</blockquote>
+<h3>支持格式</h3>
+<blockquote>
+<p>JSON</p>
+</blockquote>
+<h3>HTTP请求方式</h3>
+<blockquote>
+<p>POST</p>
+</blockquote>
+<h3>传递参数</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">参数</th>
+	<th align="left">必选</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">page</td>
+	<td align="left">false</td>
+	<td>页码</td>
+</tr>
+<tr>
+	<td align="left">limit</td>
+	<td align="left">false</td>
+	<td>每页的条数</td>
+</tr>
+<tr>
+	<td align="left">course_flag</td>
+	<td align="left">首页false，吃动平衡course_flag=1，名师制作course_flag=2</td>
+	<td>菜品所属模块标识</td>
+</tr>
+<tr>
+	<td align="left">type_id</td>
+	<td align="left">首页false，吃动平衡true，名师制作true</td>
+	<td>类型ID</td>
+</tr>
+<tr>
+	<td align="left">usertype_id</td>
+	<td align="left">首页false，吃动平衡true，名师制作true</td>
+	<td>用户类型ID</td>
+</tr>
+<tr>
+	<td align="left">balance_flag</td>
+	<td align="left">首页false，吃动平衡true，名师制作flase</td>
+	<td>吃动平衡中：1菜品，2运动文章</td>
+</tr>
+</tbody>
+</table>
+<h3>返回字段</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">返回字段</th>
+	<th align="left">字段类型</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">code</td>
+	<td align="left">int</td>
+	<td>返回结果状态。1：返回数据成功；2：暂无数据</td>
+</tr>
+<tr>
+	<td align="left">msg</td>
+	<td align="left">string</td>
+	<td>返回信息。1：返回数据成功；2：暂无数据</td>
+</tr>
+<tr>
+	<td align="left">data</td>
+	<td align="left">string</td>
+	<td>返回查询的结果</td>
+</tr>
+</tbody>
+</table>
+<h3>返回值</h3>
+<pre style="background:#222;color:#35b558">
+{
+code:"1",
+msg: "返回数据成功",
+count:"1"
+data: [
+    {"course_id":6,"course_name":"宫保鸡丁","type_id":3,"course_content":"<p>看手机的课件大赛开发技术开发技术领导就你丝黛芬妮考试答卷<img src=\"\/xm\/public\/static\/uploads\/Ms_img\/20190809\/de36d46d43e70cac963f3b1c83ebbe98.jpg\" alt=\"undefined\"><\/p><p>就是导航男方就是圣诞节发货单数据返回考试答卷返回数据付首付绝对是副科级时代峻峰空间时<img src=\"\/xm\/public\/static\/uploads\/Ms_img\/20190809\/783ef136e4cc38ea93fe93061b2f6898.jpg\" alt=\"undefined\"><\/p>","course_img":"\/public\/static\/uploads\/Ms_img\/20190809\/8b37ff4568302b7521b3da1b14d62e99.jpg","course_thumbimg":"\/public\/static\/uploads\/Ms_img\/20190809\/8b37ff4568302b7521b3da1b14d62e99thumb.jpg","course_video":null,"course_author":"欧文","usertype_id":3,"course_ischarge":"2","course_standard":"4","course_isoff":"1","course_flag":"2","create_time":"2019-08-09 09:36:41"}
+]
+}
+</pre>
+<p><br></p>
+<h2>3、名师制作菜品/吃动平衡菜品/吃动平衡文章详情接口</h2>
+<h3>接口功能</h3>
+<blockquote>
+<p>根据菜品ID获取：
+名师制作菜品详细信息
+吃动平衡菜品详细信息
+吃动平衡文章信息</p>
+</blockquote>
+<h3>URL</h3>
+<blockquote>
+<p>http://localhost/xm/public/index.php/Index/course/courseDetail</p>
+</blockquote>
+<h3>支持格式</h3>
+<blockquote>
+<p>JSON</p>
+</blockquote>
+<h3>HTTP请求方式</h3>
+<blockquote>
+<p>POST</p>
+</blockquote>
+<h3>传递参数</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">参数</th>
+	<th align="left">必选</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">course_id</td>
+	<td align="left">true</td>
+	<td>菜品ID</td>
+</tr>
+</tbody>
+</table>
+<h3>返回字段</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">返回字段</th>
+	<th align="left">字段类型</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">code</td>
+	<td align="left">int</td>
+	<td>返回结果状态。1：查询成功；2：暂无数据；3：参数传递错误</td>
+</tr>
+<tr>
+	<td align="left">msg</td>
+	<td align="left">string</td>
+	<td>返回信息。1：查询成功；2：暂无数据；3：参数传递错误</td>
+</tr>
+<tr>
+	<td align="left">data</td>
+	<td align="left">string</td>
+	<td>返回查询菜品基本信息/文章信息</td>
+</tr>
+<tr>
+	<td align="left">main</td>
+	<td align="left">string</td>
+	<td>返回菜品主料信息</td>
+</tr>
+<tr>
+	<td align="left">assist</td>
+	<td align="left">string</td>
+	<td>返回菜品辅料信息</td>
+</tr>
+<tr>
+	<td align="left">condiment</td>
+	<td align="left">string</td>
+	<td>返回菜品调味品信息</td>
+</tr>
+</tbody>
+</table>
+<h3>返回值</h3>
+<pre style="background:#222;color:#35b558">
+{
+code:"1",
+msg: "查询成功",
+data: 
+    {"course_id":13,"course_name":"麻婆豆腐","type_id":3,"course_content":"塑料袋哈方括号sad看风景","course_img":"\/public\/static\/uploads\/admin\/20190826\/0420758310bf41757130d485bd10477e.JPG","course_thumbimg":"\/public\/static\/uploads\/admin\/20190826\/0420758310bf41757130d485bd10477ethumb.JPG","course_video":"http:\/\/pwmcv4411.bkt.clouddn.com\/15667997061eab0ad5253ed5bb5945fefbee854c45.mp4","user_id":null,"user_name":"王启胜","usertype_id":3,"course_trait":"测试","course_color":"测试","course_aroma":"测试","course_taste":"测试","course_shap":"测试","course_texture":"测试","course_people":"测试","course_peoplenum":1,"course_effect":"四U盾回复是贷款粉红色的客户","course_score":4,"course_ischarge":"1","course_standard":"","course_isoff":"2","course_flag":"2","balance_flag":"1","create_time":"2019-08-26 14:08:39"},
+main:	[{"main_id":5,"course_id":13,"main_name":"	豆	腐","main_num":300,"create_time":"2019-08-	26 14:09:14"},	{"main_id":7,"course_id":13,"main_name":"	测	试","main_num":3,"create_time":"2019-08-26 	15:00:36"}]
+assist：	[{"assist_id":5,"course_id":13,"assist_nam	e":"猪肉	末","assist_num":50,"create_time":"2019-08	-26 14:09:14"},	{"assist_id":6,"course_id":13,"assist_name	":"香	葱","assist_num":10,"create_time":"2019-08		-26 14:09:14"},	{"assist_id":9,"course_id":13,"assist_name	":"测	试","assist_num":1,"create_time":"2019-08-	26 15:00:36"}],
+condiment:	[{"condiment_id":3,"course_id":13,"condime	nt_name":"麻	椒","condiment_num":10,"create_time":"2019	-08-26 14:09:14"},	{"condiment_id":4,"course_id":13,"condimen	t_name":"盐","condiment_num":3,"create_tim	e":"2019-08-26 14:09:14"},	{"condiment_id":8,"course_id":13,"condimen	t_name":"郫县豆瓣	酱","condiment_num":10,"create_time":"2019	-08-26 15:00:36"}]}
+
+}
+</pre>
+<p><br></p>
+<h2>4、营养知识分类列表</h2>
+<h3>接口功能</h3>
+<blockquote>
+<p>获取所有营养知识分类名称</p>
+</blockquote>
+<h3>URL</h3>
+<blockquote>
+<p>http://localhost/xm/public/index.php/Index/yy/yytype</p>
+</blockquote>
+<h3>支持格式</h3>
+<blockquote>
+<p>JSON</p>
+</blockquote>
+<h3>HTTP请求方式</h3>
+<blockquote>
+<p>POST</p>
+</blockquote>
+<h3>传递参数</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">参数</th>
+	<th align="left">必选</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">\</td>
+	<td align="left">\</td>
+	<td>\</td>
+</tr>
+</tbody>
+</table>
+<h3>返回字段</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">返回字段</th>
+	<th align="left">字段类型</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">code</td>
+	<td align="left">int</td>
+	<td>返回结果状态。1：查询成功；2：暂无数据；3：参数传递错误</td>
+</tr>
+<tr>
+	<td align="left">msg</td>
+	<td align="left">string</td>
+	<td>返回信息。1：查询成功；2：暂无数据；3：参数传递错误</td>
+</tr>
+<tr>
+	<td align="left">data</td>
+	<td align="left">string</td>
+	<td>返回查询的结果</td>
+</tr>
+</tbody>
+</table>
+<h3>返回值</h3>
+<pre style="background:#222;color:#35b558">
+{
+code:"1",
+msg: "查询成功",
+data:[{"yytype_id":1,"yytype_name":"食品安全政策法规","create_time":"2019-07-30 09:51:04"},{"yytype_id":2,"yytype_name":"食品安全营养卫生国家标准","create_time":"2019-07-30 09:51:38"},{"yytype_id":3,"yytype_name":"营养膳食指南","create_time":"2019-07-30 09:51:53"},{"yytype_id":4,"yytype_name":"营养讲堂","create_time":"2019-07-30 09:52:06"}]
+}
+</pre>
+<p><br></p>
+<h2>5、营养知识文章列表</h2>
+<h3>接口功能</h3>
+<blockquote>
+<p>获取所有营养知识文章列表</p>
+</blockquote>
+<h3>URL</h3>
+<blockquote>
+<p>http://localhost/xm/public/index.php/Index/yy/index</p>
+</blockquote>
+<h3>支持格式</h3>
+<blockquote>
+<p>JSON</p>
+</blockquote>
+<h3>HTTP请求方式</h3>
+<blockquote>
+<p>POST</p>
+</blockquote>
+<h3>传递参数</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">参数</th>
+	<th align="left">必选</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">page</td>
+	<td align="left">false</td>
+	<td>页码</td>
+</tr>
+<tr>
+	<td align="left">limit</td>
+	<td align="left">false</td>
+	<td>每页的条数</td>
+</tr>
+<tr>
+	<td align="left">yytype_id</td>
+	<td align="left">false</td>
+	<td>营养知识分类ID</td>
+</tr>
+</tbody>
+</table>
+<h3>返回字段</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">返回字段</th>
+	<th align="left">字段类型</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">code</td>
+	<td align="left">int</td>
+	<td>返回结果状态。1：返回数据成功；2：暂无数据；3：参数传递错误</td>
+</tr>
+<tr>
+	<td align="left">msg</td>
+	<td align="left">string</td>
+	<td>返回信息。1：返回数据成功；2：暂无数据；3：参数传递错误</td>
+</tr>
+<tr>
+	<td align="left">data</td>
+	<td align="left">string</td>
+	<td>返回查询的结果</td>
+</tr>
+</tbody>
+</table>
+<h3>返回值</h3>
+<pre style="background:#222;color:#35b558">
+{
+code:"1",
+msg: "返回数据成功",
+data:[{"yyarticle_id":1,"yyarticle_title":"每日一则","yyarticle_content":"什么都没说，什么都没做收房产税DVD发<img src=\"\/xm\/public\/static\/uploads\/yy_img\/20190730\/98a827a2b16b18a601c164809f79724b.jpg\" alt=\"undefined\">","yyarticle_video":null,"yyarticle_img":"\/public\/static\/uploads\/yy_img\/20190730\/c24bab65728df0d98bf0e88d66d00cf3.jpg","yyarticle_thumbimg":"\/public\/static\/uploads\/yy_img\/20190730\/c24bab65728df0d98bf0e88d66d00cf3thumb.jpg","yyarticle_author":"李汉成","yytype_id":1,"yyarticle_ischarge":"1","yyarticle_standard":"2","yyarticle_isoff":"1","create_time":"2019-07-30 15:00:58"}]
+}
+</pre>
+<p><br></p>
+<h2>6、营养知识文章详情接口</h2>
+<h3>接口功能</h3>
+<blockquote>
+<p>根据菜品ID获取营养知识文章详细信息</p>
+</blockquote>
+<h3>URL</h3>
+<blockquote>
+<p>http://localhost/xm/public/index.php/Index/yy/yyDetail</p>
+</blockquote>
+<h3>支持格式</h3>
+<blockquote>
+<p>JSON</p>
+</blockquote>
+<h3>HTTP请求方式</h3>
+<blockquote>
+<p>POST</p>
+</blockquote>
+<h3>传递参数</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">参数</th>
+	<th align="left">必选</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">yyarticle_id</td>
+	<td align="left">true</td>
+	<td>营养知识文章ID</td>
+</tr>
+</tbody>
+</table>
+<h3>返回字段</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">返回字段</th>
+	<th align="left">字段类型</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">code</td>
+	<td align="left">int</td>
+	<td>返回结果状态。1：查询成功；2：暂无数据；3：参数传递错误</td>
+</tr>
+<tr>
+	<td align="left">msg</td>
+	<td align="left">string</td>
+	<td>返回信息。1：查询成功；2：暂无数据；3：参数传递错误</td>
+</tr>
+<tr>
+	<td align="left">data</td>
+	<td align="left">string</td>
+	<td>返回查询的结果</td>
+</tr>
+</tbody>
+</table>
+<h3>返回值</h3>
+<pre style="background:#222;color:#35b558">
+{
+code:"1",
+msg: "查询成功",
+data: 
+    {"yyarticle_id":1,"yyarticle_title":"每日一则","yyarticle_content":"什么都没说，什么都没做收房产税DVD发<img src=\"\/xm\/public\/static\/uploads\/yy_img\/20190730\/98a827a2b16b18a601c164809f79724b.jpg\" alt=\"undefined\">","yyarticle_video":null,"yyarticle_img":"\/public\/static\/uploads\/yy_img\/20190730\/c24bab65728df0d98bf0e88d66d00cf3.jpg","yyarticle_thumbimg":"\/public\/static\/uploads\/yy_img\/20190730\/c24bab65728df0d98bf0e88d66d00cf3thumb.jpg","yyarticle_author":"李汉成","yytype_id":1,"yyarticle_ischarge":"1","yyarticle_standard":"2","yyarticle_isoff":"1","create_time":"2019-07-30 15:00:58"}
+}
+</pre>
+<p><br></p>
+<h2>7、吃动平衡分类</h2>
+<h3>接口功能</h3>
+<blockquote>
+<p>获取所有吃动平衡分类</p>
+</blockquote>
+<h3>URL</h3>
+<blockquote>
+<p>http://localhost/xm/public/index.php/Index/course/cdtype</p>
+</blockquote>
+<h3>支持格式</h3>
+<blockquote>
+<p>JSON</p>
+</blockquote>
+<h3>HTTP请求方式</h3>
+<blockquote>
+<p>POST</p>
+</blockquote>
+<h3>传递参数</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">参数</th>
+	<th align="left">必选</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">\</td>
+	<td align="left">\</td>
+	<td>\</td>
+</tr>
+</tbody>
+</table>
+<h3>返回字段</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">返回字段</th>
+	<th align="left">字段类型</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">code</td>
+	<td align="left">int</td>
+	<td>返回结果状态。1：查询成功；2：暂无数据；3：参数传递错误</td>
+</tr>
+<tr>
+	<td align="left">msg</td>
+	<td align="left">string</td>
+	<td>返回信息。1：查询成功；2：暂无数据；3：参数传递错误</td>
+</tr>
+<tr>
+	<td align="left">data</td>
+	<td align="left">string</td>
+	<td>返回查询的结果</td>
+</tr>
+</tbody>
+</table>
+<h3>返回值</h3>
+<pre style="background:#222;color:#35b558">
+{
+code:"1",
+msg: "返回数据成功",
+data:[{"cdtype_id":1,"cdtype_name":"健身3","create_time":"2019-08-07 09:21:29"},{"cdtype_id":2,"cdtype_name":"游泳","create_time":"2019-08-07 09:23:43"}]
+}
+</pre>
+<p><br></p>
+<h2>8、名师制作分类</h2>
+<h3>接口功能</h3>
+<blockquote>
+<p>获取所有名师制作分类（二维数组）</p>
+</blockquote>
+<h3>URL</h3>
+<blockquote>
+<p>http://localhost/xm/public/index.php/Index/course/mstype</p>
+</blockquote>
+<h3>支持格式</h3>
+<blockquote>
+<p>JSON</p>
+</blockquote>
+<h3>HTTP请求方式</h3>
+<blockquote>
+<p>POST</p>
+</blockquote>
+<h3>传递参数</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">参数</th>
+	<th align="left">必选</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">user_id</td>
+	<td align="left">true</td>
+	<td>用户ID</td>
+</tr>
+</tbody>
+</table>
+<h3>返回字段</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">返回字段</th>
+	<th align="left">字段类型</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">code</td>
+	<td align="left">int</td>
+	<td>返回结果状态。1：查询成功；2：暂无数据；3：参数传递错误</td>
+</tr>
+<tr>
+	<td align="left">msg</td>
+	<td align="left">string</td>
+	<td>返回信息。1：查询成功；2：暂无数据；3：参数传递错误</td>
+</tr>
+<tr>
+	<td align="left">data</td>
+	<td align="left">string</td>
+	<td>返回查询的结果</td>
+</tr>
+</tbody>
+</table>
+<h3>返回值</h3>
+<pre style="background:#222;color:#35b558">
+{
+code:"1",
+msg: "返回数据成功",
+data:[{"mstype_id":1,"pid":0,"mstype_name":"中餐","mstype_img":"\/public\/static\/uploads\/Mstype_img\/20190816\/15c12ff439f52c511b9c70b5143d0716.jpg","sort":10000,"level":1,"create_time":"1565144714","child":[{"mstype_id":3,"pid":1,"mstype_name":"热菜","mstype_img":"\/public\/static\/uploads\/Mstype_img\/20190816\/463119278897fca224068c1803113bb3.jpg","sort":10001,"level":2,"create_time":"1565145753"},{"mstype_id":5,"pid":1,"mstype_name":"凉菜","mstype_img":null,"sort":10002,"level":2,"create_time":"1565145990"}]},{"mstype_id":2,"pid":0,"mstype_name":"西餐","mstype_img":null,"sort":20000,"level":1,"create_time":"1565144722","child":[{"mstype_id":4,"pid":2,"mstype_name":"热菜","mstype_img":null,"sort":20001,"level":2,"create_time":"1565145981"}]}]
+}
+</pre>
+<p><br></p>
+<h2>9、烹调方法分类</h2>
+<h3>接口功能</h3>
+<blockquote>
+<p>获取所有烹调方法分类</p>
+</blockquote>
+<h3>URL</h3>
+<blockquote>
+<p>http://localhost/xm/public/index.php/Index/cooking/pttype</p>
+</blockquote>
+<h3>支持格式</h3>
+<blockquote>
+<p>JSON</p>
+</blockquote>
+<h3>HTTP请求方式</h3>
+<blockquote>
+<p>POST</p>
+</blockquote>
+<h3>传递参数</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">参数</th>
+	<th align="left">必选</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">\</td>
+	<td align="left">\</td>
+	<td>\</td>
+</tr>
+</tbody>
+</table>
+<h3>返回字段</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">返回字段</th>
+	<th align="left">字段类型</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">code</td>
+	<td align="left">int</td>
+	<td>返回结果状态。1：查询成功；2：暂无数据；3：参数传递错误</td>
+</tr>
+<tr>
+	<td align="left">msg</td>
+	<td align="left">string</td>
+	<td>返回信息。1：查询成功；2：暂无数据；3：参数传递错误</td>
+</tr>
+<tr>
+	<td align="left">data</td>
+	<td align="left">string</td>
+	<td>返回查询的结果</td>
+</tr>
+</tbody>
+</table>
+<h3>返回值</h3>
+<pre style="background:#222;color:#35b558">
+{
+code:"1",
+msg: "返回数据成功",
+data:[{"pttype_id":1,"pid":0,"pttype_name":"中餐","sort":10000,"level":1,"create_time":"2019-08-02 09:01:46","search":[{"pttype_id":6,"pid":1,"pttype_name":"烹调基本功","sort":10001,"level":2,"create_time":"2019-08-02 09:19:00"},{"pttype_id":7,"pid":1,"pttype_name":"热菜啊","sort":10002,"level":2,"create_time":"2019-08-02 09:19:17"}]},{"pttype_id":2,"pid":0,"pttype_name":"西餐","sort":20000,"level":1,"create_time":"2019-08-02 09:02:52","search":[{"pttype_id":8,"pid":2,"pttype_name":"烹调基本功","sort":20001,"level":2,"create_time":"2019-08-02 09:19:33"},{"pttype_id":9,"pid":2,"pttype_name":"凉菜","sort":20002,"level":2,"create_time":"2019-08-02 09:19:45"}]}]
+}
+</pre>
+<p><br></p>
+<h2>10、烹调方法列表接口</h2>
+<h3>接口功能</h3>
+<blockquote>
+<p>获取烹调方法列表</p>
+</blockquote>
+<h3>URL</h3>
+<blockquote>
+<p>http://localhost/xm/public/index.php/Index/cooking/index</p>
+</blockquote>
+<h3>支持格式</h3>
+<blockquote>
+<p>JSON</p>
+</blockquote>
+<h3>HTTP请求方式</h3>
+<blockquote>
+<p>POST</p>
+</blockquote>
+<h3>传递参数</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">参数</th>
+	<th align="left">必选</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">page</td>
+	<td align="left">false</td>
+	<td>页码</td>
+</tr>
+<tr>
+	<td align="left">limit</td>
+	<td align="left">false</td>
+	<td>每页的条数</td>
+</tr>
+<tr>
+	<td align="left">pttype_id</td>
+	<td align="left">true</td>
+	<td>类型ID</td>
+</tr>
+</tbody>
+</table>
+<h3>返回字段</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">返回字段</th>
+	<th align="left">字段类型</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">code</td>
+	<td align="left">int</td>
+	<td>返回结果状态。1：返回数据成功；2：暂无数据</td>
+</tr>
+<tr>
+	<td align="left">msg</td>
+	<td align="left">string</td>
+	<td>返回信息。1：返回数据成功；2：暂无数据</td>
+</tr>
+<tr>
+	<td align="left">data</td>
+	<td align="left">string</td>
+	<td>返回查询的结果</td>
+</tr>
+</tbody>
+</table>
+<h3>返回值</h3>
+<pre style="background:#222;color:#35b558">
+{
+code:"1",
+msg: "返回数据成功",
+count:"1"
+data: [
+    {"cooking_id":1,"cooking_name":"炒3","pttype_id":9,"cooking_content":"沙发上东莞市的水电费第三方东方闪电反倒是广东省分公司非官方个<img src=\"\/xm\/public\/static\/uploads\/pt_img\/20190802\/59e06168935b1ab0794f624d3815ac7b.jpg\" alt=\"undefined\">","cooking_img":"\/public\/static\/uploads\/pt_img\/20190802\/8680f9c413ffcd8ab5dde5871ecbf8e9.jpg","cooking_thumbimg":"\/public\/static\/uploads\/pt_img\/20190802\/8680f9c413ffcd8ab5dde5871ecbf8e9thumb.jpg","cooking_video":null,"cooking_author":"亚瑟2","cooking_ischarge":"2","cooking_standard":"2","cooking_isoff":"2","create_time":"2019-08-02 11:33:17"}
+]
+}
+</pre>
+<p><br></p>
+<h2>11、烹调方法详情接口</h2>
+<h3>接口功能</h3>
+<blockquote>
+<p>根据烹调方法ID获取烹调方法详细信息</p>
+</blockquote>
+<h3>URL</h3>
+<blockquote>
+<p>http://localhost/xm/public/index.php/Index/cooking/cookingDetail</p>
+</blockquote>
+<h3>支持格式</h3>
+<blockquote>
+<p>JSON</p>
+</blockquote>
+<h3>HTTP请求方式</h3>
+<blockquote>
+<p>POST</p>
+</blockquote>
+<h3>传递参数</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">参数</th>
+	<th align="left">必选</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">cooking_id</td>
+	<td align="left">true</td>
+	<td>烹调方法ID</td>
+</tr>
+</tbody>
+</table>
+<h3>返回字段</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">返回字段</th>
+	<th align="left">字段类型</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">code</td>
+	<td align="left">int</td>
+	<td>返回结果状态。1：查询成功；2：暂无数据；3：参数传递错误</td>
+</tr>
+<tr>
+	<td align="left">msg</td>
+	<td align="left">string</td>
+	<td>返回信息。1：查询成功；2：暂无数据；3：参数传递错误</td>
+</tr>
+<tr>
+	<td align="left">data</td>
+	<td align="left">string</td>
+	<td>返回查询的结果</td>
+</tr>
+</tbody>
+</table>
+<h3>返回值</h3>
+<pre style="background:#222;color:#35b558">
+{
+code:"1",
+msg: "查询成功",
+data: 
+    {"cooking_id":1,"cooking_name":"炒3","pttype_id":9,"cooking_content":"沙发上东莞市的水电费第三方东方闪电反倒是广东省分公司非官方个<img src=\"\/xm\/public\/static\/uploads\/pt_img\/20190802\/59e06168935b1ab0794f624d3815ac7b.jpg\" alt=\"undefined\">","cooking_img":"\/public\/static\/uploads\/pt_img\/20190802\/8680f9c413ffcd8ab5dde5871ecbf8e9.jpg","cooking_thumbimg":"\/public\/static\/uploads\/pt_img\/20190802\/8680f9c413ffcd8ab5dde5871ecbf8e9thumb.jpg","cooking_video":null,"cooking_author":"亚瑟2","cooking_ischarge":"2","cooking_standard":"2","cooking_isoff":"2","create_time":"2019-08-02 11:33:17"}
+
+}
+</pre>
+<p><br></p>
+<h2>12、食材分类</h2>
+<h3>接口功能</h3>
+<blockquote>
+<p>获取所有食材分类</p>
+</blockquote>
+<h3>URL</h3>
+<blockquote>
+<p>http://localhost/xm/public/index.php/Index/Ingredients/sctype</p>
+</blockquote>
+<h3>支持格式</h3>
+<blockquote>
+<p>JSON</p>
+</blockquote>
+<h3>HTTP请求方式</h3>
+<blockquote>
+<p>POST</p>
+</blockquote>
+<h3>传递参数</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">参数</th>
+	<th align="left">必选</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">sctype_flag</td>
+	<td align="left">true</td>
+	<td>1国内食材，2国外食材</td>
+</tr>
+</tbody>
+</table>
+<h3>返回字段</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">返回字段</th>
+	<th align="left">字段类型</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">code</td>
+	<td align="left">int</td>
+	<td>返回结果状态。1：查询成功；2：暂无数据；3：参数传递错误</td>
+</tr>
+<tr>
+	<td align="left">msg</td>
+	<td align="left">string</td>
+	<td>返回信息。1：查询成功；2：暂无数据；3：参数传递错误</td>
+</tr>
+<tr>
+	<td align="left">data</td>
+	<td align="left">string</td>
+	<td>返回查询的结果</td>
+</tr>
+</tbody>
+</table>
+<h3>返回值</h3>
+<pre style="background:#222;color:#35b558">
+{
+code:"1",
+msg: "返回数据成功",
+data:[{"sctype_id":3,"pid":1,"sctype_name":"蔬菜国内","sctype_img":null,"sort":11000,"level":2,"create_time":"1970-01-01 08:00:00","two":[{"sctype_id":5,"pid":3,"sctype_name":"茎菜类","sctype_img":null,"sort":11100,"level":3,"create_time":"1970-01-01 08:00:00","three":[{"sctype_id":10,"pid":5,"sctype_name":"芹菜","sctype_img":null,"sort":11101,"level":4,"create_time":"1970-01-01 08:00:00"}]},{"sctype_id":6,"pid":3,"sctype_name":"根菜类","sctype_img":null,"sort":11200,"level":3,"create_time":"1970-01-01 08:00:00","three":[]},{"sctype_id":7,"pid":3,"sctype_name":"叶菜类","sctype_img":null,"sort":11300,"level":3,"create_time":"1970-01-01 08:00:00","three":[{"sctype_id":8,"pid":7,"sctype_name":"菠菜","sctype_img":null,"sort":11301,"level":4,"create_time":"1970-01-01 08:00:00"}]}]},{"sctype_id":11,"pid":1,"sctype_name":"谷物","sctype_img":null,"sort":12000,"level":2,"create_time":"1970-01-01 08:00:00","two":[{"sctype_id":14,"pid":11,"sctype_name":"大米","sctype_img":null,"sort":12100,"level":3,"create_time":"2019-08-01 08:37:07","three":[]},{"sctype_id":15,"pid":11,"sctype_name":"小米","sctype_img":null,"sort":12200,"level":3,"create_time":"2019-08-01 08:41:41","three":[{"sctype_id":16,"pid":15,"sctype_name":"锦州小米","sctype_img":null,"sort":12201,"level":4,"create_time":"2019-08-01 08:46:58"}]}]},{"sctype_id":12,"pid":1,"sctype_name":"调料","sctype_img":null,"sort":13000,"level":2,"create_time":"2019-07-31 17:37:28","two":[{"sctype_id":13,"pid":12,"sctype_name":"孜然粉","sctype_img":null,"sort":13100,"level":3,"create_time":"2019-07-31 17:37:41","three":[]}]}]
+}
+</pre>
+<p><br></p>
+<h2>13、食材列表接口</h2>
+<h3>接口功能</h3>
+<blockquote>
+<p>获取食材列表</p>
+</blockquote>
+<h3>URL</h3>
+<blockquote>
+<p>http://localhost/xm/public/index.php/Index/Ingredients/index</p>
+</blockquote>
+<h3>支持格式</h3>
+<blockquote>
+<p>JSON</p>
+</blockquote>
+<h3>HTTP请求方式</h3>
+<blockquote>
+<p>POST</p>
+</blockquote>
+<h3>传递参数</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">参数</th>
+	<th align="left">必选</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">page</td>
+	<td align="left">false</td>
+	<td>页码</td>
+</tr>
+<tr>
+	<td align="left">limit</td>
+	<td align="left">false</td>
+	<td>每页的条数</td>
+</tr>
+<tr>
+	<td align="left">sctype_id</td>
+	<td align="left">true</td>
+	<td>类型ID</td>
+</tr>
+</tbody>
+</table>
+<h3>返回字段</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">返回字段</th>
+	<th align="left">字段类型</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">code</td>
+	<td align="left">int</td>
+	<td>返回结果状态。1：返回数据成功；2：暂无数据</td>
+</tr>
+<tr>
+	<td align="left">msg</td>
+	<td align="left">string</td>
+	<td>返回信息。1：返回数据成功；2：暂无数据</td>
+</tr>
+<tr>
+	<td align="left">data</td>
+	<td align="left">string</td>
+	<td>返回查询的结果</td>
+</tr>
+</tbody>
+</table>
+<h3>返回值</h3>
+<pre style="background:#222;color:#35b558">
+{
+code:"1",
+msg: "返回数据成功",
+count:"1"
+data: [
+    {"cooking_id":1,"cooking_name":"炒3","pttype_id":9,"cooking_content":"沙发上东莞市的水电费第三方东方闪电反倒是广东省分公司非官方个<img src=\"\/xm\/public\/static\/uploads\/pt_img\/20190802\/59e06168935b1ab0794f624d3815ac7b.jpg\" alt=\"undefined\">","cooking_img":"\/public\/static\/uploads\/pt_img\/20190802\/8680f9c413ffcd8ab5dde5871ecbf8e9.jpg","cooking_thumbimg":"\/public\/static\/uploads\/pt_img\/20190802\/8680f9c413ffcd8ab5dde5871ecbf8e9thumb.jpg","cooking_video":null,"cooking_author":"亚瑟2","cooking_ischarge":"2","cooking_standard":"2","cooking_isoff":"2","create_time":"2019-08-02 11:33:17"}
+]
+}
+</pre>
+<p><br></p>
+<h2>14、食材详情接口</h2>
+<h3>接口功能</h3>
+<blockquote>
+<p>根据食材ID获取食材详细信息</p>
+</blockquote>
+<h3>URL</h3>
+<blockquote>
+<p>http://localhost/xm/public/index.php/Index/Ingredients/IngredientsDetail</p>
+</blockquote>
+<h3>支持格式</h3>
+<blockquote>
+<p>JSON</p>
+</blockquote>
+<h3>HTTP请求方式</h3>
+<blockquote>
+<p>POST</p>
+</blockquote>
+<h3>传递参数</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">参数</th>
+	<th align="left">必选</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">ingredients_id</td>
+	<td align="left">true</td>
+	<td>食材ID</td>
+</tr>
+</tbody>
+</table>
+<h3>返回字段</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">返回字段</th>
+	<th align="left">字段类型</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">code</td>
+	<td align="left">int</td>
+	<td>返回结果状态。1：查询成功；2：暂无数据；3：参数传递错误</td>
+</tr>
+<tr>
+	<td align="left">msg</td>
+	<td align="left">string</td>
+	<td>返回信息。1：查询成功；2：暂无数据；3：参数传递错误</td>
+</tr>
+<tr>
+	<td align="left">data</td>
+	<td align="left">string</td>
+	<td>返回查询的结果</td>
+</tr>
+</tbody>
+</table>
+<h3>返回值</h3>
+<pre style="background:#222;color:#35b558">
+{
+code:"1",
+msg: "查询成功",
+data: 
+    {"ingredients_id":1,"ingredients_name":"圆叶菠菜2","sctype_id":8,"ingredients_content":"；时代峻峰了快结束了的开发模式的类库南方","ingredients_img":"\/public\/static\/uploads\/sc_img\/20190801\/afe8daa3dfc3b38689e483768b8643e8.jpg","ingredients_thumbimg":"\/public\/static\/uploads\/sc_img\/20190801\/afe8daa3dfc3b38689e483768b8643e8thumb.jpg","ingredients_place":"石家庄","ingredients_season":"夏季","create_time":"2019-08-01 15:44:02"}
+
+}
+</pre>
+<p><br></p>
+<h2>15、妇幼营养分类</h2>
+<h3>接口功能</h3>
+<blockquote>
+<p>获取所有妇幼营养分类</p>
+</blockquote>
+<h3>URL</h3>
+<blockquote>
+<p>http://localhost/xm/public/index.php/Index/Recipes/fytype</p>
+</blockquote>
+<h3>支持格式</h3>
+<blockquote>
+<p>JSON</p>
+</blockquote>
+<h3>HTTP请求方式</h3>
+<blockquote>
+<p>POST</p>
+</blockquote>
+<h3>传递参数</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">参数</th>
+	<th align="left">必选</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">fytype_flag</td>
+	<td align="left">true</td>
+	<td>1孕产妇，2婴幼儿</td>
+</tr>
+</tbody>
+</table>
+<h3>返回字段</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">返回字段</th>
+	<th align="left">字段类型</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">code</td>
+	<td align="left">int</td>
+	<td>返回结果状态。1：查询成功；2：暂无数据；3：参数传递错误</td>
+</tr>
+<tr>
+	<td align="left">msg</td>
+	<td align="left">string</td>
+	<td>返回信息。1：查询成功；2：暂无数据；3：参数传递错误</td>
+</tr>
+<tr>
+	<td align="left">data</td>
+	<td align="left">string</td>
+	<td>返回查询的结果</td>
+</tr>
+</tbody>
+</table>
+<h3>返回值</h3>
+<pre style="background:#222;color:#35b558">
+{
+code:"1",
+msg: "返回数据成功",
+data:[{"fytype_id":3,"pid":1,"fytype_name":"哺乳期","fytype_img":null,"sort":11000,"level":2,"create_time":"2019-08-02 17:35:36","two":[{"fytype_id":4,"pid":3,"fytype_name":"早餐","fytype_img":null,"sort":11001,"level":3,"create_time":"2019-08-02 17:39:15"},{"fytype_id":5,"pid":3,"fytype_name":"中餐","fytype_img":null,"sort":11002,"level":3,"create_time":"2019-08-15 11:18:20"}]},{"fytype_id":6,"pid":1,"fytype_name":"孕早期","fytype_img":"\/public\/static\/uploads\/Fytype_img\/20190816\/e9d3ba1a8e1ffd5563ae9ebfd58ed29c.jpg","sort":12000,"level":2,"create_time":"2019-08-16 11:59:29","two":[]}]
+}
+</pre>
+<p><br></p>
+<h2>16、妇幼营养列表接口</h2>
+<h3>接口功能</h3>
+<blockquote>
+<p>获取妇幼营养食谱列表</p>
+</blockquote>
+<h3>URL</h3>
+<blockquote>
+<p>http://localhost/xm/public/index.php/Index/Recipes/index</p>
+</blockquote>
+<h3>支持格式</h3>
+<blockquote>
+<p>JSON</p>
+</blockquote>
+<h3>HTTP请求方式</h3>
+<blockquote>
+<p>POST</p>
+</blockquote>
+<h3>传递参数</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">参数</th>
+	<th align="left">必选</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">page</td>
+	<td align="left">false</td>
+	<td>页码</td>
+</tr>
+<tr>
+	<td align="left">limit</td>
+	<td align="left">false</td>
+	<td>每页的条数</td>
+</tr>
+<tr>
+	<td align="left">fytype_id</td>
+	<td align="left">true</td>
+	<td>类型ID</td>
+</tr>
+</tbody>
+</table>
+<h3>返回字段</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">返回字段</th>
+	<th align="left">字段类型</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">code</td>
+	<td align="left">int</td>
+	<td>返回结果状态。1：返回数据成功；2：暂无数据</td>
+</tr>
+<tr>
+	<td align="left">msg</td>
+	<td align="left">string</td>
+	<td>返回信息。1：返回数据成功；2：暂无数据</td>
+</tr>
+<tr>
+	<td align="left">data</td>
+	<td align="left">string</td>
+	<td>返回查询的结果</td>
+</tr>
+</tbody>
+</table>
+<h3>返回值</h3>
+<pre style="background:#222;color:#35b558">
+{
+code:"1",
+msg: "返回数据成功",
+count:"1"
+data: [
+    {"recipes_id":1,"recipes_name":"哺乳期早餐食谱","fytype_id":4,"recipes_fruits":"苹果","recipes_fruits_num":100,"recipes_food":"牛奶燕麦","recipes_food_num":200,"recipes_staple":"全麦面包","recipes_staple_num":100,"recipes_nuts":"核桃","recipes_nuts_num":50,"recipes_Nutrition":null,"recipes_isoff":"2","create_time":"2019-08-15 09:44:42"}
+]
+}
+</pre>
+<p><br></p>
+<h2>17、妇幼营养详情接口</h2>
+<h3>接口功能</h3>
+<blockquote>
+<p>根据妇幼营养ID获取食谱详细信息</p>
+</blockquote>
+<h3>URL</h3>
+<blockquote>
+<p>http://localhost/xm/public/index.php/Index/Recipes/recipesDetail</p>
+</blockquote>
+<h3>支持格式</h3>
+<blockquote>
+<p>JSON</p>
+</blockquote>
+<h3>HTTP请求方式</h3>
+<blockquote>
+<p>POST</p>
+</blockquote>
+<h3>传递参数</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">参数</th>
+	<th align="left">必选</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">recipes_id</td>
+	<td align="left">true</td>
+	<td>食谱ID</td>
+</tr>
+</tbody>
+</table>
+<h3>返回字段</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">返回字段</th>
+	<th align="left">字段类型</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">code</td>
+	<td align="left">int</td>
+	<td>返回结果状态。1：查询成功；2：暂无数据；3：参数传递错误</td>
+</tr>
+<tr>
+	<td align="left">msg</td>
+	<td align="left">string</td>
+	<td>返回信息。1：查询成功；2：暂无数据；3：参数传递错误</td>
+</tr>
+<tr>
+	<td align="left">data</td>
+	<td align="left">string</td>
+	<td>返回菜谱基本信息</td>
+</tr>
+<tr>
+	<td align="left">fruits</td>
+	<td align="left">string</td>
+	<td>返回食谱中所有水果信息</td>
+</tr>
+<tr>
+	<td align="left">food</td>
+	<td align="left">string</td>
+	<td>返回食谱中所有菜品信息</td>
+</tr>
+<tr>
+	<td align="left">staple</td>
+	<td align="left">string</td>
+	<td>返回食谱中所有主食信息</td>
+</tr>
+<tr>
+	<td align="left">nuts</td>
+	<td align="left">string</td>
+	<td>返回食谱中所有坚果信息</td>
+</tr>
+</tbody>
+</table>
+<h3>返回值</h3>
+<pre style="background:#222;color:#35b558">
+{
+{"code":1,"msg":"查询成功","data":{"recipes_id":1,"recipes_name":"哺乳期早餐食谱3","fytype_id":4,"recipes_isoff":"2","create_time":"2019-08-15 09:44:42"},"fruits":[{"fruit_id":3,"recipes_id":1,"recipes_fruits":"苹果3","recipes_fruits_num":10},{"fruit_id":31,"recipes_id":1,"recipes_fruits":"桃子","recipes_fruits_num":10},{"fruit_id":34,"recipes_id":1,"recipes_fruits":"测试水果1","recipes_fruits_num":1},{"fruit_id":35,"recipes_id":1,"recipes_fruits":"测试水果2","recipes_fruits_num":2},{"fruit_id":36,"recipes_id":1,"recipes_fruits":"测试水果3","recipes_fruits_num":3},{"fruit_id":40,"recipes_id":1,"recipes_fruits":"测试水果4","recipes_fruits_num":20}],"food":[{"food_id":2,"recipes_id":1,"recipes_food":"燕麦","recipes_food_num":160},{"food_id":6,"recipes_id":1,"recipes_food":"蒜蓉西兰花3","recipes_food_num":200},{"food_id":7,"recipes_id":1,"recipes_food":"西红柿","recipes_food_num":50},{"food_id":11,"recipes_id":1,"recipes_food":"测试菜品","recipes_food_num":1},{"food_id":12,"recipes_id":1,"recipes_food":"菜品","recipes_food_num":2}],"staple":[{"staple_id":1,"recipes_id":1,"recipes_staple":"全麦面包","recipes_staple_num":200},{"staple_id":3,"recipes_id":1,"recipes_staple":"全麦面包2","recipes_staple_num":2000},{"staple_id":5,"recipes_id":1,"recipes_staple":"馒头","recipes_staple_num":50},{"staple_id":6,"recipes_id":1,"recipes_staple":"烧饼","recipes_staple_num":50},{"staple_id":10,"recipes_id":1,"recipes_staple":"测试主食1","recipes_staple_num":1},{"staple_id":11,"recipes_id":1,"recipes_staple":"测试主食2","recipes_staple_num":2}],"nuts":[{"nuts_id":3,"recipes_id":1,"recipes_nuts":"黑芝麻","recipes_nuts_num":1},{"nuts_id":5,"recipes_id":1,"recipes_nuts":"黑芝麻","recipes_nuts_num":10},{"nuts_id":6,"recipes_id":1,"recipes_nuts":"巴旦木","recipes_nuts_num":10},{"nuts_id":9,"recipes_id":1,"recipes_nuts":"测试坚果","recipes_nuts_num":1}]}
+</pre>
+<p><br></p>
+<h2>18、用户类别接口</h2>
+<h3>接口功能</h3>
+<blockquote>
+<p>获取所有用户类别</p>
+</blockquote>
+<h3>URL</h3>
+<blockquote>
+<p>http://localhost/xm/public/index.php/Index/user/usertype</p>
+</blockquote>
+<h3>支持格式</h3>
+<blockquote>
+<p>JSON</p>
+</blockquote>
+<h3>HTTP请求方式</h3>
+<blockquote>
+<p>POST</p>
+</blockquote>
+<h3>传递参数</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">参数</th>
+	<th align="left">必选</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">\</td>
+	<td align="left">\</td>
+	<td>\</td>
+</tr>
+</tbody>
+</table>
+<h3>返回字段</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">返回字段</th>
+	<th align="left">字段类型</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">code</td>
+	<td align="left">int</td>
+	<td>返回结果状态。1：查询成功；2：暂无数据；</td>
+</tr>
+<tr>
+	<td align="left">msg</td>
+	<td align="left">string</td>
+	<td>返回信息。1：查询成功；2：暂无数据；</td>
+</tr>
+<tr>
+	<td align="left">data</td>
+	<td align="left">string</td>
+	<td>返回信息；</td>
+</tr>
+</tbody>
+</table>
+<h3>返回值</h3>
+<pre style="background:#222;color:#35b558">
+{
+code:"1",
+msg: "查询成功",
+data:[{"usertype_id":1,"usertype_name":"普通用户","create_time":"2019-07-29 14:57:45"},{"usertype_id":2,"usertype_name":"运动员","create_time":"2019-07-29 14:58:15"},{"usertype_id":3,"usertype_name":"名师","create_time":"2019-08-08 09:05:43"},{"usertype_id":4,"usertype_name":"高工","create_time":"2019-08-08 10:13:21"},{"usertype_id":5,"usertype_name":"技师","create_time":"2019-08-08 10:13:28"},{"usertype_id":6,"usertype_name":"达人","create_time":"2019-08-08 10:13:35"}]
+}
+</pre>
+<p><br></p>
+<h2>19、用户列表接口</h2>
+<h3>接口功能</h3>
+<blockquote>
+<p>名师制作：名师列表
+吃动平衡：运动员列表</p>
+</blockquote>
+<h3>URL</h3>
+<blockquote>
+<p>http://localhost/xm/public/index.php/Index/user/user</p>
+</blockquote>
+<h3>支持格式</h3>
+<blockquote>
+<p>JSON</p>
+</blockquote>
+<h3>HTTP请求方式</h3>
+<blockquote>
+<p>POST</p>
+</blockquote>
+<h3>传递参数</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">参数</th>
+	<th align="left">必选</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">usertype_id</td>
+	<td align="left">true</td>
+	<td>1名师制作从上一级ID获取；2吃动平衡：usertype_id=2</td>
+</tr>
+<tr>
+	<td align="left">cdtype_id</td>
+	<td align="left">名师制作false ，吃动平衡true</td>
+	<td>运动类别ID</td>
+</tr>
+</tbody>
+</table>
+<h3>返回字段</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">返回字段</th>
+	<th align="left">字段类型</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">code</td>
+	<td align="left">int</td>
+	<td>返回结果状态。1：查询成功；2：暂无数据；</td>
+</tr>
+<tr>
+	<td align="left">msg</td>
+	<td align="left">string</td>
+	<td>返回信息。1：查询成功；2：暂无数据；</td>
+</tr>
+<tr>
+	<td align="left">data</td>
+	<td align="left">string</td>
+	<td>返回信息；</td>
+</tr>
+</tbody>
+</table>
+<h3>返回值</h3>
+<pre style="background:#222;color:#35b558">
+{
+code:"1",
+msg: "查询成功",
+data:[{"user_id":1,"user_nickname":"小伟同学","user_phone":"13028698661","user_name":"王伟","usertype_id":1,"user_cardid":"131126199310161820","user_cardpica":"\/public\/static\/uploads\/user_img\/20190729\/6af1da69a552bb958d8a2c8a42cab32f.jpg","user_cardpicb":"\/public\/static\/uploads\/user_img\/20190729\/75679e03d259fbcfa1db05a0f6db2f23.jpg","user_certificate":"\/public\/static\/uploads\/user_img\/20190729\/6c8289b6c40461021bc9593a442e0a54.jpg","user_pic":"\/public\/static\/uploads\/user_img\/20190729\/1e3e9ffba65197bfbd88f101519ad220.jpg","user_address":"河北省石家庄市","user_years":"3","user_audit":"1","create_time":"2019-07-29 17:04:01"}]
+}
+</pre>
+<p><br></p>
+<h2>20、用户认证接口</h2>
+<h3>接口功能</h3>
+<blockquote>
+<p>用户提交资料，进行认证</p>
+</blockquote>
+<h3>URL</h3>
+<blockquote>
+<p>http://localhost/xm/public/index.php/Index/user/authentication</p>
+</blockquote>
+<h3>支持格式</h3>
+<blockquote>
+<p>JSON</p>
+</blockquote>
+<h3>HTTP请求方式</h3>
+<blockquote>
+<p>POST</p>
+</blockquote>
+<h3>传递参数</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">参数</th>
+	<th align="left">必选</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">user_id</td>
+	<td align="left">true</td>
+	<td>用户ID</td>
+</tr>
+<tr>
+	<td align="left">user_name</td>
+	<td align="left">true</td>
+	<td>用户姓名</td>
+</tr>
+<tr>
+	<td align="left">usertype_id</td>
+	<td align="left">true</td>
+	<td>用户类别</td>
+</tr>
+<tr>
+	<td align="left">user_cardid</td>
+	<td align="left">true</td>
+	<td>用户身份证号</td>
+</tr>
+<tr>
+	<td align="left">user_cardpica</td>
+	<td align="left">true</td>
+	<td>身份证正面照</td>
+</tr>
+<tr>
+	<td align="left">user_cardpicb</td>
+	<td align="left">true</td>
+	<td>身份证反面照</td>
+</tr>
+<tr>
+	<td align="left">user_certificate</td>
+	<td align="left">true</td>
+	<td>资质证书照</td>
+</tr>
+<tr>
+	<td align="left">user_pic</td>
+	<td align="left">true</td>
+	<td>个人形象照</td>
+</tr>
+<tr>
+	<td align="left">user_address</td>
+	<td align="left">true</td>
+	<td>工作地址</td>
+</tr>
+<tr>
+	<td align="left">user_years</td>
+	<td align="left">true</td>
+	<td>工作年限</td>
+</tr>
+</tbody>
+</table>
+<h3>返回字段</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">返回字段</th>
+	<th align="left">字段类型</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">code</td>
+	<td align="left">int</td>
+	<td>返回结果状态。1：认证成功，请耐心等待审核结果；2：认证失败；3：未接收到用户信息</td>
+</tr>
+<tr>
+	<td align="left">msg</td>
+	<td align="left">string</td>
+	<td>返回信息。1：认证成功，请耐心等待审核结果；2：认证失败；3：未接收到用户信息</td>
+</tr>
+</tbody>
+</table>
+<h3>返回值</h3>
+<pre style="background:#222;color:#35b558">
+{
+code:"1",
+msg: "认证成功，请耐心等待审核结果"
+}
+</pre>
+<p><br></p>
+<h2>21、上传图片接口</h2>
+<h3>接口功能</h3>
+<blockquote>
+<p>图片上传</p>
+</blockquote>
+<h3>URL</h3>
+<blockquote>
+<p>http://localhost/xm/public/index.php/Index/index/img_upload</p>
+</blockquote>
+<h3>支持格式</h3>
+<blockquote>
+<p>JSON</p>
+</blockquote>
+<h3>HTTP请求方式</h3>
+<blockquote>
+<p>POST</p>
+</blockquote>
+<h3>传递参数</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">参数</th>
+	<th align="left">必选</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">\</td>
+	<td align="left">\</td>
+	<td>\</td>
+</tr>
+</tbody>
+</table>
+<h3>返回字段</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">返回字段</th>
+	<th align="left">字段类型</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">code</td>
+	<td align="left">int</td>
+	<td>返回结果状态。1：上传成功，请耐心等待审核结果；2：上传失败；3：未接收到图片信息</td>
+</tr>
+<tr>
+	<td align="left">msg</td>
+	<td align="left">string</td>
+	<td>返回信息。1：上传成功，请耐心等待审核结果；2：上传失败；3：未接收到图片信息</td>
+</tr>
+<tr>
+	<td align="left">img_url</td>
+	<td align="left">string</td>
+	<td>图片路径</td>
+</tr>
+<tr>
+	<td align="left">thumb_url</td>
+	<td align="left">string</td>
+	<td>缩略图路径</td>
+</tr>
+</tbody>
+</table>
+<h3>返回值</h3>
+<pre style="background:#222;color:#35b558">
+{
+code:"2",
+msg: "上传失败"
+}
+</pre>
+<p><br></p>
+<h2>22、收藏接口</h2>
+<h3>接口功能</h3>
+<blockquote>
+<p>收藏：名师制作，吃动平衡，烹调方法，食材，妇幼营养，营养知识</p>
+</blockquote>
+<h3>URL</h3>
+<blockquote>
+<p>http://localhost/xm/public/index.php/Index/collect/collect</p>
+</blockquote>
+<h3>支持格式</h3>
+<blockquote>
+<p>JSON</p>
+</blockquote>
+<h3>HTTP请求方式</h3>
+<blockquote>
+<p>POST</p>
+</blockquote>
+<h3>传递参数</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">参数</th>
+	<th align="left">必选</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">user_id</td>
+	<td align="left">true</td>
+	<td>用户ID</td>
+</tr>
+<tr>
+	<td align="left">type_id</td>
+	<td align="left">true</td>
+	<td>类型ID</td>
+</tr>
+<tr>
+	<td align="left">collect_flag</td>
+	<td align="left">true</td>
+	<td>模块标识：1名师，2吃动，3烹调，4妇幼，5食材，6营养</td>
+</tr>
+</tbody>
+</table>
+<h3>返回字段</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">返回字段</th>
+	<th align="left">字段类型</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">code</td>
+	<td align="left">int</td>
+	<td>返回结果状态。1：收藏成功；2：收藏失败；3：未接收到收藏信息</td>
+</tr>
+<tr>
+	<td align="left">msg</td>
+	<td align="left">string</td>
+	<td>返回信息。1：收藏成功；2：收藏失败；3：未接收到收藏信息</td>
+</tr>
+<tr>
+	<td align="left">collect_id</td>
+	<td align="left">string</td>
+	<td>收藏ID</td>
+</tr>
+</tbody>
+</table>
+<h3>返回值</h3>
+<pre style="background:#222;color:#35b558">
+{
+code:"1",
+msg: "收藏成功",
+collect_id:1
+}
+</pre>
+<p><br></p>
+<h2>23、取消收藏接口</h2>
+<h3>接口功能</h3>
+<blockquote>
+<p>取消收藏</p>
+</blockquote>
+<h3>URL</h3>
+<blockquote>
+<p>http://localhost/xm/public/index.php/Index/collect/collectDel</p>
+</blockquote>
+<h3>支持格式</h3>
+<blockquote>
+<p>JSON</p>
+</blockquote>
+<h3>HTTP请求方式</h3>
+<blockquote>
+<p>POST</p>
+</blockquote>
+<h3>传递参数</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">参数</th>
+	<th align="left">必选</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">collect_id</td>
+	<td align="left">true</td>
+	<td>收藏ID</td>
+</tr>
+</tbody>
+</table>
+<h3>返回字段</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">返回字段</th>
+	<th align="left">字段类型</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">code</td>
+	<td align="left">int</td>
+	<td>返回结果状态。1：取消收藏；2：取消失败；3：未接收到收藏信息</td>
+</tr>
+<tr>
+	<td align="left">msg</td>
+	<td align="left">string</td>
+	<td>返回信息。1：取消收藏；2：取消失败；3：未接收到收藏信息</td>
+</tr>
+</tbody>
+</table>
+<h3>返回值</h3>
+<pre style="background:#222;color:#35b558">
+{
+code:"1",
+msg: "取消收藏"
+}
+</pre>
+<p><br></p>
+<h2>24、我的收藏接口</h2>
+<h3>接口功能</h3>
+<blockquote>
+<p>我的收藏</p>
+</blockquote>
+<h3>URL</h3>
+<blockquote>
+<p>http://localhost/xm/public/index.php/Index/collect/myCollect</p>
+</blockquote>
+<h3>支持格式</h3>
+<blockquote>
+<p>JSON</p>
+</blockquote>
+<h3>HTTP请求方式</h3>
+<blockquote>
+<p>POST</p>
+</blockquote>
+<h3>传递参数</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">参数</th>
+	<th align="left">必选</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">page</td>
+	<td align="left">false</td>
+	<td>页码</td>
+</tr>
+<tr>
+	<td align="left">limit</td>
+	<td align="left">false</td>
+	<td>每页条数</td>
+</tr>
+<tr>
+	<td align="left">user_id</td>
+	<td align="left">true</td>
+	<td>用户ID</td>
+</tr>
+<tr>
+	<td align="left">collect_flag</td>
+	<td align="left">true</td>
+	<td>模块标识：1名师，2吃动，3烹调，4妇幼，5食材，6营养</td>
+</tr>
+</tbody>
+</table>
+<h3>返回字段</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">返回字段</th>
+	<th align="left">字段类型</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">code</td>
+	<td align="left">int</td>
+	<td>返回结果状态。1：查询成功；2：暂无数据；3：未接收到收藏信息；4：提交数据有误，暂无数据</td>
+</tr>
+<tr>
+	<td align="left">msg</td>
+	<td align="left">string</td>
+	<td>返回信息。1：查询成功；2：暂无数据；3：未接收到收藏信息；4：提交数据有误，暂无数据</td>
+</tr>
+<tr>
+	<td align="left">data</td>
+	<td align="left">string</td>
+	<td>返回数据</td>
+</tr>
+</tbody>
+</table>
+<h3>返回值</h3>
+<pre style="background:#222;color:#35b558">
+{
+code:"1",
+msg: "查询成功",
+data:[{"collect_id":2,"user_id":1,"type_id":5,"collect_flag":"1","create_time":"2019-08-08 11:45:37","course_id":3,"course_name":"西红柿炒鸡蛋","course_content":"U岁闺女好个","course_img":"\/public\/static\/uploads\/Ms_img\/20190808\/176c81d09013c91da3d3d02304d468df.jpg","course_thumbimg":"\/public\/static\/uploads\/Ms_img\/20190808\/176c81d09013c91da3d3d02304d468dfthumb.jpg","course_video":null,"course_author":"欧文","usertype_id":3,"course_ischarge":"1","course_standard":"7","course_isoff":"1","course_flag":"2"}]
+}
+</pre>
+<p><br></p>
+<h2>25、订单接口</h2>
+<h3>接口功能</h3>
+<blockquote>
+<p>订单：名师制作，吃动平衡，烹调方法，妇幼营养，营养知识</p>
+</blockquote>
+<h3>URL</h3>
+<blockquote>
+<p>http://localhost/xm/public/index.php/Index/order/order</p>
+</blockquote>
+<h3>支持格式</h3>
+<blockquote>
+<p>JSON</p>
+</blockquote>
+<h3>HTTP请求方式</h3>
+<blockquote>
+<p>POST</p>
+</blockquote>
+<h3>传递参数</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">参数</th>
+	<th align="left">必选</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">user_id</td>
+	<td align="left">true</td>
+	<td>用户ID</td>
+</tr>
+<tr>
+	<td align="left">type_id</td>
+	<td align="left">true</td>
+	<td>类型ID</td>
+</tr>
+<tr>
+	<td align="left">order_status</td>
+	<td align="left">true</td>
+	<td>支付状态</td>
+</tr>
+<tr>
+	<td align="left">order_flag</td>
+	<td align="left">true</td>
+	<td>模块标识：1名师，2吃动，3烹调，4妇幼，6营养</td>
+</tr>
+</tbody>
+</table>
+<h3>返回字段</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">返回字段</th>
+	<th align="left">字段类型</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">code</td>
+	<td align="left">int</td>
+	<td>返回结果状态。1：购买成功；2：购买失败；3：未接收到订单信息</td>
+</tr>
+<tr>
+	<td align="left">msg</td>
+	<td align="left">string</td>
+	<td>返回信息。1：购买成功；2：购买失败；3：未接收到订单信息</td>
+</tr>
+</tbody>
+</table>
+<h3>返回值</h3>
+<pre style="background:#222;color:#35b558">
+{
+code:"1",
+msg: "购买成功"
+}
+</pre>
+<p><br></p>
+<h2>26、我的订单接口</h2>
+<h3>接口功能</h3>
+<blockquote>
+<p>我的订单</p>
+</blockquote>
+<h3>URL</h3>
+<blockquote>
+<p>http://localhost/xm/public/index.php/Index/order/myorder</p>
+</blockquote>
+<h3>支持格式</h3>
+<blockquote>
+<p>JSON</p>
+</blockquote>
+<h3>HTTP请求方式</h3>
+<blockquote>
+<p>POST</p>
+</blockquote>
+<h3>传递参数</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">参数</th>
+	<th align="left">必选</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">page</td>
+	<td align="left">false</td>
+	<td>页码</td>
+</tr>
+<tr>
+	<td align="left">limit</td>
+	<td align="left">false</td>
+	<td>每页条数</td>
+</tr>
+<tr>
+	<td align="left">user_id</td>
+	<td align="left">true</td>
+	<td>用户ID</td>
+</tr>
+<tr>
+	<td align="left">collect_flag</td>
+	<td align="left">true</td>
+	<td>模块标识：1名师，2吃动，3烹调，4妇幼，6营养</td>
+</tr>
+</tbody>
+</table>
+<h3>返回字段</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">返回字段</th>
+	<th align="left">字段类型</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">code</td>
+	<td align="left">int</td>
+	<td>返回结果状态。1：查询成功；2：暂无数据；3：未接收到收藏信息；4：提交数据有误，暂无数据</td>
+</tr>
+<tr>
+	<td align="left">msg</td>
+	<td align="left">string</td>
+	<td>返回信息。1：查询成功；2：暂无数据；3：未接收到收藏信息；4：提交数据有误，暂无数据</td>
+</tr>
+<tr>
+	<td align="left">data</td>
+	<td align="left">string</td>
+	<td>返回数据</td>
+</tr>
+</tbody>
+</table>
+<h3>返回值</h3>
+<pre style="background:#222;color:#35b558">
+{
+code:"1",
+msg: "查询成功",
+data:[{"order_id":3,"type_id":1,"user_id":1,"order_status":"1","order_flag":"4","create_time":"2019-08-15 09:44:42","recipes_id":1,"recipes_name":"哺乳期早餐食谱3","fytype_id":4,"recipes_isoff":"2"}]]
+}
+</pre>
+<h2>27、发布接口</h2>
+<h3>接口功能</h3>
+<blockquote>
+<p>发布：1吃动平衡  2名师制作  3烹调方法  4营养知识</p>
+</blockquote>
+<h3>URL</h3>
+<blockquote>
+<p>http://localhost/xm/public/index.php/Index/release/release</p>
+</blockquote>
+<h3>支持格式</h3>
+<blockquote>
+<p>JSON</p>
+</blockquote>
+<h3>HTTP请求方式</h3>
+<blockquote>
+<p>POST</p>
+</blockquote>
+<h3>传递参数</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">参数</th>
+	<th align="left">必选</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">release_flag</td>
+	<td align="left">true</td>
+	<td>1：吃动平衡</td>
+</tr>
+<tr>
+	<td align="left">course_name</td>
+	<td align="left">true</td>
+	<td>菜品名称</td>
+</tr>
+<tr>
+	<td align="left">type_id</td>
+	<td align="left">true</td>
+	<td>菜品类别</td>
+</tr>
+<tr>
+	<td align="left">course_content</td>
+	<td align="left">true</td>
+	<td>菜品内容（方法）</td>
+</tr>
+<tr>
+	<td align="left">course_img</td>
+	<td align="left">true</td>
+	<td>菜品图片</td>
+</tr>
+<tr>
+	<td align="left">course_thumbimg</td>
+	<td align="left">true</td>
+	<td>菜品缩略图</td>
+</tr>
+<tr>
+	<td align="left">course_video</td>
+	<td align="left">true</td>
+	<td>菜品制作视频</td>
+</tr>
+<tr>
+	<td align="left">course_author</td>
+	<td align="left">true</td>
+	<td>菜品作者</td>
+</tr>
+<tr>
+	<td align="left">user_id</td>
+	<td align="left">true</td>
+	<td>作者ID</td>
+</tr>
+<tr>
+	<td align="left">user_name</td>
+	<td align="left">true</td>
+	<td>作者</td>
+</tr>
+<tr>
+	<td align="left">usertype_id</td>
+	<td align="left">true</td>
+	<td>作者类别ID</td>
+</tr>
+<tr>
+	<td align="left">course_ischarge</td>
+	<td align="left">true</td>
+	<td>是否免费：1免费，2收费</td>
+</tr>
+<tr>
+	<td align="left">course_standard</td>
+	<td align="left">true</td>
+	<td>菜品收费标准</td>
+</tr>
+<tr>
+	<td align="left">balance_flag</td>
+	<td align="left">true</td>
+	<td>吃动标识：1菜品，2运动</td>
+</tr>
+<tr>
+	<td align="left">course_flag</td>
+	<td align="left">true</td>
+	<td>菜品标识：1吃动平衡</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+	<th align="left">参数</th>
+	<th align="left">必选</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">release_flag</td>
+	<td align="left">true</td>
+	<td>2：名师制作</td>
+</tr>
+<tr>
+	<td align="left">course_name</td>
+	<td align="left">true</td>
+	<td>菜品名称</td>
+</tr>
+<tr>
+	<td align="left">type_id</td>
+	<td align="left">true</td>
+	<td>菜品类别</td>
+</tr>
+<tr>
+	<td align="left">course_content</td>
+	<td align="left">true</td>
+	<td>菜品内容（方法）</td>
+</tr>
+<tr>
+	<td align="left">course_img</td>
+	<td align="left">true</td>
+	<td>菜品图片</td>
+</tr>
+<tr>
+	<td align="left">course_thumbimg</td>
+	<td align="left">true</td>
+	<td>菜品缩略图</td>
+</tr>
+<tr>
+	<td align="left">course_video</td>
+	<td align="left">true</td>
+	<td>菜品制作视频</td>
+</tr>
+<tr>
+	<td align="left">user_id</td>
+	<td align="left">true</td>
+	<td>作者ID</td>
+</tr>
+<tr>
+	<td align="left">user_name</td>
+	<td align="left">true</td>
+	<td>作者</td>
+</tr>
+<tr>
+	<td align="left">usertype_id</td>
+	<td align="left">true</td>
+	<td>作者类别ID</td>
+</tr>
+<tr>
+	<td align="left">course_ischarge</td>
+	<td align="left">true</td>
+	<td>是否免费：1免费，2收费</td>
+</tr>
+<tr>
+	<td align="left">course_standard</td>
+	<td align="left">true</td>
+	<td>菜品收费标准</td>
+</tr>
+<tr>
+	<td align="left">course_flag</td>
+	<td align="left">true</td>
+	<td>菜品标识：2名师制作</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+	<th align="left">参数</th>
+	<th align="left">必选</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">release_flag</td>
+	<td align="left">true</td>
+	<td>3：烹调方法</td>
+</tr>
+<tr>
+	<td align="left">cooking_name</td>
+	<td align="left">true</td>
+	<td>烹调名称</td>
+</tr>
+<tr>
+	<td align="left">pttype_id</td>
+	<td align="left">true</td>
+	<td>烹调类别</td>
+</tr>
+<tr>
+	<td align="left">cooking_content</td>
+	<td align="left">true</td>
+	<td>烹调内容（方法）</td>
+</tr>
+<tr>
+	<td align="left">cooking_img</td>
+	<td align="left">true</td>
+	<td>烹调图片</td>
+</tr>
+<tr>
+	<td align="left">cooking_thumbimg</td>
+	<td align="left">true</td>
+	<td>烹调缩略图</td>
+</tr>
+<tr>
+	<td align="left">cooking_video</td>
+	<td align="left">true</td>
+	<td>烹调视频</td>
+</tr>
+<tr>
+	<td align="left">user_id</td>
+	<td align="left">true</td>
+	<td>作者ID</td>
+</tr>
+<tr>
+	<td align="left">user_name</td>
+	<td align="left">true</td>
+	<td>作者</td>
+</tr>
+<tr>
+	<td align="left">usertype_id</td>
+	<td align="left">true</td>
+	<td>作者类别ID</td>
+</tr>
+<tr>
+	<td align="left">cooking_ischarge</td>
+	<td align="left">true</td>
+	<td>是否免费：1免费，2收费</td>
+</tr>
+<tr>
+	<td align="left">cooking_standard</td>
+	<td align="left">true</td>
+	<td>菜品收费标准</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+	<th align="left">参数</th>
+	<th align="left">必选</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">release_flag</td>
+	<td align="left">true</td>
+	<td>4：营养知识</td>
+</tr>
+<tr>
+	<td align="left">yyarticle_title</td>
+	<td align="left">true</td>
+	<td>标题</td>
+</tr>
+<tr>
+	<td align="left">yytype_id</td>
+	<td align="left">true</td>
+	<td>类别</td>
+</tr>
+<tr>
+	<td align="left">yyarticle_content</td>
+	<td align="left">true</td>
+	<td>内容（方法）</td>
+</tr>
+<tr>
+	<td align="left">yyarticle_img</td>
+	<td align="left">true</td>
+	<td>图片</td>
+</tr>
+<tr>
+	<td align="left">yyarticle_thumbimg</td>
+	<td align="left">true</td>
+	<td>缩略图</td>
+</tr>
+<tr>
+	<td align="left">yyarticle_video</td>
+	<td align="left">true</td>
+	<td>视频</td>
+</tr>
+<tr>
+	<td align="left">user_id</td>
+	<td align="left">true</td>
+	<td>作者ID</td>
+</tr>
+<tr>
+	<td align="left">user_name</td>
+	<td align="left">true</td>
+	<td>作者</td>
+</tr>
+<tr>
+	<td align="left">usertype_id</td>
+	<td align="left">true</td>
+	<td>作者类别ID</td>
+</tr>
+<tr>
+	<td align="left">yyarticle_ischarge</td>
+	<td align="left">true</td>
+	<td>是否免费：1免费，2收费</td>
+</tr>
+<tr>
+	<td align="left">yyarticle_standard</td>
+	<td align="left">true</td>
+	<td>收费标准</td>
+</tr>
+</tbody>
+</table>
+<h3>返回字段</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">返回字段</th>
+	<th align="left">字段类型</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">code</td>
+	<td align="left">int</td>
+	<td>返回结果状态。1：发布成功；2：发布失败；3：未接收到用户信息；</td>
+</tr>
+<tr>
+	<td align="left">msg</td>
+	<td align="left">string</td>
+	<td>返回信息。1：发布成功；2：发布失败；3：未接收到用户信息；</td>
+</tr>
+<tr>
+	<td align="left">id</td>
+	<td align="left">string</td>
+	<td>发布成功后返回的ID</td>
+</tr>
+</tbody>
+</table>
+<h3>返回值</h3>
+<pre style="background:#222;color:#35b558">
+{
+code:"1",
+msg: "发布成功",
+id:"2"
+}
+</pre>
+<p><br></p>
+<h2>28、我的作品接口</h2>
+<h3>接口功能</h3>
+<blockquote>
+<p>我发布的作品：1吃动平衡  2名师制作  3烹调方法  4营养知识</p>
+</blockquote>
+<h3>URL</h3>
+<blockquote>
+<p>http://localhost/xm/public/index.php/Index/release/myrelease</p>
+</blockquote>
+<h3>支持格式</h3>
+<blockquote>
+<p>JSON</p>
+</blockquote>
+<h3>HTTP请求方式</h3>
+<blockquote>
+<p>POST</p>
+</blockquote>
+<h3>传递参数</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">参数</th>
+	<th align="left">必选</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">page</td>
+	<td align="left">false</td>
+	<td>页码</td>
+</tr>
+<tr>
+	<td align="left">limit</td>
+	<td align="left">false</td>
+	<td>每页条数</td>
+</tr>
+<tr>
+	<td align="left">user_id</td>
+	<td align="left">true</td>
+	<td>用户ID</td>
+</tr>
+<tr>
+	<td align="left">release_flag</td>
+	<td align="left">true</td>
+	<td>模块标识：1吃动平衡  2名师制作  3烹调方法  4营养知识</td>
+</tr>
+</tbody>
+</table>
+<h3>返回字段</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">返回字段</th>
+	<th align="left">字段类型</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">code</td>
+	<td align="left">int</td>
+	<td>返回结果状态。1：查询成功；2：暂无数据；3：未接收到收藏信息；4：提交数据有误，暂无数据</td>
+</tr>
+<tr>
+	<td align="left">msg</td>
+	<td align="left">string</td>
+	<td>返回信息。1：查询成功；2：暂无数据；3：未接收到收藏信息；4：提交数据有误，暂无数据</td>
+</tr>
+<tr>
+	<td align="left">data</td>
+	<td align="left">string</td>
+	<td>返回数据</td>
+</tr>
+</tbody>
+</table>
+<h3>返回值</h3>
+<pre style="background:#222;color:#35b558">
+{
+code:"1",
+msg: "查询成功",
+data:[{"course_id":1,"course_name":"牛油果沙拉","type_id":2,"course_content":"萨法沙发上的发顺丰说的","course_img":"\/public\/static\/uploads\/Cd_img\/20190808\/faba6ce3592b7967abc8ae4b87324185.jpg","course_thumbimg":"\/public\/static\/uploads\/Cd_img\/20190808\/faba6ce3592b7967abc8ae4b87324185thumb.jpg","course_video":null,"user_id":2,"user_name":"李向阳","usertype_id":3,"course_ischarge":"1","course_standard":"2","course_isoff":"1","course_flag":"1","create_time":"2019-08-08 09:22:46"}]]
+}
+</pre>
+<h2>29、删除我的作品接口</h2>
+<h3>接口功能</h3>
+<blockquote>
+<p>删除我发布的作品</p>
+</blockquote>
+<h3>URL</h3>
+<blockquote>
+<p>http://localhost/xm/public/index.php/Index/release/releaseDel</p>
+</blockquote>
+<h3>支持格式</h3>
+<blockquote>
+<p>JSON</p>
+</blockquote>
+<h3>HTTP请求方式</h3>
+<blockquote>
+<p>POST</p>
+</blockquote>
+<h3>传递参数</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">参数</th>
+	<th align="left">必选</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">id</td>
+	<td align="left">true</td>
+	<td>作品ID</td>
+</tr>
+<tr>
+	<td align="left">release_flag</td>
+	<td align="left">true</td>
+	<td>模块标识：1吃动平衡  2名师制作  3烹调方法  4营养知识</td>
+</tr>
+</tbody>
+</table>
+<h3>返回字段</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">返回字段</th>
+	<th align="left">字段类型</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">code</td>
+	<td align="left">int</td>
+	<td>返回结果状态。1：删除成功；2：删除失败；3：未接收到信息</td>
+</tr>
+<tr>
+	<td align="left">msg</td>
+	<td align="left">string</td>
+	<td>返回信息。1：删除成功；2：删除失败；3：未接收到信息</td>
+</tr>
+</tbody>
+</table>
+<h3>返回值</h3>
+<pre style="background:#222;color:#35b558">
+{
+code:"1",
+msg: "删除成功"
+}
+</pre>
+<p><br></p>
+<h2>30、修改我的作品接口</h2>
+<h3>接口功能</h3>
+<blockquote>
+<p>修改我的作品：1吃动平衡  2名师制作  3烹调方法  4营养知识</p>
+</blockquote>
+<h3>URL</h3>
+<blockquote>
+<p>http://localhost/xm/public/index.php/Index/release/releaseUpd</p>
+</blockquote>
+<h3>支持格式</h3>
+<blockquote>
+<p>JSON</p>
+</blockquote>
+<h3>HTTP请求方式</h3>
+<blockquote>
+<p>POST</p>
+</blockquote>
+<h3>传递参数</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">参数</th>
+	<th align="left">必选</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">release_flag</td>
+	<td align="left">true</td>
+	<td>1：吃动平衡</td>
+</tr>
+<tr>
+	<td align="left">course_name</td>
+	<td align="left">true</td>
+	<td>菜品名称</td>
+</tr>
+<tr>
+	<td align="left">type_id</td>
+	<td align="left">true</td>
+	<td>菜品类别</td>
+</tr>
+<tr>
+	<td align="left">course_content</td>
+	<td align="left">true</td>
+	<td>菜品内容（方法）</td>
+</tr>
+<tr>
+	<td align="left">course_img</td>
+	<td align="left">true</td>
+	<td>菜品图片</td>
+</tr>
+<tr>
+	<td align="left">course_thumbimg</td>
+	<td align="left">true</td>
+	<td>菜品缩略图</td>
+</tr>
+<tr>
+	<td align="left">course_video</td>
+	<td align="left">true</td>
+	<td>菜品制作视频</td>
+</tr>
+<tr>
+	<td align="left">course_author</td>
+	<td align="left">true</td>
+	<td>菜品作者</td>
+</tr>
+<tr>
+	<td align="left">user_id</td>
+	<td align="left">true</td>
+	<td>作者ID</td>
+</tr>
+<tr>
+	<td align="left">user_name</td>
+	<td align="left">true</td>
+	<td>作者</td>
+</tr>
+<tr>
+	<td align="left">usertype_id</td>
+	<td align="left">true</td>
+	<td>作者类别ID</td>
+</tr>
+<tr>
+	<td align="left">course_ischarge</td>
+	<td align="left">true</td>
+	<td>是否免费：1免费，2收费</td>
+</tr>
+<tr>
+	<td align="left">course_standard</td>
+	<td align="left">true</td>
+	<td>菜品收费标准</td>
+</tr>
+<tr>
+	<td align="left">course_flag</td>
+	<td align="left">true</td>
+	<td>菜品标识：1吃动平衡</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+	<th align="left">参数</th>
+	<th align="left">必选</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">release_flag</td>
+	<td align="left">true</td>
+	<td>2：吃动平衡</td>
+</tr>
+<tr>
+	<td align="left">course_name</td>
+	<td align="left">true</td>
+	<td>菜品名称</td>
+</tr>
+<tr>
+	<td align="left">type_id</td>
+	<td align="left">true</td>
+	<td>菜品类别</td>
+</tr>
+<tr>
+	<td align="left">course_content</td>
+	<td align="left">true</td>
+	<td>菜品内容（方法）</td>
+</tr>
+<tr>
+	<td align="left">course_img</td>
+	<td align="left">true</td>
+	<td>菜品图片</td>
+</tr>
+<tr>
+	<td align="left">course_thumbimg</td>
+	<td align="left">true</td>
+	<td>菜品缩略图</td>
+</tr>
+<tr>
+	<td align="left">course_video</td>
+	<td align="left">true</td>
+	<td>菜品制作视频</td>
+</tr>
+<tr>
+	<td align="left">user_id</td>
+	<td align="left">true</td>
+	<td>作者ID</td>
+</tr>
+<tr>
+	<td align="left">user_name</td>
+	<td align="left">true</td>
+	<td>作者</td>
+</tr>
+<tr>
+	<td align="left">usertype_id</td>
+	<td align="left">true</td>
+	<td>作者类别ID</td>
+</tr>
+<tr>
+	<td align="left">course_ischarge</td>
+	<td align="left">true</td>
+	<td>是否免费：1免费，2收费</td>
+</tr>
+<tr>
+	<td align="left">course_standard</td>
+	<td align="left">true</td>
+	<td>菜品收费标准</td>
+</tr>
+<tr>
+	<td align="left">course_flag</td>
+	<td align="left">true</td>
+	<td>菜品标识：2名师制作</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+	<th align="left">参数</th>
+	<th align="left">必选</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">release_flag</td>
+	<td align="left">true</td>
+	<td>3：烹调方法</td>
+</tr>
+<tr>
+	<td align="left">cooking_name</td>
+	<td align="left">true</td>
+	<td>烹调名称</td>
+</tr>
+<tr>
+	<td align="left">pttype_id</td>
+	<td align="left">true</td>
+	<td>烹调类别</td>
+</tr>
+<tr>
+	<td align="left">cooking_content</td>
+	<td align="left">true</td>
+	<td>烹调内容（方法）</td>
+</tr>
+<tr>
+	<td align="left">cooking_img</td>
+	<td align="left">true</td>
+	<td>烹调图片</td>
+</tr>
+<tr>
+	<td align="left">cooking_thumbimg</td>
+	<td align="left">true</td>
+	<td>烹调缩略图</td>
+</tr>
+<tr>
+	<td align="left">cooking_video</td>
+	<td align="left">true</td>
+	<td>烹调视频</td>
+</tr>
+<tr>
+	<td align="left">user_id</td>
+	<td align="left">true</td>
+	<td>作者ID</td>
+</tr>
+<tr>
+	<td align="left">user_name</td>
+	<td align="left">true</td>
+	<td>作者</td>
+</tr>
+<tr>
+	<td align="left">usertype_id</td>
+	<td align="left">true</td>
+	<td>作者类别ID</td>
+</tr>
+<tr>
+	<td align="left">cooking_ischarge</td>
+	<td align="left">true</td>
+	<td>是否免费：1免费，2收费</td>
+</tr>
+<tr>
+	<td align="left">cooking_standard</td>
+	<td align="left">true</td>
+	<td>菜品收费标准</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+	<th align="left">参数</th>
+	<th align="left">必选</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">release_flag</td>
+	<td align="left">true</td>
+	<td>4：营养知识</td>
+</tr>
+<tr>
+	<td align="left">yyarticle_title</td>
+	<td align="left">true</td>
+	<td>标题</td>
+</tr>
+<tr>
+	<td align="left">yytype_id</td>
+	<td align="left">true</td>
+	<td>类别</td>
+</tr>
+<tr>
+	<td align="left">yyarticle_content</td>
+	<td align="left">true</td>
+	<td>内容（方法）</td>
+</tr>
+<tr>
+	<td align="left">yyarticle_img</td>
+	<td align="left">true</td>
+	<td>图片</td>
+</tr>
+<tr>
+	<td align="left">yyarticle_thumbimg</td>
+	<td align="left">true</td>
+	<td>缩略图</td>
+</tr>
+<tr>
+	<td align="left">yyarticle_video</td>
+	<td align="left">true</td>
+	<td>视频</td>
+</tr>
+<tr>
+	<td align="left">user_id</td>
+	<td align="left">true</td>
+	<td>作者ID</td>
+</tr>
+<tr>
+	<td align="left">user_name</td>
+	<td align="left">true</td>
+	<td>作者</td>
+</tr>
+<tr>
+	<td align="left">usertype_id</td>
+	<td align="left">true</td>
+	<td>作者类别ID</td>
+</tr>
+<tr>
+	<td align="left">yyarticle_ischarge</td>
+	<td align="left">true</td>
+	<td>是否免费：1免费，2收费</td>
+</tr>
+<tr>
+	<td align="left">yyarticle_standard</td>
+	<td align="left">true</td>
+	<td>收费标准</td>
+</tr>
+</tbody>
+</table>
+<h3>返回字段</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">返回字段</th>
+	<th align="left">字段类型</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">code</td>
+	<td align="left">int</td>
+	<td>返回结果状态。1：修改成功；2：修改失败；3：未接收到信息；</td>
+</tr>
+<tr>
+	<td align="left">msg</td>
+	<td align="left">string</td>
+	<td>返回信息。1：修改成功；2：修改失败；3：未接收到信息；</td>
+</tr>
+</tbody>
+</table>
+<h3>返回值</h3>
+<pre style="background:#222;color:#35b558">
+{
+code:"1",
+msg: "修改成功"
+}
+</pre>
+<h2>31、搜索接口</h2>
+<h3>接口功能</h3>
+<blockquote>
+<p>搜索本站内菜品（模糊查询）</p>
+</blockquote>
+<h3>URL</h3>
+<blockquote>
+<p>http://localhost/xm/public/index.php/Index/index/search</p>
+</blockquote>
+<h3>支持格式</h3>
+<blockquote>
+<p>JSON</p>
+</blockquote>
+<h3>HTTP请求方式</h3>
+<blockquote>
+<p>POST</p>
+</blockquote>
+<h3>传递参数</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">参数</th>
+	<th align="left">必选</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">keyWord</td>
+	<td align="left">true</td>
+	<td>关键字</td>
+</tr>
+</tbody>
+</table>
+<h3>返回字段</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">返回字段</th>
+	<th align="left">字段类型</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">code</td>
+	<td align="left">int</td>
+	<td>返回结果状态。1：查询成功；2：战无数据；3：未接收到搜索关键字</td>
+</tr>
+<tr>
+	<td align="left">msg</td>
+	<td align="left">string</td>
+	<td>返回信息。1：查询成功；2：战无数据；3：未接收到搜索关键字</td>
+</tr>
+<tr>
+	<td align="left">data</td>
+	<td align="left">string</td>
+	<td>返回的数据</td>
+</tr>
+</tbody>
+</table>
+<h3>返回值</h3>
+<pre style="background:#222;color:#35b558">
+{
+code:"1",
+msg: "查询成功",
+data:[
+{"course_id":3,"course_name":"西红柿炒鸡蛋","type_id":5,"course_content":"U岁闺女好个","course_img":"\/public\/static\/uploads\/Ms_img\/20190808\/176c81d09013c91da3d3d02304d468df.jpg","course_thumbimg":"\/public\/static\/uploads\/Ms_img\/20190808\/176c81d09013c91da3d3d02304d468dfthumb.jpg","course_video":null,"user_id":null,"user_name":"欧文","usertype_id":3,"course_ischarge":"1","course_standard":"7","course_isoff":"1","course_flag":"2","create_time":"2019-08-08 11:45:37"}
+]
+}
+</pre>
+<p><br></p>
+<h2>32、上传视频接口</h2>
+<h3>接口功能</h3>
+<blockquote>
+<p>上传视频</p>
+</blockquote>
+<h3>URL</h3>
+<blockquote>
+<p>http://localhost/xm/public/index.php/Index/index/video_upload</p>
+</blockquote>
+<h3>支持格式</h3>
+<blockquote>
+<p>JSON</p>
+</blockquote>
+<h3>HTTP请求方式</h3>
+<blockquote>
+<p>POST</p>
+</blockquote>
+<h3>传递参数</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">参数</th>
+	<th align="left">必选</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">\</td>
+	<td align="left">\</td>
+	<td>\</td>
+</tr>
+</tbody>
+</table>
+<h3>返回字段</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">返回字段</th>
+	<th align="left">字段类型</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">code</td>
+	<td align="left">int</td>
+	<td>返回结果状态。1：上传成功；2上传失败</td>
+</tr>
+<tr>
+	<td align="left">msg</td>
+	<td align="left">string</td>
+	<td>返回信息。1：上传成功；2上传失败</td>
+</tr>
+<tr>
+	<td align="left">path</td>
+	<td align="left">string</td>
+	<td>返回的视频路径</td>
+</tr>
+</tbody>
+</table>
+<h3>返回值</h3>
+<pre style="background:#222;color:#35b558">
+{
+code:"1",
+msg: "查询成功",
+path:""
+}
+</pre>
+<p><br></p>
+<h2>33、轮播图接口</h2>
+<h3>接口功能</h3>
+<blockquote>
+<p>获取所有用户类别</p>
+</blockquote>
+<h3>URL</h3>
+<blockquote>
+<p>http://localhost/xm/public/index.php/index/index/scroll</p>
+</blockquote>
+<h3>支持格式</h3>
+<blockquote>
+<p>JSON</p>
+</blockquote>
+<h3>HTTP请求方式</h3>
+<blockquote>
+<p>POST</p>
+</blockquote>
+<h3>传递参数</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">参数</th>
+	<th align="left">必选</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">\</td>
+	<td align="left">\</td>
+	<td>\</td>
+</tr>
+</tbody>
+</table>
+<h3>返回字段</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">返回字段</th>
+	<th align="left">字段类型</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">code</td>
+	<td align="left">int</td>
+	<td>返回结果状态。1：查询成功；2：暂无数据；</td>
+</tr>
+<tr>
+	<td align="left">msg</td>
+	<td align="left">string</td>
+	<td>返回信息。1：查询成功；2：暂无数据；</td>
+</tr>
+<tr>
+	<td align="left">data</td>
+	<td align="left">string</td>
+	<td>返回信息；</td>
+</tr>
+</tbody>
+</table>
+<h3>返回值</h3>
+<pre style="background:#222;color:#35b558">
+{
+code:"1",
+msg: "查询成功",
+data:[{"scroll_id":3,"scroll_name":"首页轮播图","scroll_img":"\/public\/static\/uploads\/admin\/20190829\/079fc1bf13790944245ffad844b9ca9e.jpg","scroll_thumbimg":"\/public\/static\/uploads\/admin\/20190829\/079fc1bf13790944245ffad844b9ca9ethumb.jpg","create_time":"2019-08-29 10:06:31","scroll_isoff":"1"}]]
+}
+</pre>
+<p><br></p>
+<h2>34、发布菜品用料（主料辅料调味品）接口</h2>
+<h3>接口功能</h3>
+<blockquote>
+<p>添加菜品用料：主料、辅料、调味品</p>
+</blockquote>
+<h3>URL</h3>
+<blockquote>
+<p>http://localhost/xm/public/index.php/index/Release/dosag</p>
+</blockquote>
+<h3>支持格式</h3>
+<blockquote>
+<p>JSON</p>
+</blockquote>
+<h3>HTTP请求方式</h3>
+<blockquote>
+<p>POST</p>
+</blockquote>
+<h3>传递参数</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">参数</th>
+	<th align="left">必选</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">course_id</td>
+	<td align="left">true</td>
+	<td>菜品ID</td>
+</tr>
+<tr>
+	<td align="left">main_name[]</td>
+	<td align="left">true</td>
+	<td>主料名称数组</td>
+</tr>
+<tr>
+	<td align="left">main_num[]</td>
+	<td align="left">true</td>
+	<td>主料数量数组</td>
+</tr>
+<tr>
+	<td align="left">assist_name[]</td>
+	<td align="left">true</td>
+	<td>辅料名称数组</td>
+</tr>
+<tr>
+	<td align="left">assist_num[]</td>
+	<td align="left">true</td>
+	<td>辅料数量数组</td>
+</tr>
+<tr>
+	<td align="left">condiment_name[]</td>
+	<td align="left">true</td>
+	<td>调味品名称数组</td>
+</tr>
+<tr>
+	<td align="left">condiment_num[]</td>
+	<td align="left">true</td>
+	<td>调味品数量数组</td>
+</tr>
+</tbody>
+</table>
+<pre style="background:#222;color:#35b558">
+例如：
+array(7) {
+  ["course_id"] => string(2) "10"
+  ["main_name"] => array(3) {
+    [0] => string(6) "木耳"
+    [1] => string(6) "鸡蛋"
+    [2] => string(6) "肉片"
+  }
+  ["main_num"] => array(3) {
+    [0] => string(1) "5"
+    [1] => string(3) "100"
+    [2] => string(3) "100"
+  }
+  ["assist_name"] => array(1) {
+    [0] => string(9) "黄花菜"
+  }
+  ["assist_num"] => array(1) {
+    [0] => string(1) "5"
+  }
+  ["condiment_name"] => array(1) {
+    [0] => string(3) "盐"
+  }
+  ["condiment_num"] => array(1) {
+    [0] => string(1) "3"
+  }
+}
+</pre>
+<h3>返回字段</h3>
+<table>
+<thead>
+<tr>
+	<th align="left">返回字段</th>
+	<th align="left">字段类型</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">code</td>
+	<td align="left">int</td>
+	<td>返回结果状态。1：添加成功；2：添加失败；</td>
+</tr>
+<tr>
+	<td align="left">msg</td>
+	<td align="left">string</td>
+	<td>返回信息。1：添加成功；2：添加失败；</td>
+</tr>
+</tbody>
+</table>
+<h3>返回值</h3>
+<pre style="background:#222;color:#35b558">
+{
+code:"1",
+msg: "添加成功"
+}
+</pre>
+<p><br></p>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

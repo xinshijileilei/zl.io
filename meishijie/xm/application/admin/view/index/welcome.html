@@ -1,0 +1,106 @@
+{include file="public/header" /}
+
+<body>
+    <div class="layui-fluid">
+        <div class="layui-row layui-col-space15">
+			<div class="layui-col-md12">
+                 	<div class="layui-card">
+                        <div class="layui-card-body ">
+                            <blockquote class="layui-elem-quote">欢迎管理员：
+                                <span class="x-red">admin</span>！当前时间:{$time}
+                            </blockquote>
+                        </div>
+                    </div>
+            </div>
+            <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-header">数据统计</div>
+                        <div class="layui-card-body ">
+                            <ul class="layui-row layui-col-space10 layui-this x-admin-carousel x-admin-backlog">
+                                <li class="layui-col-md2 layui-col-xs6">
+                                    <a href="javascript:;" class="x-admin-backlog-body">
+                                        <h3>用户总量</h3>
+                                        <p>
+                                            <cite>{$user}</cite></p>
+                                    </a>
+                                </li>
+                                <li class="layui-col-md2 layui-col-xs6">
+                                    <a href="javascript:;" class="x-admin-backlog-body">
+                                        <h3>菜品总量</h3>
+                                        <p>
+                                            <cite>{$course}</cite></p>
+                                    </a>
+                                </li>
+                                <li class="layui-col-md2 layui-col-xs6">
+                                    <a href="javascript:;" class="x-admin-backlog-body">
+                                        <h3>运动文章</h3>
+                                        <p>
+                                            <cite>{$bal}</cite></p>
+                                    </a>
+                                </li>
+                                <li class="layui-col-md2 layui-col-xs6">
+                                    <a href="javascript:;" class="x-admin-backlog-body">
+                                        <h3>食材总量</h3>
+                                        <p>
+                                            <cite>{$sc}</cite></p>
+                                    </a>
+                                </li>
+                                <li class="layui-col-md2 layui-col-xs6">
+                                    <a href="javascript:;" class="x-admin-backlog-body">
+                                        <h3>烹调方法</h3>
+                                        <p>
+                                            <cite>{$pt}</cite></p>
+                                    </a>
+                                </li>
+                                <li class="layui-col-md2 layui-col-xs6">
+                                    <a href="javascript:;" class="x-admin-backlog-body">
+                                        <h3>食谱总量</h3>
+                                        <p>
+                                            <cite>{$sp}</cite></p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+            </div>
+            <div class="layui-col-sm12 layui-col-md12">
+                <div class="layui-card">
+                    <div class="layui-card-header">用户分步表</div>
+                    <div class="layui-card-body" style="min-height: 280px;">
+                        <div id="main1" class="layui-col-sm12" style="height: 300px;"></div>
+
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+    </div>
+
+    <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main1'));
+
+        option = {
+        	    xAxis: {
+        	        type: 'category',
+        	        data: ['普通', '运动', '名师', '高工', '技师', '达人']
+        	    },
+        	    yAxis: {
+        	        type: 'value'
+        	    },
+        	    series: [{
+        	        data: [{$a}, {$b}, {$c}, {$d}, {$e}, {$f}],
+        	        type: 'bar'
+        	    }]
+        	};
+
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+
+    </script>
+</body>
+
+</html>

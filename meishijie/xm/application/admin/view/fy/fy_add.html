@@ -1,0 +1,366 @@
+{include file="public/header" /}
+<style>
+    .show {
+        display: none;
+    }
+</style>
+
+<body>
+    <div class="layui-fluid">
+        <div class="layui-row">
+            <form class="layui-form" enctype="multipart/form-data">
+                <div class="layui-card">
+                    <div class="layui-card-header">菜谱基本信息</div>
+                    <div class="layui-card-body">
+                        <div class="layui-form-item">
+                            <label for="L_email" class="layui-form-label">
+                            食谱名称</label>
+                            <div class="layui-input-inline">
+                                <input type="text" placeholder="食谱名称" name="recipes_name" value="" lay-verify="required" required="" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+		                    <label for="upload" class="layui-form-label">
+		       菜品图片</label>
+		                    <div class="layui-input-inline">
+		                        <button type="button" class="layui-btn" id="upload">
+									  	<i class="layui-icon">&#xe67c;</i>上传图片
+									</button>
+		                        
+		                    </div>
+		                    <div class="layui-input-inline">
+		                        
+		                        <img id="img" src="__STATIC__{$Think.config.BGPIC}" width="320" height="240">
+		                    </div>
+		                </div>
+		                <!-- 隐藏域，图片图片路径和缩略图路径 -->
+                		<input type="hidden" name="recipes_img" id="recipes_img" lay-verify="required">
+               			<input type="hidden" name="recipes_thumbimg" id="recipes_thumbimg" lay-verify="required">
+                        <div class="layui-form-item">
+                            <label for="L_email" class="layui-form-label">
+                            食谱类别</label>
+                            <div class="layui-input-inline">
+                                <select id="one" class="valid" lay-filter="one">
+                            	<option value=""></option>
+                            	{volist name="fytype" id="vo"}
+                                <option value="{$vo.fytype_id}">{$vo.fytype_name}</option>
+                                {/volist}
+                    		</select>
+                            </div>
+                            <div class="layui-input-inline layui-form" lay-filter="twotop">
+                                <select id="two" lay-filter="two" name="">
+                            	
+                                <option value=""></option>
+                                
+                    		</select>
+                            </div>
+                            <div class="layui-input-inline layui-form" lay-filter="threetop">
+                                <select id="three" lay-filter="three" name="fytype_id">
+                            	
+                                <option value=""></option>
+                                
+                    		</select>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+		                    <label class="layui-form-label">
+					菜品简介</label>
+		                    <div class="layui-input-block" style="width: 550px;">
+		                        <textarea style="width:500px;height:200px;padding:5px;" name="recipes_content" id="demo" lay-verify="content" class="field-content"></textarea>
+		                    </div>
+		                </div>
+                        <div class="layui-form-item hid">
+                            <label for="L_repass" class="layui-form-label"></label>
+                            <button id="btn" class="layui-btn" lay-filter="add" lay-submit="">添加</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <form class="layui-form" enctype="multipart/form-data">
+
+                <div class="layui-card show" style="margin-top:13px;">
+                    <div class="layui-card-header">添加水果</div>
+                    <div class="layui-card-body">
+                        <div class="layui-form-item">
+                            <label for="L_email" class="layui-form-label">
+                            </label>
+                            <div class="layui-input-inline">
+                                <input type="text" placeholder="名称" name="recipes_fruits[]" value="" lay-verify="required" required="" class="layui-input">
+                            </div>
+                            <div class="layui-input-inline">
+                                <input type="number" placeholder="重量（以克为单位）" name="recipes_fruits_num[]" value="" lay-verify="required" required="" class="layui-input">
+                            </div>
+                            <div class="layui-input-inline" style="margin-bottom:13px;">
+                                <button onclick="addline(this,'recipes_fruits[]','recipes_fruits_num[]')" type="button" class="layui-btn layui-btn-primary layui-btn-sm">
+						    <i class="layui-icon" style="margin-right:0;">&#xe654;</i>
+						</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-card show">
+                    <div class="layui-card-header">添加菜品</div>
+                    <div class="layui-card-body">
+                        <div class="layui-form-item">
+                            <label for="L_email" class="layui-form-label">
+                            </label>
+                            <div class="layui-input-inline">
+                                <input type="text" placeholder="名称" name="recipes_food[]" value="" lay-verify="required" required="" class="layui-input">
+                            </div>
+                            <div class="layui-input-inline">
+                                <input type="number" placeholder="重量（以克为单位）" name="recipes_food_num[]" value="" lay-verify="required" required="" class="layui-input">
+                            </div>
+                            <div class="layui-input-inline" style="margin-bottom:13px;">
+                                <button onclick="addline(this,'recipes_food[]','recipes_food_num[]')" type="button" class="layui-btn layui-btn-primary layui-btn-sm">
+						    <i class="layui-icon" style="margin-right:0;">&#xe654;</i>
+						</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-card show">
+                    <div class="layui-card-header">添加主食</div>
+                    <div class="layui-card-body">
+                        <div class="layui-form-item">
+                            <label for="L_email" class="layui-form-label">
+                            </label>
+                            <div class="layui-input-inline">
+                                <input type="text" placeholder="名称" name="recipes_staple[]" value="" lay-verify="required" required="" class="layui-input">
+                            </div>
+                            <div class="layui-input-inline">
+                                <input type="number" placeholder="重量（以克为单位）" name="recipes_staple_num[]" value="" lay-verify="required" required="" class="layui-input">
+                            </div>
+                            <div class="layui-input-inline" style="margin-bottom:13px;">
+                                <button onclick="addline(this,'recipes_staple[]','recipes_staple_num[]')" type="button" class="layui-btn layui-btn-primary layui-btn-sm">
+						    <i class="layui-icon" style="margin-right:0;">&#xe654;</i>
+						</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-card show">
+                    <div class="layui-card-header">添加坚果</div>
+                    <div class="layui-card-body">
+                        <div class="layui-form-item">
+                            <label for="L_email" class="layui-form-label">
+                            </label>
+                            <div class="layui-input-inline">
+                                <input type="text" placeholder="名称" name="recipes_nuts[]" value="" lay-verify="required" required="" class="layui-input">
+                            </div>
+                            <div class="layui-input-inline">
+                                <input type="number" placeholder="重量（以克为单位）" name="recipes_nuts_num[]" value="" lay-verify="required" required="" class="layui-input">
+                            </div>
+                            <div class="layui-input-inline" style="margin-bottom:13px;">
+                                <button onclick="addline(this,'recipes_nuts[]','recipes_nuts_num[]')" type="button" class="layui-btn layui-btn-primary layui-btn-sm">
+						    <i class="layui-icon" style="margin-right:0;">&#xe654;</i>
+						</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item show">
+                    <label for="L_repass" class="layui-form-label"></label>
+                    <button id="btn" class="layui-btn" lay-filter="addrep" lay-submit="">添加</button>
+                </div>
+                <input type="hidden" value="" name="recipes_id" id="recipes_id">
+            </form>
+        </div>
+    </div>
+    <script>
+        layui.use(['layer', 'layedit', 'upload', 'form', 'jquery'], function() {
+            var form = layui.form,
+                layer = layui.layer;
+            var upload = layui.upload;
+            var $ = layui.$;
+            var layedit = layui.layedit;
+            layedit.set({
+                uploadImage: {
+                    url: "{:url('Upload/img_upload')}",
+                    type: 'post'
+                }
+            });
+            var index = layedit.build('demo'); //建立编辑器
+
+            form.verify({
+                content: function(value) {
+                    layedit.sync(index);
+                }
+            });
+            var uploadInst = upload.render({
+                elem: '#upload' //绑定元素
+                    ,
+                url: "{:url('Upload/img_upload')}" //上传接口
+                    ,
+                done: function(res) {
+                    if (res.code == 0) {
+                        layer.msg('图片选择成功', {
+                            icon: 1,
+                            time: 1300
+                        });
+                        $("#recipes_img").val(res.img_url);
+                        $("#recipes_thumbimg").val(res.thumb_url);
+                        $("#img").attr("src", "{$Think.config.TITLE}" + res.thumb_url);
+                    } else {
+                        layer.msg('上传失败,请重试', {
+                            icon: 2,
+                            time: 1300
+                        });
+                    }
+                }
+            });
+
+            //监听下拉列表
+            form.on('select(one)', function(data) {
+                if (data.value) {
+                    $.ajax({
+                        type: "post",
+                        url: 'fytype',
+                        data: {
+                            fytype_id: data.value
+                        },
+                        success: function(d) {
+                            if (d.code == 1) {
+                                // 渲染二级下拉菜单
+                                $("#two option:not(:eq(0))").empty(); // 清除第一个之外的所有option
+                                $.each(d.fytype, function(index, item) {
+                                    console.log(1);
+                                    $('#two').append("<option value='" + item.fytype_id + "'>" + item.fytype_name + "</option>"); // 下拉菜单里添加元素
+                                });
+                                layui.form.render("select", "twotop");
+                            } else {
+                                // 重新渲染select
+                                layui.form.render("select");
+                                layer.msg(d.msg, {
+                                    icon: 2,
+                                    time: 1300
+                                })
+                            }
+                        }
+                    })
+                } else {
+                    // 重新渲染所有select
+                    layui.form.render("select");
+                }
+
+            });
+            //监听下拉列表
+            form.on('select(two)', function(data) {
+                if (data.value) {
+                    $.ajax({
+                        type: "post",
+                        url: 'fytype',
+                        data: {
+                            fytype_id: data.value
+                        },
+                        success: function(d) {
+                            if (d.code == 1) {
+                                // 渲染二级下拉菜单
+                                $("#three option:not(:eq(0))").empty(); // 清除第一个之外的所有option
+                                $.each(d.fytype, function(index, item) {
+                                    console.log(1);
+                                    $('#three').append("<option value='" + item.fytype_id + "'>" + item.fytype_name + "</option>"); // 下拉菜单里添加元素
+                                });
+                                layui.form.render("select", "threetop");
+                            } else {
+                                // 重新渲染select
+                                layui.form.render("select");
+                                layer.msg(d.msg, {
+                                    icon: 2,
+                                    time: 1300
+                                })
+                            }
+                        }
+                    })
+                } else {
+                    // 重新渲染所有select
+                    layui.form.render("select");
+                }
+
+            });
+
+            //监听提交
+            form.on("submit(add)", function(obj) {
+                console.log(obj);
+                $.ajax({
+                    type: 'POST',
+                    url: "{:url('fy/fyAdd')}",
+                    data: obj.field,
+                    dataType: "json",
+                    success: function(data) {
+                        if (data.code == 1) {
+                            layer.msg(data.msg, {
+                                icon: 1,
+                                time: 1300
+                            }, function() {
+                                $(".show").show();
+                                $(".hid").hide();
+                                $("#recipes_id").val(data.recipes_id);
+                            });
+                        } else {
+                            layer.msg(data.msg, {
+                                icon: 2,
+                                time: 1300
+                            });
+                        }
+                    }
+                })
+                return false;
+            })
+
+            //监听提交
+            form.on("submit(addrep)", function(obj) {
+                console.log(obj);
+                $.ajax({
+                    type: 'POST',
+                    url: "{:url('fy/repAdd')}",
+                    data: obj.field,
+                    dataType: "json",
+                    success: function(data) {
+                        if (data.code == 1) {
+                            layer.msg(data.msg, {
+                                icon: 1,
+                                time: 1300
+                            }, function() {
+                                //关闭当前frame
+                                xadmin.close();
+                                xadmin.father_reload();
+                            });
+                        } else {
+                            layer.msg(data.msg, {
+                                icon: 2,
+                                time: 1300
+                            });
+                        }
+                    }
+                })
+                return false;
+            })
+
+        });
+
+        function addline(obj, name1, name2) {
+            console.log($(obj).parent().parent());
+            var html = "";
+            html += '<div class="layui-form-item">';
+            html += "<label for='L_email' class='layui-form-label'></label>"
+            html += "<div class='layui-input-inline'>"
+            html += "<input type='text' placeholder='名称'  name='" + name1 + "' value='' lay-verify='required' required='' class='layui-input'>";
+            html += "</div><div class='layui-input-inline'>";
+            html += "<input type='text' placeholder='重量（以克为单位）'  name='" + name2 + "' value='' lay-verify='required' required='' class='layui-input'>";
+            html += "</div><div class='layui-input-inline'>";
+            html += "<button onclick='removeline(this)' type='button' class='layui-btn layui-btn-primary layui-btn-sm'>"
+            html += "<i class='layui-icon' style='margin-right:0;'>&#xe640;</i>";
+            html += "</button></div></div>";
+
+            $(obj).parent().parent().append(html);
+        }
+
+        function removeline(obj) {
+            $(obj).parent().parent().remove();
+        }
+    </script>
+
+</body>
+
+</html>

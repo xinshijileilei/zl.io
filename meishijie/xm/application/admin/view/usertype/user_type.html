@@ -1,0 +1,149 @@
+{include file="public/header" /}
+
+<body>
+    <div class="x-nav">
+        <span class="layui-breadcrumb">
+                <a href="">首页</a>
+                <a href="">分类管理</a>
+                <a>
+                    <cite>分类分类列表</cite></a>
+            </span>
+        <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.reload()" title="刷新">
+            <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i>
+        </a>
+    </div>
+    <div class="layui-fluid">
+
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md12">
+                <div class="layui-card">
+                    <div class="layui-card-body">
+                        <table class="layui-table" id="test" lay-filter="test">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/html" id="toolbarDemo">
+    <form class="layui-form layui-col-space5">
+
+        <div class="layui-inline layui-show-xs-block">
+            <input type="text" name="usertype_name" placeholder="分类名" autocomplete="off" class="layui-input">
+        </div>
+        <div class="layui-inline layui-show-xs-block">
+            <button class="layui-btn" lay-submit="" lay-filter="add"><i class="layui-icon"></i>增加</button>
+        </div>
+    </form>
+</script>
+<script type="text/html" id="fun">
+    <a class="layui-btn layui-btn-xs" lay-event="show">查看/修改</a>
+    <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">删除</a>
+</script>
+<script>
+    layui.use(['table', 'form', 'jquery'],
+        function() {
+            var table = layui.table;
+            var form = layui.form;
+            var $ = layui.jquery;
+
+            // 监听右侧列工具栏---查看分类
+            table.on('tool(test)', function(obj) {
+                //console.log(obj);
+                if (obj.event == "show") {
+                    layer.open({
+                        type: 2,
+                        content: "usertypedetail?usertype_id=" + obj.data.usertype_id,
+                        area: ['500px', '40%']
+                    })
+                } else if (obj.event == "del") {
+                    layer.confirm('确定要删除吗?', function(index) {
+                        $.ajax({
+                            type: "post",
+                            url: "usertypedel",
+                            data: {
+                                usertype_id: obj.data.usertype_id
+                            },
+                            success: function(d) {
+                                if (d.code == 1) {
+                                    layer.msg(d.msg, {
+                                        icon: 1,
+                                        time: 1300
+                                    });
+                                    obj.del();
+                                } else {
+                                    layer.msg(d.msg, {
+                                        icon: 2,
+                                        time: 1300
+                                    });
+                                }
+                            }
+                        });
+                        layer.close(index);
+                    });
+                }
+            })
+
+            //执行渲染
+            var sTable = table.render({
+                elem: '#test' //指定原始表格元素选择器（推荐id选择器）
+                    ,
+                url: "userType",
+                method: "post",
+                page: true,
+                toolbar: '#toolbarDemo',
+                limit: 20,
+                limits: [20],
+                cols: [
+                        [{
+                            field: 'usertype_id',
+                            title: "ID",
+                            sort: true
+                        }, {
+                            field: 'usertype_name',
+                            title: "分类名称",
+                            sort: true
+                        }, {
+                            title: "操作",
+                            minWidth: 160,
+                            toolbar: '#fun'
+                        }]
+                    ] //设置表头
+            });
+
+            //监听提交
+            form.on('submit(add)',
+                function(data) {
+                    console.log(data);
+                    //发异步，把数据提交给php
+                    $.ajax({
+                        type: "post",
+                        url: "userTypeadd",
+                        data: data.field,
+                        success: function(d) {
+                            if (d.code == 1) {
+                                layer.msg("新增成功", {
+                                    icon: 1,
+                                    time: 1300
+                                }, function() {
+                                    //刷新页面
+                                    location.reload();
+
+                                });
+                            } else {
+                                layer.msg(d.msg, {
+                                    icon: 2,
+                                    time: 1300
+                                });
+                            }
+                        }
+                    });
+                    return false;
+                });
+
+        });
+</script>
+
+</html>

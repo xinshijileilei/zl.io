@@ -1,0 +1,77 @@
+{include file="public/header" /}
+
+<body>
+    <div class="layui-fluid">
+        <div class="layui-row">
+            <div class="layui-card">
+                <div class="layui-card-header">基本信息</div>
+                <div class="layui-card-body">
+                    <table class="layui-table">
+
+                        <thead>
+                            <tr>
+                                <th>微信名称</th>
+                                <th>姓名</th>
+                                <th>手机号</th>
+                                <th>身份证号</th>
+                                <th>工作地址</th>
+                                <th>工作年限</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{$userinfo.user_nickname}</td>
+                                <td>{$userinfo.user_name}</td>
+                                <td>{$userinfo.user_phone}</td>
+                                <td>{$userinfo.user_cardid}</td>
+                                <td>{$userinfo.user_address}</td>
+                                <td>{$userinfo.user_years}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="layui-card">
+                <div class="layui-card-header">资质信息</div>
+                <div class="layui-card-body">
+                    <table class="layui-table">
+
+                        <tbody>
+                            <tr>
+                                <td>个人形象照</td>
+                                <td><img width="200" height="150" src="{$Think.config.TITLE}{$userinfo.user_pic}"></td>
+                            </tr>
+                            <tr>
+                                <td>身份证正面图片</td>
+                                <td><img width="200" height="150" src="{$Think.config.TITLE}{$userinfo.user_cardpica}"></td>
+                            </tr>
+                            <tr>
+                                <td>身份证反面图片</td>
+                                <td><img width="200" height="150" src="{$Think.config.TITLE}{$userinfo.user_cardpicb}"></td>
+                            </tr>
+                            <tr>
+                                <td>资质图片</td>
+                                <td><img width="200" height="150" src="{$Think.config.TITLE}{$userinfo.user_certificate}"></td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script>
+        layui.use(['form', 'upload', 'layer'],
+            function() {
+                $ = layui.jquery;
+                var upload = layui.upload;
+                var form = layui.form,
+                    layer = layui.layer;
+
+            });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,176 @@
+{include file="public/header" /}</head>
+
+<body>
+    <div class="layui-fluid">
+        <div class="layui-row">
+            <form class="layui-form" enctype="multipart/form-data">
+                <input type="hidden" value="{$yyinfo.yyarticle_id}" name="yyarticle_id">
+                <div class="layui-form-item">
+                    <label for="L_email" class="layui-form-label">
+                            标题</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="yyarticle_title" value="{$yyinfo.yyarticle_title}" lay-verify="required" required="" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="L_email" class="layui-form-label">
+                            作者</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="user_name" value="{$yyinfo.user_name}" lay-verify="required" required="" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="L_email" class="layui-form-label">
+                            类别</label>
+                    <div class="layui-input-inline">
+                        <select id="shipping" name="yytype_id" class="valid">
+                            	{volist name="yytype" id="vo"}
+                            	{eq name="$yyinfo.yytype_id" value="$vo.yytype_id"}
+                                <option value="{$vo.yytype_id}" selected>{$vo.yytype_name}</option>
+                                {else}
+                                <option value="{$vo.yytype_id}">{$vo.yytype_name}</option>
+                                {/eq}
+                                {/volist}
+                    		</select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="upload" class="layui-form-label">
+                            封面图</label>
+                    <div class="layui-input-inline">
+                        <button type="button" class="layui-btn" id="upload">
+							  	<i class="layui-icon">&#xe67c;</i>上传图片
+							</button>
+                        <img id="img" src="{$Think.config.TITLE}{$yyinfo.yyarticle_img}" width="200" height="150">
+                    </div>
+                </div>
+                <!-- 隐藏域，图片图片路径和缩略图路径 -->
+                <input type="hidden" value="{$yyinfo.yyarticle_img}" name="yyarticle_img" id="yyarticle_img" lay-verify="required">
+                <input type="hidden" value="{$yyinfo.yyarticle_thumbimg}" name="yyarticle_thumbimg" id="yyarticle_thumbimg" lay-verify="required">
+
+                <div class="layui-form-item">
+                    <label for="is_active" class="layui-form-label">
+                            是否收费</label>
+                    <div class="layui-input-inline">
+                        {eq name="$yyinfo.yyarticle_ischarge" value="1"}
+                        <input type="radio" name="yyarticle_ischarge" value="1" title="免费" checked lay-filter="aaa">
+                        <input type="radio" name="yyarticle_ischarge" value="2" title="收费" lay-filter="aaa"> {else}
+                        <input type="radio" name="yyarticle_ischarge" value="1" title="免费" lay-filter="aaa">
+                        <input type="radio" name="yyarticle_ischarge" value="2" title="收费" checked lay-filter="aaa"> {/eq}
+                    </div>
+                </div>
+                <div class="layui-form-item charge" {eq name="$yyinfo.yyarticle_ischarge" value="1" } style="display:none;" {else} style="display:block;" {/eq}>
+                    <label for="is_active" class="layui-form-label">
+                            收费标准</label>
+                    <div class="layui-input-inline">
+                        <input class="layui-input" type="text" name="yyarticle_standard" value="{$yyinfo.yyarticle_standard}" lay-verify="" required="" placeholder="">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">元/条</div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+			内容</label>
+                    <div class="layui-input-block" style="width: 550px;">
+                        <textarea style="width:500px;height:200px;padding:5px;" name="yyarticle_content" id="demo" lay-verify="content" class="field-content">{$yyinfo.yyarticle_content}</textarea>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label for="L_repass" class="layui-form-label"></label>
+                    <button id="btn" class="layui-btn" lay-filter="edit" lay-submit="">修改</button></div>
+            </form>
+        </div>
+    </div>
+    <script>
+        layui.use(['layer', 'layedit', 'upload', 'form', 'jquery'], function() {
+            var form = layui.form,
+                layer = layui.layer;
+            var upload = layui.upload;
+            var $ = layui.$;
+            var layedit = layui.layedit;
+            layedit.set({
+                uploadImage: {
+                    url: "{:url('Yy/img_upload')}",
+                    type: 'post'
+                }
+            });
+            var index = layedit.build('demo'); //建立编辑器
+
+            form.verify({
+                content: function(value) {
+                    layedit.sync(index);
+                }
+            });
+
+
+            var uploadInst = upload.render({
+                elem: '#upload' //绑定元素
+                    ,
+                url: "img_upload" //上传接口
+                    ,
+                done: function(res) {
+                    if (res.code == 0) {
+                        layer.msg('图片选择成功', {
+                            icon: 1,
+                            time: 1300
+                        });
+                        $("#yyarticle_img").val(res.img_url);
+                        $("#yyarticle_thumbimg").val(res.thumb_url);
+                        $("#img").attr("src", "/xm" + res.thumb_url);
+                    } else {
+                        layer.msg('上传失败,请重试', {
+                            icon: 2,
+                            time: 1300
+                        });
+                    }
+                }
+            });
+
+            //监听radio单选
+            form.on('radio(aaa)', function(data) {
+                console.log(data.elem); //得到radio原始DOM对象
+                console.log(data.value); //被点击的radio的value值
+                if (data.value == 2) {
+                    $(".charge").css("display", "block");
+                } else {
+                    $(".charge").css("display", "none");
+                }
+                form.render();
+            });
+
+            //监听提交
+            form.on("submit(edit)", function(obj) {
+                console.log(obj);
+                $.ajax({
+                    type: 'POST',
+                    url: "{:url('Yy/yyDetail')}",
+                    data: obj.field,
+                    dataType: "json",
+                    success: function(data) {
+                        if (data.code == 1) {
+                            layer.msg(data.msg, {
+                                icon: 1,
+                                time: 1300
+                            }, function() {
+                                //关闭当前frame
+                                xadmin.close();
+                                xadmin.father_reload();
+
+                            });
+                        } else {
+                            layer.msg(data.msg, {
+                                icon: 2,
+                                time: 1300
+                            });
+                        }
+                    }
+                })
+                return false;
+            })
+
+        });
+    </script>
+
+</body>
+
+</html>
